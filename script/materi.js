@@ -1011,7 +1011,9 @@ function tombolkirimnilaielamaso() {
                 tescekelement.innerHTML = "";
                 let id = parseInt(indekmaterionline.innerHTML);
                 //cekkerjaan(id);
-                panggilmateri()
+                document.getElementById("hasilakhir").style.display = "none";
+                panggilmateri();
+
             }, 2000)
         } else {
             tescekelement.innerHTML = "Gagal merespon.."
@@ -1573,6 +1575,7 @@ async function cekkerjaan(j, d) {
     let nm = tokensiswa;
     let crTo = datanya.crtToken;
     let idmap = datanya.jenistagihan;
+    let jes = datanya.jumlahessay;
     let idmapel = datanya.idmapel;
     let soalmateri = datanya.idmateri;
     let bataswaktu = new Date(datanya.idtglend).getTime();
@@ -1620,10 +1623,10 @@ async function cekkerjaan(j, d) {
                 let objek = JSON.parse(obnilaikd);
                 let keyobjek = Object.keys(objek)
                 let teks = (k.records[last].nilaiPG == "") ? "" : "Nilai PG = " + k.records[last].nilaiPG + "<br/>";
-                teks += (k.records[last].nilaiEssay == "" && trueEssay) ? "" : "Nilai Esay = " + k.records[last].nilaiEssay;
+                teks += (jes == 0) ? "" : "Nilai Essay = " + k.records[last].nilaiEssay;
 
 
-                div.innerHTML = `Selamat Ananda sudah mengerjakan materi ini.<br class="w3-border-bottom"/> ${teks}<br class="w3-border-bottom"/>${cekessay}<button class='w3-button w3-blue' onclick='soaloffline("${soalmateri}")'>Latihan lagi</button><br/>`;
+                div.innerHTML = `Selamat Ananda sudah mengerjakan materi ini.<hr class="w3-border-bottom"/> ${teks}<hr class="w3-border-bottom"/>${cekessay}<button class='w3-button w3-blue' onclick='soaloffline("${soalmateri}")'>Latihan lagi</button><br/>`;
 
             }
 

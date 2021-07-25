@@ -1,5 +1,5 @@
-const staticCacheName = "site-static-idskl2831213" + new Date().getTime();
-const dynamicChace = "cache_dynamic_idrskl4831213_" + new Date().getTime();
+const staticCacheName = "site-static-tp1" + new Date().getTime();
+const dynamicChace = "cache_dynamic_tp1" + new Date().getTime();
 
 const assets = [
     "/",
@@ -17,44 +17,34 @@ const assets = [
     "/img/polos.png",
     "/img/akarkuadrat.PNG",
     "/img/akarkubik.PNG",
-    "/img/anaksd.png",
-    "/img/bgloginguru.jpeg",
-    "/img/bgloginsiswa.jpeg",
-    "/img/bgloginortu.jpeg",
-    "/img/PTK.png",
 
-    
-    "/js/aafnbaruv7.js",
-    "/js/absen.js",
-    "/js/absengurumapel.js",
-    "/js/barcode.js",
-    "/js/datasiswa.js",
-    "/js/datasiswagurumapel.js",
-    "/js/editor.js",
-    "/js/exceltabel.js",
-    "/js/firstscript.js",
-    "/js/gurukelas.js",
-    "/js/gurumapel.js",
-    "/js/guruprofil.js",
-    "/js/kehadiranguru.js",
-    "/js/kurikulum.js",
-    "/js/materi.js",
-    "/js/materiguru.js",
-    "/js/materigurumapel.js",
-    "/js/menuabsensiswa.js",
-    "/js/nilai.js",
-    "/js/ortujs.js",
-    "/js/raportsemester.js",
-    "/js/renderpdf.js",
-    "/js/siswa.js",
-    "/js/siswajs.js",
-    "/js/uploadmateri.js",
-    "/js/uploadmaterigurumapel.js",
-    "/js/uploadmedia.js",
-    "/js/variabel.js",
-    "/js/videoelamaso.js",
-    "/js/waktu.js",
-    "/js/zframe.js",
+    "/guru/aafnbaruv7.js",
+    "/gk/absen.js",
+    "/gmp/absengurumapel.js",
+    "/gk/barcode.js",
+    "/gk/datasiswa.js",
+    "/gmp/datasiswagurumapel.js",
+    "/guru/editor.js",
+    "/guru/exceltabel.js",
+    "/gk/gurukelas.js",
+    "/gmp/gurumapel.js",
+    "/guru/guruprofildankehadiran.js",
+    "/guru/kurikulum.js",
+    "/script/materi.js",
+    "/gk/materiguru.js",
+    "/gmp/materigurumapel.js",
+    "/guru/nilai.js",
+    "/script/ortujs.js",
+    "/guru/raportsemester.js",
+    "/script/renderpdf.js",
+    "/script/siswa.js",
+    "/gk/uploadmateri.js",
+    "/gmp/uploadmaterigurumapel.js",
+    "/script/uploadmedia.js",
+    "/guru/variabel.js",
+    "/guru/videoelamaso.js",
+    "/guru/waktu.js",
+    "/guru/zframe.js",
 
     "/css/firststyle.css",
 
@@ -64,7 +54,14 @@ const assets = [
     "/kepsek/unfaedah.js",
     "/kepsek/videoelamaso.js",
     "/kepsek/zframe.js",
-    "/user/elamaso_offline.html"
+    "/user/elamaso_offline.html",
+
+    "/staff/staff.js",
+    "/staff/exceltabel.js",
+    "/staff/umum.js",
+    "/staff/unfaedah.js",
+    "/stff/videolamaso.js"
+
 
 
 ];

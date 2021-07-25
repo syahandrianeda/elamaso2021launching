@@ -494,31 +494,35 @@ function tombolbantukirim() {
 }
 let stoploadingtopbar;
 const loadingtopbarin = (el) => {
-        var elem = document.querySelector("." + el);
-        elem.className = elem.className.replace("w3-hide", "");
-        elem.style.width = "1px";
-        var width = 1;
-        stoploadingtopbar = setInterval(frame2, 10);
+    var elem = document.querySelector("." + el);
+    elem.className = elem.className.replace("w3-hide", "");
+    elem.style.width = "1px";
+    var width = 1;
+    stoploadingtopbar = setInterval(frame2, 10);
 
-        function frame2() {
-            if (width >= 1000000) {
-                clearInterval(stoploadingtopbar);
-                // elem.style.width = 0;
-                // elem.style.width = 90 + '%';
-                // elem.innerHTML = `100%`;
-            } else {
-                width += 100;
-                elem.style.width = width / 1000 + '%';
-                //elem.innerHTML = (width / 105).toFixed(0) + "% ";
-            }
+    function frame2() {
+        if (width >= 1000000) {
+            clearInterval(stoploadingtopbar);
+            // elem.style.width = 0;
+            // elem.style.width = 90 + '%';
+            // elem.innerHTML = `100%`;
+        } else {
+            width += 100;
+            elem.style.width = width / 1000 + '%';
+            //elem.innerHTML = (width / 105).toFixed(0) + "% ";
         }
     }
+}
 
 (async function () {
     namasekolah.innerHTML = identitassekolah;
     namakota.innerHTML = identitaskotasekolah;
     //---------------------------------------------------------
-    loadingmodal.style.display = "block";
+    //loadingmodal.style.display = "block";
+    var elem = document.querySelector(".loadingtopbar");
+    elem.style.width = "1px";
+    let divlod;
+    loadingtopbarin("loadingtopbar");
     dashboardnamasiswa.innerHTML = `<i class="fa fa-spin fa-spinner w3-large"><i>`;
     /// fungsi untuk mengupdate datasiswa ();
     let url_login_siswa = jlo.url_datauser + "?action=loginsiswa&idss=" + jlo.ss_datauser;
@@ -680,7 +684,14 @@ const loadingtopbarin = (el) => {
 
     }
 
+    clearInterval(stoploadingtopbar);
+    divlod = document.querySelector(".loadingtopbar");
+    divlod.style.width = "100%";
+    setTimeout(() => {
+        divlod.style.width = "1px"
+        divlod.className += " w3-hide";
 
+    }, 3000);
 
 })()
 

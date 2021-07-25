@@ -44,7 +44,25 @@
     <link rel="apple-touch-icon" href="/img/icons/pic96.png">
     <meta name="apple-mobile-web-app-status-bar" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
-
+    <script>
+        if (localStorage.hasOwnProperty("typeuser")) {
+            let m = JSON.parse(localStorage.getItem("typeuser"))
+            //console.log(m.akses);
+            if (m.akses == "Guru Kelas") {
+                //window.location.href="/user/guru.html";
+                window.location.replace("/user/guru.html");
+            } else if (m.akses == "Guru Mapel") {
+                window.location.replace("/user/gmp.html");
+            } else if (m.akses == "Kepala Sekolah") {
+                window.location.replace("/user/kepsek.html");
+            } else if (m.akses == "siswa") {
+                window.location.replace("/user/siswa.html");
+            } else if (m.akses == "Staff") {
+                window.location.replace("/user/staff.html");
+            } else {
+            }
+        }
+    </script>
 
 </head>
 
@@ -269,27 +287,10 @@
     <script src="https://cdn.jsdelivr.net/gh/syahandrianeda/script@0.0.3/script.js"></script>
     <!-- <script src="https://github.com/syahandrianeda/elamaso2021/blob/main/script/main.js"></script> -->
 
-    <!-- <script src="/js/gsscript.js"></script>
-    <script src="/js/waktu.js"></script> -->
-    <script>
-        if (localStorage.hasOwnProperty("typeuser")) {
-            let m = JSON.parse(localStorage.getItem("typeuser"))
-            //console.log(m.akses);
-            if (m.akses == "Guru Kelas") {
-                //window.location.href="/user/guru.html";
-                window.location.replace("/user/guru.html");
-            } else if (m.akses == "Guru Mapel") {
-                window.location.replace("/user/gmp.html");
-            } else if (m.akses == "Kepala Sekolah") {
-                window.location.replace("/user/kepsek.html");
-            } else if (m.akses == "siswa") {
-                window.location.replace("/user/siswa.html");
-            } else if (m.akses == "Staff") {
-                window.location.replace("/user/staff.html");
-            } else {
-            }
-        }
-    </script>
+    <!-- <script src="/js/gsscript.js"></script> -->
+    <!-- <script src="/js/waktu.js"></script> -->
+    <script src="/script/app.js"></script>
+   
 </body>
 
 </html>

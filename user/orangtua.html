@@ -44,7 +44,6 @@
     <link rel="stylesheet" href="/css/csssiswa.css?v=5.0">
     <script src="/script/idsekolah.js"></script>
     <script>
-
         let jlo = JSON.parse(localStorage.getItem("inst_id"))
         let urlmateri = jlo.url_materi;
         let ssmateri = jlo.ss_materi;
@@ -56,9 +55,10 @@
         let namasiswa, url_absenkaldik;
         let namakelas;
         let jenjang;
-        let arrayStringTglLibur = [], arrayKetLibur = [];
+        let arrayStringTglLibur = [],
+            arrayKetLibur = [];
         let belajaraktif = true;
-        let sudahhadir;//= 0;
+        let sudahhadir; //= 0;
         let absenheader = "";
         let url_absensiswa = "";
         let url_kaldikaja = "";
@@ -88,7 +88,7 @@
 
                 url_kaldikaja = jlo.url_dataabsen;
                 url_absenkaldik = jlo.url_dataabsen + "?action=datakaldik";
-                url_absensiswa = jlo[absenheader];//+ "?action=absensiswahariini";
+                url_absensiswa = jlo[absenheader]; //+ "?action=absensiswahariini";
                 if (!m.hasOwnProperty("ote")) {
 
                     window.location.replace("/user/siswa.html");
@@ -103,8 +103,6 @@
         } else {
             window.location.replace("/index.html")
         }
-
-
     </script>
 
     <link crossorigin='' href='//fonts.googleapis.com' rel='dns-prefetch' />
@@ -805,6 +803,7 @@ borderhasilnama
 
     <script src="/js/siswa.js?v=5.0"></script>
     <script src="/script/ortu.js"></script>
+    <script src="/script/app.js"></script>
     <!-- <script src="/js/app.js"></script> -->
 </body>
 
