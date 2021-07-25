@@ -229,6 +229,7 @@
             <div class="pesankhususkepsek w3-card w3-white w3-margin-top w3-container w3-round-large w3-hide">
             </div>
             <div class="pesankhusussiswa w3-card w3-white w3-margin-top w3-container w3-round-large w3-hide">
+                Mohon maaf, beberapa fitur Sedang Proses Upgrade Data.
             </div>
         </div>
 
@@ -286,7 +287,7 @@
                     <h3>Kehadiran Guru</h3>
                 </div>
             </div>
-            <div class="w3-quarter" style="cursor: pointer; margin:50px 0" onclick="framekreatifitas()">
+            <div class="w3-quarter w3-hide" style="cursor: pointer; margin:50px 0" onclick="alert('diable fitur')">
                 <div class="w3-container n_zoom w3-center ">
                     <div><img src="/img/lg_frame.webp"></div>
 
@@ -333,24 +334,6 @@
 
             <div id="tabelrekapkelas" style="border:1px dotted blue;padding:5px;border-radius:15px;overflow:auto">
                 <h3>Rekapitulasi Data Kelas</h3>
-
-                <div
-                    class="w3-container w3-card-4 w3-white w3-margin w3-center w3-border-bottom w3-border-yellow w3-round">
-                    Jumlah Keselurahan:
-
-
-
-                </div>
-                <div
-                    class="w3-container w3-card-4 w3-white w3-margin w3-center w3-border-bottom w3-border-yellow  w3-round">
-                    Berdasarkan Gender (Jenis Kelamin):
-
-                </div>
-                <div
-                    class="w3-container w3-card-4 w3-white w3-margin w3-center w3-border-bottom w3-border-yellow w3-round">
-                    Berdasarkan Agama:
-
-                </div>
                 <div class="w3-container w3-border w3-white w3-margin w3-center w3-round">
                     <table class="w3-table-all garis w3-small w3-centered">
                         <caption>Tabel Rekapitulasi Jumlah Data Siswa</caption>
@@ -2139,534 +2122,531 @@
                     class="w3-btn w3-yellow w3-border-bottom w3-border-black w3-round-large">Tutup</button>
             </footer>
         </div>
-        <!--  08 modaledituser -->
-        <div id="modaledituser" class="modal">
-            <div class="modal-contentt container animate">
-                <div class="imgcontainer">
-                    <img src="/img/lamaso.webp" style="width:90px;height:90px;border:1px solid blue"
-                        class="w3-circle" /><br />
-                    <h3 id="judulpetunjukedit">Profil Guru</h3>
-                    <h5>Anda dapat mengubah data profil Anda di sini.</h5>
-                    <span onclick="document.getElementById('modaledituser').style.display='none';" class="close"
-                        title="Tutup Form">&times;</span>
-                </div>
-                <div id="divedituser">
-                    <form id="formedituser">
-                        <fieldset
-                            style="border:1px solid red;padding:5px;border-radius: 5px;background-color: aquamarine;">
-                            <label for="email">Akun Gmail :</label><br />
-                            <input name="email" id="emailedit" type="text" style="width:80%;border:1px solid blue"
-                                onchange="formatemail()" /><br /><br />
-                        </fieldset><br />
-                        <h3>Nama Pengguna dan Password saat Login</h3>
-                        <fieldset
-                            style="border:1px solid red;padding:5px;border-radius: 5px;background-color: rgb(160, 206, 243);">
-                            <label for="username">Nama Pengguna: </label><br />
-                            <input type="text" name="username" id="usernameedit" autocomplete="username"
-                                style="width:80%;border:1px solid blue" onchange="fnjangandobel()" />
-                            <br /><span id="jangandobeledit">...</span>
-                            <br /><br />
-                            <label for="password">Password :</label><br />
-                            <input type="password" name="password" id="passwordedit"
-                                style="width:80%;border:1px solid blue" autocomplete="current-password" /><br />
-                            <label id="lihatpasswordedit" for="checkboxlihatpasswordedit"><i class="fa fa-eye"></i>
-                                Lihat
-                                Password</label>
-                            <input type="checkbox" onclick="fnlihatpasswordedit()" id="checkboxlihatpasswordedit"
-                                style="display: none;"><br />
-                        </fieldset><br />
-                        <h3>Data Sekolah: </h3>
-                        <fieldset
-                            style="border:1px solid red;padding:5px;border-radius: 5px;background-color: rgb(185, 255, 127);">
-                            <label for="sekolah">Nama Sekolah:</label><br />
-                            <input type="text" name="sekolah" id="sekolahedit"
-                                style="width:80%;border:1px solid blue" /><br /><br />
-                            <label for="kepsek_namalengkap">Nama Kepala Sekolah:</label><br />
-                            <input type="text" name="kepsek_namalengkap" id="kepsek_namalengkapedit"
-                                style="width:80%;border:1px solid blue" /><br /><br />
-                            <label for="kepsek_nip">NIP Kepala Sekolah:</label><br />
-                            <input type="text" name="kepsek_nip" id="kepsek_nipedit"
-                                style="width:80%;border:1px solid blue" /><br /><br />
-
-                        </fieldset>
-
-                        <h3>Data Diri Anda </h3>
-                        <fieldset
-                            style="border:1px solid red;padding:5px;border-radius: 5px;background-color: rgb(247, 240, 177);">
-                            <label for="guru_namalengkapedit">Nama Anda:</label><br />
-                            <input id="guru_namalengkapedit" name="guru_namalengkap" type="text"
-                                style="width:80%;border:1px solid blue" /><br /><br />
-                            <label for="gurukelas_gmp">Anda sebagai Guru Kelas/Guru Mata Pelajaran:</label>
-                            <select id="gurukelas_gmpedit" name="gurukelas_gmp"
-                                style="width:80%;border:1px solid blue" /><br /><br />
-                            <option value="Guru Kelas">Guru Kelas</option>
-                            <option value="Guru Mapel">Guru Mapel</option>
-                            </select><br /><br />
-                            <label for="jenjangedit">Jenjang Kelas</label><br />
-                            <input id=" jenjangedit" name="jenjang" type="number"
-                                style="width:50%;border:1px solid blue" /><br /><br />
-                            <label for="kelas">Kelas Anda mengajar</label><br />
-                            <input id="kelasedit" name="kelas" type="text"
-                                style="width:50%;border:1px solid blue" /><br /><br />
-                            <label for="guru_nip">NIP :</label><br />
-                            <input id="guru_nipedit" name="guru_nip"
-                                style="width:80%;border:1px solid blue" /><br /><br />
-                            <label for="no_wa_user">No. WhatsApp :</label><br />
-                            <input id="no_wa_useredit" name="no_wa_user" type="tel"
-                                style="width:80%;border:1px solid blue" /><br /><br />
-                            <input id="kelasampu" name="kelasampu" class="w3-hide" />
-                            <input id="idabsen" name="idabsen" class="w3-hide" />
-
-                            <label for="upl_avataredit"
-                                style="cursor:pointer;border:1px solid blue;background-color:#eee;padding:5px;border-radius:5px"><i
-                                    class="fa fa-upload"></i> Upload Avatar</label><br />
-                            <img id="avatarkuedit" scr="/img/lamaso.webp" style="width:200px;border:1px solid red" />
-                            <div id="idpoto_potoguruedit" style="display: none;">
-                                <input type="text" id="idpoto_potoguru" name="idpoto_potoguru"
-                                    style="display: block;" />
-                                <!-- <input type="text" name="filename" />
-                                <input type="text" name="mimeType" /> -->
-                                <!-- <input type="text" name="dobel" /> -->
-                            </div>
-                        </fieldset>
-
-                    </form>
-                    <input type="file" id="upl_avataredit" onchange="ungg_avataredit()" style="display: none"
-                        accept="image/*" />
-                    <div id="prosesloadingdaftaredit"></div>
-                </div>
-                <button onclick="tomboledituser()" id="registrasikanedit" class="login">Simpan</button>
-                <button onclick="document.getElementById('modaledituser').style.display='none'"
-                    id="tutupeksekusitambahuser" class="login">Tutup</button>
-
+    </div>
+    <!--  08 modaledituser -->
+    <div id="modaledituser" class="modal">
+        <div class="modal-contentt container animate">
+            <div class="imgcontainer">
+                <img src="/img/lamaso.webp" style="width:90px;height:90px;border:1px solid blue"
+                    class="w3-circle" /><br />
+                <h3 id="judulpetunjukedit">Profil Guru</h3>
+                <h5>Anda dapat mengubah data profil Anda di sini.</h5>
+                <span onclick="document.getElementById('modaledituser').style.display='none';" class="close"
+                    title="Tutup Form">&times;</span>
             </div>
-        </div>
-        <!--  DIV MODAL INPUTAN (EDIT, HAPUS, TAMBAH, BANTU ABSENSI -->
-        <div id="modal_edit_siswa" class="modal">
-            <div class="modal-content container">
-                <div class="imgcontainer modal-content">
-                    <h2 id="ketedithapus">EDIT SISWA</h2>
-                    <div id="testestestes" style="display: none;">Loading ...</div>
-                    <h4 id="resultedit">Result</h4>
+            <div id="divedituser">
+                <form id="formedituser">
+                    <fieldset style="border:1px solid red;padding:5px;border-radius: 5px;background-color: aquamarine;">
+                        <label for="email">Akun Gmail :</label><br />
+                        <input name="email" id="emailedit" type="text" style="width:80%;border:1px solid blue"
+                            onchange="formatemail()" /><br /><br />
+                    </fieldset><br />
+                    <h3>Nama Pengguna dan Password saat Login</h3>
+                    <fieldset
+                        style="border:1px solid red;padding:5px;border-radius: 5px;background-color: rgb(160, 206, 243);">
+                        <label for="username">Nama Pengguna: </label><br />
+                        <input type="text" name="username" id="usernameedit" autocomplete="username"
+                            style="width:80%;border:1px solid blue" onchange="fnjangandobel()" />
+                        <br /><span id="jangandobeledit">...</span>
+                        <br /><br />
+                        <label for="password">Password :</label><br />
+                        <input type="password" name="password" id="passwordedit" style="width:80%;border:1px solid blue"
+                            autocomplete="current-password" /><br />
+                        <label id="lihatpasswordedit" for="checkboxlihatpasswordedit"><i class="fa fa-eye"></i>
+                            Lihat
+                            Password</label>
+                        <input type="checkbox" onclick="fnlihatpasswordedit()" id="checkboxlihatpasswordedit"
+                            style="display: none;"><br />
+                    </fieldset><br />
+                    <h3>Data Sekolah: </h3>
+                    <fieldset
+                        style="border:1px solid red;padding:5px;border-radius: 5px;background-color: rgb(185, 255, 127);">
+                        <label for="sekolah">Nama Sekolah:</label><br />
+                        <input type="text" name="sekolah" id="sekolahedit"
+                            style="width:80%;border:1px solid blue" /><br /><br />
+                        <label for="kepsek_namalengkap">Nama Kepala Sekolah:</label><br />
+                        <input type="text" name="kepsek_namalengkap" id="kepsek_namalengkapedit"
+                            style="width:80%;border:1px solid blue" /><br /><br />
+                        <label for="kepsek_nip">NIP Kepala Sekolah:</label><br />
+                        <input type="text" name="kepsek_nip" id="kepsek_nipedit"
+                            style="width:80%;border:1px solid blue" /><br /><br />
 
-                    <b id="namalama" style="display:none"></b>
-                </div>
-                <div id="inputtambahan" style="overflow-x: auto;"></div>
-                <form id="modaledithapus">
-                    DIEDIT OLEH:
-                    <input id="dieditoleh" name="dieditoleh" style="display:block" disabled />
-                    <br />
-                    <label for="aktif">Keaktifan </label><br />
-                    <input id="aktif" name="aktif"
-                        style="width:50%;height:30px;border:1px solid blue;border-radius:10px" disabled /><br />
-                    <sub style="color:blue">Aktif maksudnya siswa ini berada di kelas Anda</sub>
-                    <br />
-                    <br />
+                    </fieldset>
 
-                    <label for="jenjang">Jenjang </label><br />
-                    <input id="jenjang" name="jenjang"
-                        style="width:50px;height:30px;border:1px solid blue;border-radius:10px" disabled /><br />
-                    <br />
+                    <h3>Data Diri Anda </h3>
+                    <fieldset
+                        style="border:1px solid red;padding:5px;border-radius: 5px;background-color: rgb(247, 240, 177);">
+                        <label for="guru_namalengkapedit">Nama Anda:</label><br />
+                        <input id="guru_namalengkapedit" name="guru_namalengkap" type="text"
+                            style="width:80%;border:1px solid blue" /><br /><br />
+                        <label for="gurukelas_gmp">Anda sebagai Guru Kelas/Guru Mata Pelajaran:</label>
+                        <select id="gurukelas_gmpedit" name="gurukelas_gmp"
+                            style="width:80%;border:1px solid blue" /><br /><br />
+                        <option value="Guru Kelas">Guru Kelas</option>
+                        <option value="Guru Mapel">Guru Mapel</option>
+                        </select><br /><br />
+                        <label for="jenjangedit">Jenjang Kelas</label><br />
+                        <input id=" jenjangedit" name="jenjang" type="number"
+                            style="width:50%;border:1px solid blue" /><br /><br />
+                        <label for="kelas">Kelas Anda mengajar</label><br />
+                        <input id="kelasedit" name="kelas" type="text"
+                            style="width:50%;border:1px solid blue" /><br /><br />
+                        <label for="guru_nip">NIP :</label><br />
+                        <input id="guru_nipedit" name="guru_nip" style="width:80%;border:1px solid blue" /><br /><br />
+                        <label for="no_wa_user">No. WhatsApp :</label><br />
+                        <input id="no_wa_useredit" name="no_wa_user" type="tel"
+                            style="width:80%;border:1px solid blue" /><br /><br />
+                        <input id="kelasampu" name="kelasampu" class="w3-hide" />
+                        <input id="idabsen" name="idabsen" class="w3-hide" />
 
-                    <label for="id">
-                        ID database Siswa (KODE TOKEN):
-                    </label><br />
-                    <input id="id" name="id" style="width:50px;height:30px;border:1px solid blue;border-radius:10px"
-                        disabled /><br />
-                    <br />
-
-                    <label for="nama_rombel">Kelas:</label><br />
-                    <select id="nama_rombel" name="nama_rombel"
-                        style="width:50px;height:30px;border:1px solid blue;border-radius:10px">
-                    </select>
-                    <br /><br />
-
-                    <label for="pd_hp">No Whatsapp:</label><br />
-
-                    <input id="pd_hp" type="tel" name="pd_hp"
-                        style="width:80%;height:30px;border:1px solid blue;border-radius:10px" /><br />
-                    <br />
-
-                    <label for="nis">No. Induk Siswa:</label><br />
-                    <input id="nis" name="nis"
-                        style="width:90%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
-                    <label for="nisn">NISN:</label><br />
-                    <input type="text" id="nisn" name="nisn"
-                        style="width:90%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
-                    <label for="pd_nama">Nama Siswa:</label><br />
-                    <input type="text" id="pd_nama" name="pd_nama"
-                        style="width:90%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
-                    <label for="pd_jk">Jenis Kelamin:</label><br />
-                    <select name="pd_jk" id="pd_jk"
-                        style="width:30%;height:30px;border:1px solid blue;border-radius:10px">
-                        <option value="L" id="L">Laki-laki</option>
-                        <option value="P" id="P">Perempuan</option>
-                    </select> <br /><br />
-                    <label for="pd_tl">Tempat Lahir:</label><br />
-                    <input type="text" id="pd_tl" name="pd_tl"
-                        style="width:90%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
-                    <label for="pd_tanggallahir">Tanggal Lahir: (bulan/tanggal/tahun):</label><br />
-                    <input id="pd_tanggallahir" name="pd_tanggallahir" type="Date" /><br />
-                    <sub style="color:red" id="terjemahantanggal"></sub>
-                    <br /><br />
-                    <label for="pd_agama">Agama:</label><br />
-                    <select name="pd_agama" id="pd_agama"
-                        style="width:30%;height:30px;border:1px solid blue;border-radius:10px">
-                        <option value="" id="pilihagama">Pilih Agama</option>
-                        <option value="ISLAM" id="Islam">Islam</option>
-                        <option value="KRISTEN" id="Kristen">Kristen/Protestan</option>
-                        <option value="KATHOLIK" id="Katholik">Katholik</option>
-                        <option value="HINDU" id="Hindu">Hindu</option>
-                        <option value="BUDHA" id="Budha">Budha</option>
-                        <option value="KHONGHUCU" id="Khonghucu">Khonghucu</option>
-                        <option value="Kepercayaan Lain" id="Kepercayaan">Kepercayaan Lainnya</option>
-                    </select> <br /> <br />
-                    <label for="nik">NIK</label>
-                    <br />
-                    <input id="nik" name="nik"
-                        style="width:80%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
-                    <label for="nokk">No Kartu Keluarga</label><br />
-                    <input id="nokk" name="nokk"
-                        style="width:80%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
-                    <label for="pd_alamat">Alamat:</label><br />
-                    <input id="pd_alamat" name="pd_alamat"
-                        style="width:80%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
-                    <label for="modalnamaayahsiswa">Nama Ayah:</label><br />
-                    <input id="pd_namaayah" name="pd_namaayah"
-                        style="width:90%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
-                    <label for="pd_namaibu">Nama Ibu:</label><br />
-                    <input id="pd_namaibu" name="pd_namaibu"
-                        style="width:90%;height:30px;border:1px solid blue;border-radius:10px" /><br />
-
+                        <label for="upl_avataredit"
+                            style="cursor:pointer;border:1px solid blue;background-color:#eee;padding:5px;border-radius:5px"><i
+                                class="fa fa-upload"></i> Upload Avatar</label><br />
+                        <img id="avatarkuedit" scr="/img/lamaso.webp" style="width:200px;border:1px solid red" />
+                        <div id="idpoto_potoguruedit" style="display: none;">
+                            <input type="text" id="idpoto_potoguru" name="idpoto_potoguru" style="display: block;" />
+                            <!-- <input type="text" name="filename" />
+                                <input type="text" name="mimeType" /> -->
+                            <!-- <input type="text" name="dobel" /> -->
+                        </div>
+                    </fieldset>
 
                 </form>
-
-
-
-                <button id="tomboledithapus" class="login" style="display:block" onclick="kirimeditsiswa()"><i
-                        class="fa fa-edit"></i> SUBMIT DATA</button>
-
-                <button onclick="document.getElementById('modal_edit_siswa').style.display='none'" id="tomboleditlogin"
-                    class="login">Batal</button>
+                <input type="file" id="upl_avataredit" onchange="ungg_avataredit()" style="display: none"
+                    accept="image/*" />
+                <div id="prosesloadingdaftaredit"></div>
             </div>
-        </div>
-        <!--  Kirim WA ke siswa -->
-        <div id="wasiswa" class="modal">
-            <form id="kirimwasiswa" class="modal-content animate" name="kirimwasiswa">
-                <div class="imgcontainer"><i class="fa fa-whatsapp w3-xxxlarge"></i><br />Kirim Pesan Whatsapp ke Siswa
-                </div>
-                <div class="container">
+            <button onclick="tomboledituser()" id="registrasikanedit" class="login">Simpan</button>
+            <button onclick="document.getElementById('modaledituser').style.display='none'" id="tutupeksekusitambahuser"
+                class="login">Tutup</button>
 
-                    <span id="pesanawalwa">Masukkan No. WA </span><b id="namaanakdiwa"></b><br />
-                    <input type="tel" id="nowasiswa" placeholder="Gunakan Format +62, contoh +628123456789"
-                        style="width:100%;height:30px" name="nowasiswa" /><br />
-                    Tulis pesan khusus:<br />
-                    <textarea name="tekssiswa" cols="20" rows="30"></textarea>
-                </div>
+        </div>
+    </div>
+    <!--  DIV MODAL INPUTAN (EDIT, HAPUS, TAMBAH, BANTU ABSENSI -->
+    <div id="modal_edit_siswa" class="modal">
+        <div class="modal-content container">
+            <div class="imgcontainer modal-content">
+                <h2 id="ketedithapus">EDIT SISWA</h2>
+                <div id="testestestes" style="display: none;">Loading ...</div>
+                <h4 id="resultedit">Result</h4>
+
+                <b id="namalama" style="display:none"></b>
+            </div>
+            <div id="inputtambahan" style="overflow-x: auto;"></div>
+            <form id="modaledithapus">
+                DIEDIT OLEH:
+                <input id="dieditoleh" name="dieditoleh" style="display:block" disabled />
+                <br />
+                <label for="aktif">Keaktifan </label><br />
+                <input id="aktif" name="aktif" style="width:50%;height:30px;border:1px solid blue;border-radius:10px"
+                    disabled /><br />
+                <sub style="color:blue">Aktif maksudnya siswa ini berada di kelas Anda</sub>
+                <br />
+                <br />
+
+                <label for="jenjang">Jenjang </label><br />
+                <input id="jenjang" name="jenjang"
+                    style="width:50px;height:30px;border:1px solid blue;border-radius:10px" disabled /><br />
+                <br />
+
+                <label for="id">
+                    ID database Siswa (KODE TOKEN):
+                </label><br />
+                <input id="id" name="id" style="width:50px;height:30px;border:1px solid blue;border-radius:10px"
+                    disabled /><br />
+                <br />
+
+                <label for="nama_rombel">Kelas:</label><br />
+                <select id="nama_rombel" name="nama_rombel"
+                    style="width:50px;height:30px;border:1px solid blue;border-radius:10px">
+                </select>
+                <br /><br />
+
+                <label for="pd_hp">No Whatsapp:</label><br />
+
+                <input id="pd_hp" type="tel" name="pd_hp"
+                    style="width:80%;height:30px;border:1px solid blue;border-radius:10px" /><br />
+                <br />
+
+                <label for="nis">No. Induk Siswa:</label><br />
+                <input id="nis" name="nis"
+                    style="width:90%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
+                <label for="nisn">NISN:</label><br />
+                <input type="text" id="nisn" name="nisn"
+                    style="width:90%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
+                <label for="pd_nama">Nama Siswa:</label><br />
+                <input type="text" id="pd_nama" name="pd_nama"
+                    style="width:90%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
+                <label for="pd_jk">Jenis Kelamin:</label><br />
+                <select name="pd_jk" id="pd_jk" style="width:30%;height:30px;border:1px solid blue;border-radius:10px">
+                    <option value="L" id="L">Laki-laki</option>
+                    <option value="P" id="P">Perempuan</option>
+                </select> <br /><br />
+                <label for="pd_tl">Tempat Lahir:</label><br />
+                <input type="text" id="pd_tl" name="pd_tl"
+                    style="width:90%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
+                <label for="pd_tanggallahir">Tanggal Lahir: (bulan/tanggal/tahun):</label><br />
+                <input id="pd_tanggallahir" name="pd_tanggallahir" type="Date" /><br />
+                <sub style="color:red" id="terjemahantanggal"></sub>
+                <br /><br />
+                <label for="pd_agama">Agama:</label><br />
+                <select name="pd_agama" id="pd_agama"
+                    style="width:30%;height:30px;border:1px solid blue;border-radius:10px">
+                    <option value="" id="pilihagama">Pilih Agama</option>
+                    <option value="ISLAM" id="Islam">Islam</option>
+                    <option value="KRISTEN" id="Kristen">Kristen/Protestan</option>
+                    <option value="KATHOLIK" id="Katholik">Katholik</option>
+                    <option value="HINDU" id="Hindu">Hindu</option>
+                    <option value="BUDHA" id="Budha">Budha</option>
+                    <option value="KHONGHUCU" id="Khonghucu">Khonghucu</option>
+                    <option value="Kepercayaan Lain" id="Kepercayaan">Kepercayaan Lainnya</option>
+                </select> <br /> <br />
+                <label for="nik">NIK</label>
+                <br />
+                <input id="nik" name="nik"
+                    style="width:80%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
+                <label for="nokk">No Kartu Keluarga</label><br />
+                <input id="nokk" name="nokk"
+                    style="width:80%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
+                <label for="pd_alamat">Alamat:</label><br />
+                <input id="pd_alamat" name="pd_alamat"
+                    style="width:80%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
+                <label for="modalnamaayahsiswa">Nama Ayah:</label><br />
+                <input id="pd_namaayah" name="pd_namaayah"
+                    style="width:90%;height:30px;border:1px solid blue;border-radius:10px" /><br /><br />
+                <label for="pd_namaibu">Nama Ibu:</label><br />
+                <input id="pd_namaibu" name="pd_namaibu"
+                    style="width:90%;height:30px;border:1px solid blue;border-radius:10px" /><br />
+
 
             </form>
-            <div id="tombolotomatis" class="modal-contentt animate">
-                <!--  <button type="button" id="tombolwasiswa" class="login" ><i class="fa fa-whatsapp"></i>  Kirim Pesan</button> -->
-            </div>
-            <div class="modal-contentt" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('wasiswa').style.display='none'"
-                    class="cancelbtn wa"><i class="fa fa-cross"></i> Keluar</button>
 
-            </div>
+
+
+            <button id="tomboledithapus" class="login" style="display:block" onclick="kirimeditsiswa()"><i
+                    class="fa fa-edit"></i> SUBMIT DATA</button>
+
+            <button onclick="document.getElementById('modal_edit_siswa').style.display='none'" id="tomboleditlogin"
+                class="login">Batal</button>
         </div>
-        <!--  bantu Absen siswa -->
-        <div id="divbantuabsen" class="modal">
-            <div class="modal-contenta animate">
-                <div class="imgcontainer">
-                    <img id="potosiswa" style="width:100px;width:100px;border:2px dotted red;padding:2px" /><br />
-                    <span id="bantusiapa"></span>
-                </div>
-
-                <form name="bantuisi" class="animate">
-                    <div class="container">
-                        <label for="timp_stampbantu">Tanggal Absen:</label><br />
-                        <input id="time_stampbantu" name="time_stampbantu" onchange="bantuisitanggal()"
-                            type="date" /><br /><span id="dibaca"></span><br /><br />
-                        <!-- <input id="time_stampbantu" name="time_stampbantu" type="date" /><br /><span
-                        id="dibaca"></span><br /><br /> -->
-                        <label for="pilih_kehadiran">Pilih Jenis Kehadiran:</label>
-                        <select id="pilih_kehadiran" name="pilih_kehadiran" onchange="gantikehadiranbantu()"
-                            style="height:30px;width:100%">
-                            <option value="Hadir" selected>Hadir</option>
-                            <option value="Ijin">Ijin
-                            </option>
-                            <option value="Sakit">Sakit
-                            </option>
-                        </select>
-                        <br /><br />
-                        Ambil Gambar:<br />
-                        <label for="lampirkanpotoabsen"
-                            style="border-radius:15px;border:1px solid black;background-color:#eee;padding:5px"><i
-                                class="fa fa-camera"></i> Ambil Poto:</label><br />
-                        <input type="file" id="lampirkanpotoabsen" onchange="uploadfilebantu()" style="display:none" />
-                    </div>
-                </form>
-                <hr />
-
-                <form name="bantukirim" id="bantukirim">
-                    <div id="thankyou_messagekirim">Terima kasih, data sudah berhasil tersimpan
-                    </div>
-                    <div id="sembunyikan" style="display:none">
-                        time_stamp:
-                        <input name="Time_Stamp" id="Time_Stampbantukirim" /><br />
-                        id:
-                        <input name="id" id="idbantukirim" /><br />
-                        name:
-                        <input name="name" id="namebantukirim" /><br />
-                        kehadiran(Select)diijinkan:
-                        <input name="kehadiran" id="kehadiranbantukirim" value="Hadir" /><br />
-                        fileContent diijinkan:
-                        <div id="kodefilepotosiswaabsen">Di sini akan muncul elemen input yang memiliki attribute name:
-                            data/fileContent, filename, mimeType</div>
-                        <!-- <input name="fileContent" id="fileContentbantukirim" /><br /> -->
-                        kelas:
-                        <input name="kelas" id="kelasbantukirim" />
-                    </div>
-                </form>
-                <div id="tombolbantusimpan">
-                    <button onclick="tombolbantukirim()" style="display:none" class="login" id="loginbantu"><i
-                            class="fa fa-floppy-o"></i>
-                        Simpan</button>
-                    <button
-                        onclick="document.getElementById('divbantuabsen').style.display='none';thankyou_messagekirim.innerHTML=''"
-                        class="login" id="loginclosebantu">Batal</button>
-                </div>
+    </div>
+    <!--  Kirim WA ke siswa -->
+    <div id="wasiswa" class="modal">
+        <form id="kirimwasiswa" class="modal-content animate" name="kirimwasiswa">
+            <div class="imgcontainer"><i class="fa fa-whatsapp w3-xxxlarge"></i><br />Kirim Pesan Whatsapp ke Siswa
             </div>
+            <div class="container">
+
+                <span id="pesanawalwa">Masukkan No. WA </span><b id="namaanakdiwa"></b><br />
+                <input type="tel" id="nowasiswa" placeholder="Gunakan Format +62, contoh +628123456789"
+                    style="width:100%;height:30px" name="nowasiswa" /><br />
+                Tulis pesan khusus:<br />
+                <textarea name="tekssiswa" cols="20" rows="30"></textarea>
+            </div>
+
+        </form>
+        <div id="tombolotomatis" class="modal-contentt animate">
+            <!--  <button type="button" id="tombolwasiswa" class="login" ><i class="fa fa-whatsapp"></i>  Kirim Pesan</button> -->
         </div>
+        <div class="modal-contentt" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('wasiswa').style.display='none'"
+                class="cancelbtn wa"><i class="fa fa-cross"></i> Keluar</button>
 
-        <div id="modaleditkaldik" class="modal">
-            <div class="modal-content">
-                <span onclick="document.getElementById('modaleditkaldik').style.display='none' ;"
-                    class="w3-right w3-xxlarge w3-border" title="Tutup Form">&times;</span>
-                <div class="container w3-center">
-                    <h3 id="juduleditkaldik">Edit Kalender Pendidikan</h3>
+        </div>
+    </div>
+    <!--  bantu Absen siswa -->
+    <div id="divbantuabsen" class="modal">
+        <div class="modal-contenta animate">
+            <div class="imgcontainer">
+                <img id="potosiswa" style="width:100px;width:100px;border:2px dotted red;padding:2px" /><br />
+                <span id="bantusiapa"></span>
+            </div>
 
-
-                    <img src="/img/lamaso.webp" class="w3-circle" style="width:90px;border:5px dotted blue" />
-
-                </div>
-
+            <form name="bantuisi" class="animate">
                 <div class="container">
+                    <label for="timp_stampbantu">Tanggal Absen:</label><br />
+                    <input id="time_stampbantu" name="time_stampbantu" onchange="bantuisitanggal()"
+                        type="date" /><br /><span id="dibaca"></span><br /><br />
+                    <!-- <input id="time_stampbantu" name="time_stampbantu" type="date" /><br /><span
+                        id="dibaca"></span><br /><br /> -->
+                    <label for="pilih_kehadiran">Pilih Jenis Kehadiran:</label>
+                    <select id="pilih_kehadiran" name="pilih_kehadiran" onchange="gantikehadiranbantu()"
+                        style="height:30px;width:100%">
+                        <option value="Hadir" selected>Hadir</option>
+                        <option value="Ijin">Ijin
+                        </option>
+                        <option value="Sakit">Sakit
+                        </option>
+                    </select>
+                    <br /><br />
+                    Ambil Gambar:<br />
+                    <label for="lampirkanpotoabsen"
+                        style="border-radius:15px;border:1px solid black;background-color:#eee;padding:5px"><i
+                            class="fa fa-camera"></i> Ambil Poto:</label><br />
+                    <input type="file" id="lampirkanpotoabsen" onchange="uploadfilebantu()" style="display:none" />
+                </div>
+            </form>
+            <hr />
+
+            <form name="bantukirim" id="bantukirim">
+                <div id="thankyou_messagekirim">Terima kasih, data sudah berhasil tersimpan
+                </div>
+                <div id="sembunyikan" style="display:none">
+                    time_stamp:
+                    <input name="Time_Stamp" id="Time_Stampbantukirim" /><br />
+                    id:
+                    <input name="id" id="idbantukirim" /><br />
+                    name:
+                    <input name="name" id="namebantukirim" /><br />
+                    kehadiran(Select)diijinkan:
+                    <input name="kehadiran" id="kehadiranbantukirim" value="Hadir" /><br />
+                    fileContent diijinkan:
+                    <div id="kodefilepotosiswaabsen">Di sini akan muncul elemen input yang memiliki attribute name:
+                        data/fileContent, filename, mimeType</div>
+                    <!-- <input name="fileContent" id="fileContentbantukirim" /><br /> -->
+                    kelas:
+                    <input name="kelas" id="kelasbantukirim" />
+                </div>
+            </form>
+            <div id="tombolbantusimpan">
+                <button onclick="tombolbantukirim()" style="display:none" class="login" id="loginbantu"><i
+                        class="fa fa-floppy-o"></i>
+                    Simpan</button>
+                <button
+                    onclick="document.getElementById('divbantuabsen').style.display='none';thankyou_messagekirim.innerHTML=''"
+                    class="login" id="loginclosebantu">Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modaleditkaldik" class="modal">
+        <div class="modal-content">
+            <span onclick="document.getElementById('modaleditkaldik').style.display='none' ;"
+                class="w3-right w3-xxlarge w3-border" title="Tutup Form">&times;</span>
+            <div class="container w3-center">
+                <h3 id="juduleditkaldik">Edit Kalender Pendidikan</h3>
 
 
-                    <form id="formmodaleditkaldik" name="formmodaleditkaldik">
-                        <input id="idbariskaldik" type="hidden" name="idbariskaldik" />
-                        <label for="keterangan" class="w3-text-blue">Keterangan</label>
-                        <input id="keterangan" type="text" name="keterangan" class="w3-input w3-border w3-round" />
-                        <br />
-                        <label for="start_tgl" class="w3-text-blue">Tanggal
-                            Mulai</label><br><sub>format(MM/DD/YYY)</sub>
-                        <input id="start_tgl" name="start_tgl" type="date" class="w3-input w3-border w3-round"
-                            style="width:50%" />
-                        <br />
-                        <label for="end_tgl" class="w3-text-blue">Tanggal Akhir</label>
-                        <br><sub>Jika hanya satu hari, isikan sama
-                            dengan Tanggal Mulai (wajib diisi).<br />format(MM/DD/YYY)</sub>
-                        <input id="end_tgl" name="end_tgl" type="date" class="w3-input w3-border w3-round"
-                            style="width:50%" />
-                    </form>
-                    <div id="datakalenderdihapus" style="overflow-x:auto;text-align: center;"></div>
-                    <button onclick="kirimeditkalender()" class="wa" id="tomboleditkaldik">EDIT</button>
-                    <button onclick=" document.getElementById('modaleditkaldik').style.display='none'" ; class="
+                <img src="/img/lamaso.webp" class="w3-circle" style="width:90px;border:5px dotted blue" />
+
+            </div>
+
+            <div class="container">
+
+
+                <form id="formmodaleditkaldik" name="formmodaleditkaldik">
+                    <input id="idbariskaldik" type="hidden" name="idbariskaldik" />
+                    <label for="keterangan" class="w3-text-blue">Keterangan</label>
+                    <input id="keterangan" type="text" name="keterangan" class="w3-input w3-border w3-round" />
+                    <br />
+                    <label for="start_tgl" class="w3-text-blue">Tanggal
+                        Mulai</label><br><sub>format(MM/DD/YYY)</sub>
+                    <input id="start_tgl" name="start_tgl" type="date" class="w3-input w3-border w3-round"
+                        style="width:50%" />
+                    <br />
+                    <label for="end_tgl" class="w3-text-blue">Tanggal Akhir</label>
+                    <br><sub>Jika hanya satu hari, isikan sama
+                        dengan Tanggal Mulai (wajib diisi).<br />format(MM/DD/YYY)</sub>
+                    <input id="end_tgl" name="end_tgl" type="date" class="w3-input w3-border w3-round"
+                        style="width:50%" />
+                </form>
+                <div id="datakalenderdihapus" style="overflow-x:auto;text-align: center;"></div>
+                <button onclick="kirimeditkalender()" class="wa" id="tomboleditkaldik">EDIT</button>
+                <button onclick=" document.getElementById('modaleditkaldik').style.display='none'" ; class="
                     login">&times; Batal</button>
-                </div>
             </div>
         </div>
-        <div class="w3-modal w3-white w3-animate-zoom" id="pranalamateri">
-            <div class="w3-modal-content w3-card-4" style="width:98%">
-                <span class="w3-btn w3-red w3-right w3-card-4"
-                    onclick="pranalamateri.style.display='none';idpracetak.innerHTML=''">&times;</span>
-                <div class="w3-container classReviewMateri w3-margin" id="idpracetak">
+    </div>
+    <div class="w3-modal w3-white w3-animate-zoom" id="pranalamateri">
+        <div class="w3-modal-content w3-card-4" style="width:98%">
+            <span class="w3-btn w3-red w3-right w3-card-4"
+                onclick="pranalamateri.style.display='none';idpracetak.innerHTML=''">&times;</span>
+            <div class="w3-container classReviewMateri w3-margin" id="idpracetak">
 
-                    INI KONTEN MATERI
-                </div>
+                INI KONTEN MATERI
             </div>
         </div>
-        <div class="w3-modal w3-white" id="modaldaftarnilai">
-            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="width:98%">
-                <header class="w3-container w3-pale-blue">
-                    <span class="w3-button w3-hover-red w3-card-4 w3-xlarge w3-display-topright "
-                        onclick="modaldaftarnilai.style.display='none'">&times;</span>
-                    <h2>DAFTAR NILAI
-                        <span id="modalidmapel">IDMAPEL</span>
-                    </h2>
-                </header>
-                <div class="w3-bar w3-border-bottom">
-                    <button class="tablink w3-bar-item w3-button w3-border-right"
-                        onclick="bukaModalTab(event, 'tablinkKD')">Nilai KD</button>
-                    <button class="tablink w3-bar-item w3-button w3-border-right tabpg"
-                        onclick="bukaModalTab(event, 'tablinkPG')">PG</button>
-                    <button class="tablink w3-bar-item w3-button w3-border-right tabskor"
-                        onclick="bukaModalTab(event, 'tablinkSkor')">Skor</button>
-                    <!-- <button class="tablink w3-bar-item w3-button w3-border-right tabgabungan"
+    </div>
+    <div class="w3-modal w3-white" id="modaldaftarnilai">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="width:98%">
+            <header class="w3-container w3-pale-blue">
+                <span class="w3-button w3-hover-red w3-card-4 w3-xlarge w3-display-topright "
+                    onclick="modaldaftarnilai.style.display='none'">&times;</span>
+                <h2>DAFTAR NILAI
+                    <span id="modalidmapel">IDMAPEL</span>
+                </h2>
+            </header>
+            <div class="w3-bar w3-border-bottom">
+                <button class="tablink w3-bar-item w3-button w3-border-right"
+                    onclick="bukaModalTab(event, 'tablinkKD')">Nilai KD</button>
+                <button class="tablink w3-bar-item w3-button w3-border-right tabpg"
+                    onclick="bukaModalTab(event, 'tablinkPG')">PG</button>
+                <button class="tablink w3-bar-item w3-button w3-border-right tabskor"
+                    onclick="bukaModalTab(event, 'tablinkSkor')">Skor</button>
+                <!-- <button class="tablink w3-bar-item w3-button w3-border-right tabgabungan"
                     onclick="bukaModalTab(event, 'tablinkGabungan')">Gabungan</button> -->
-                </div>
-                <div id="idtabaktif" class="w3-hide">idtabaktif</div>
-                <div id="koreksidarimana" class="w3-hide">koreksidarimana</div>
-                <div id="tablinkKD" class="w3-container city w3-padding">
-                    <h3>Rekap Nilai Per KD</h3>
-                    <hr>
-                    <div id="tablinkKDtabel" style="overflow-x: auto;">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta, omnis maiores eligendi quam
-                        quis
-                        harum
-
-                    </div>
+            </div>
+            <div id="idtabaktif" class="w3-hide">idtabaktif</div>
+            <div id="koreksidarimana" class="w3-hide">koreksidarimana</div>
+            <div id="tablinkKD" class="w3-container city w3-padding">
+                <h3>Rekap Nilai Per KD</h3>
+                <hr>
+                <div id="tablinkKDtabel" style="overflow-x: auto;">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta, omnis maiores eligendi quam
+                    quis
+                    harum
 
                 </div>
-                <div id="tablinkPG" class="w3-container city w3-padding">
-                    <h3>Analisis Soal tipe Pilihan Ganda</h3>
-                    <hr>
-                    <div id="tablinkPGtabel" style="overflow-x: auto;">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed ratione iste provident temporibus
-                        voluptatem. Temporibus asperiores placeat esse mollitia tempore. Quis debitis error ab et!
-                        Ducimus
-                        aliquam iusto voluptatem nisi!
-                    </div>
+
+            </div>
+            <div id="tablinkPG" class="w3-container city w3-padding">
+                <h3>Analisis Soal tipe Pilihan Ganda</h3>
+                <hr>
+                <div id="tablinkPGtabel" style="overflow-x: auto;">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed ratione iste provident temporibus
+                    voluptatem. Temporibus asperiores placeat esse mollitia tempore. Quis debitis error ab et!
+                    Ducimus
+                    aliquam iusto voluptatem nisi!
                 </div>
-                <div id="tablinkSkor" class="w3-container city w3-padding">
-                    <h3>Analisis Soal tipe SKOR</h3>
-                    <hr>
-                    <div id="tablinkSkortabel" style="overflow-x: auto;">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat ex illo tempore cumque
-                        provident?
-                        Sapiente, veritatis. Aspernatur numquam, odit expedita voluptatibus repellat aliquam architecto,
-                        ex
-                        amet
-                        veniam earum corrupti alias!
-                    </div>
+            </div>
+            <div id="tablinkSkor" class="w3-container city w3-padding">
+                <h3>Analisis Soal tipe SKOR</h3>
+                <hr>
+                <div id="tablinkSkortabel" style="overflow-x: auto;">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat ex illo tempore cumque
+                    provident?
+                    Sapiente, veritatis. Aspernatur numquam, odit expedita voluptatibus repellat aliquam architecto,
+                    ex
+                    amet
+                    veniam earum corrupti alias!
                 </div>
-                <!-- <div id="tablinkGabungan" class="w3-container city  w3-padding">
+            </div>
+            <!-- <div id="tablinkGabungan" class="w3-container city  w3-padding">
                 <h3>Analisis Gabungan</h3>
                 <hr>
                 <div id="tablinkGabungantabel" style="overflow-x: auto;">
                 </div>
             </div> -->
 
-                <!-- <div class="w3-container tabdaftarnilai">
+            <!-- <div class="w3-container tabdaftarnilai">
                 DI SINI AKAN TAMPIL TABEL DAN TAB
             </div> -->
-            </div>
         </div>
+    </div>
 
-        <div class="w3-modal w3-white" id="prevhp">
-            <div class="w3-modal-container w3-animate-zoom">
-                <div class="w3-modal-content">
+    <div class="w3-modal w3-white" id="prevhp">
+        <div class="w3-modal-container w3-animate-zoom">
+            <div class="w3-modal-content">
 
-                    <div
-                        style="border:1px solid black;width:320px;height:500px;margin:0px auto;padding:0;border-radius:5px 5px 0px 0px">
-                        <div style="padding:0px 2px;height:50px;background-color:black;color:white;margin-top:0px;">
-                            &nbsp;
-                            <span class="w3-right" style="font-size:12px"> 07:30 </span> <i
-                                class="fa fa-battery-full w3-right">&nbsp; </i> <i class="fa fa-signal w3-right">&nbsp;
-                            </i>
-                            <i class="fa fa-wifi w3-right"> </i> &nbsp;
-                            <div style="border-top:1px solid white">
-                                <span class="w3-left"><i class="fa fa-bars"></i> MENU</span>
-                                <span class="w3-right"> e-LAMASO SISWA</span>
-                            </div>
-                        </div>
-                        <div id="previewhp">
-                            <div class="imgcontainer" id="previewlogohp">
-                                <img src="/img/lamaso.webp" class="w3-circle"
-                                    style="width:60px;border:2px dotted red" /><br />
-                                e-Lamaso Siswa
-                            </div>
-                            <div id="materiimport"
-                                style="width:310px;height:440px;overflow-y:auto;display:blodk;padding:15px;text-align:justify;font-size:12px">
-                                DI SINI AKAN MUNCUL teks html dari upload file notepad
-                            </div>
+                <div
+                    style="border:1px solid black;width:320px;height:500px;margin:0px auto;padding:0;border-radius:5px 5px 0px 0px">
+                    <div style="padding:0px 2px;height:50px;background-color:black;color:white;margin-top:0px;">
+                        &nbsp;
+                        <span class="w3-right" style="font-size:12px"> 07:30 </span> <i
+                            class="fa fa-battery-full w3-right">&nbsp; </i> <i class="fa fa-signal w3-right">&nbsp;
+                        </i>
+                        <i class="fa fa-wifi w3-right"> </i> &nbsp;
+                        <div style="border-top:1px solid white">
+                            <span class="w3-left"><i class="fa fa-bars"></i> MENU</span>
+                            <span class="w3-right"> e-LAMASO SISWA</span>
                         </div>
                     </div>
-                    <div
-                        style="width:320px;z-index:5;padding:0px 2px;height:50px;background-color:black;color:white;margin:auto;border:1px solid black;border-radius:0px 0px 5px 5px">
-                        <div id="tombolback" onclick="prevhp.style.display ='none'"
-                            style="font-size:26px;width:33%;float:left;text-align:left">&#9665;</div>
-                        <div id="tomboltengah" style="font-size:26px;width:33%;float:left;text-align:center">&#9898;
+                    <div id="previewhp">
+                        <div class="imgcontainer" id="previewlogohp">
+                            <img src="/img/lamaso.webp" class="w3-circle"
+                                style="width:60px;border:2px dotted red" /><br />
+                            e-Lamaso Siswa
                         </div>
-                        <div id="tombolkanan" style="font-size:26px;width:33%;float:left;text-align:right">&#9634;</div>
-                    </div><br />
-                    <button class="w3-button w3-display-topright w3-red"
-                        onclick="prevhp.style.display ='none';materiimport.innerHTML=''">TUTUP</button>
-                </div>
-            </div>
-
-        </div>
-        <div class="w3-modal w3-white w3-animate-zoom" id="koleksigambar">
-            <div class="w3-modal-container">
-                <div class="w3-modal-content w3-card-4 w3-padding" id="uploadkoleksigambamateri" style="width:98%">
-                    <button class="w3-button w3-red w3-right w3-card-4 w3-margin-bottom"
-                        onclick="koleksigambar.style.display='none';tempattextarea.innerHTML = ''">&times;</button>
-                    UNGGAH GAMBAR: <br>
-                    <label for="tmbluploadgambarmatei" class="w3-button w3-green w3-hover-blue w3-round-xlarge">
-                        <i class="fa fa-camera"></i> Upload
-                    </label>
-                    <input type="file" id="tmbluploadgambarmatei" onchange="uploadgambarmateri()" class="w3-hide"
-                        accept="image/*">
-                    <div id="resultuploadpotomateri">
-                        ...
+                        <div id="materiimport"
+                            style="width:310px;height:440px;overflow-y:auto;display:blodk;padding:15px;text-align:justify;font-size:12px">
+                            DI SINI AKAN MUNCUL teks html dari upload file notepad
+                        </div>
                     </div>
-
-                    <hr class="w3-border-bottom w3-border-brown">
-                    <div class="w3-padding w3-card-4" id="tabelkoleksigambarmateri" style="overflow-x: auto;">
-                        <table class="w3-table-all">
-                            <tr class="w3-pale-red">
-                                <th>No.</th>
-                                <th>Preview</th>
-                                <th>Link Copy</th>
-                            </tr>
-                            <tr>
-                                <td>No.</td>
-                                <td>preview</td>
-                                <td>Link Copy</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <button class="w3-button w3-red w3-card-4" style="position: fixed; top:35px; right:0px"
-                        onclick="koleksigambar.style.display='none';tempattextarea.innerHTML = ''">&times;
-                        TUTUP</button>
                 </div>
-
-
+                <div
+                    style="width:320px;z-index:5;padding:0px 2px;height:50px;background-color:black;color:white;margin:auto;border:1px solid black;border-radius:0px 0px 5px 5px">
+                    <div id="tombolback" onclick="prevhp.style.display ='none'"
+                        style="font-size:26px;width:33%;float:left;text-align:left">&#9665;</div>
+                    <div id="tomboltengah" style="font-size:26px;width:33%;float:left;text-align:center">&#9898;
+                    </div>
+                    <div id="tombolkanan" style="font-size:26px;width:33%;float:left;text-align:right">&#9634;</div>
+                </div><br />
+                <button class="w3-button w3-display-topright w3-red"
+                    onclick="prevhp.style.display ='none';materiimport.innerHTML=''">TUTUP</button>
             </div>
         </div>
 
-        <div class="w3-modal w3-white w3-animate-zoom" id="petunjukcarabuatmateri">
-            <div class="w3-modal-container ">
-                <div class="w3-modal-content w3-padding " style="width: 98%;">
-                    <button class="w3-button w3-red w3-badge " style="position: fixed; right:0px"
-                        onclick="petunjukcarabuatmateri.style.display='none';txtareapetunjuk.style.display ='none';">TUTUP</button>
-                    <div class="w3-padding isipetunjukbuatmateri w3-card-4" style="overflow-x: auto;">
+    </div>
+    <div class="w3-modal w3-white w3-animate-zoom" id="koleksigambar">
+        <div class="w3-modal-container">
+            <div class="w3-modal-content w3-card-4 w3-padding" id="uploadkoleksigambamateri" style="width:98%">
+                <button class="w3-button w3-red w3-right w3-card-4 w3-margin-bottom"
+                    onclick="koleksigambar.style.display='none';tempattextarea.innerHTML = ''">&times;</button>
+                UNGGAH GAMBAR: <br>
+                <label for="tmbluploadgambarmatei" class="w3-button w3-green w3-hover-blue w3-round-xlarge">
+                    <i class="fa fa-camera"></i> Upload
+                </label>
+                <input type="file" id="tmbluploadgambarmatei" onchange="uploadgambarmateri()" class="w3-hide"
+                    accept="image/*">
+                <div id="resultuploadpotomateri">
+                    ...
+                </div>
 
-                    </div>
+                <hr class="w3-border-bottom w3-border-brown">
+                <div class="w3-padding w3-card-4" id="tabelkoleksigambarmateri" style="overflow-x: auto;">
+                    <table class="w3-table-all">
+                        <tr class="w3-pale-red">
+                            <th>No.</th>
+                            <th>Preview</th>
+                            <th>Link Copy</th>
+                        </tr>
+                        <tr>
+                            <td>No.</td>
+                            <td>preview</td>
+                            <td>Link Copy</td>
+                        </tr>
+                    </table>
+                </div>
+                <button class="w3-button w3-red w3-card-4" style="position: fixed; top:35px; right:0px"
+                    onclick="koleksigambar.style.display='none';tempattextarea.innerHTML = ''">&times;
+                    TUTUP</button>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="w3-modal w3-white w3-animate-zoom" id="petunjukcarabuatmateri">
+        <div class="w3-modal-container ">
+            <div class="w3-modal-content w3-padding " style="width: 98%;">
+                <button class="w3-button w3-red w3-badge " style="position: fixed; right:0px"
+                    onclick="petunjukcarabuatmateri.style.display='none';txtareapetunjuk.style.display ='none';">TUTUP</button>
+                <div class="w3-padding isipetunjukbuatmateri w3-card-4" style="overflow-x: auto;">
+
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="tempattextarea">....</div>
-        <div id="txtareapetunjuk" style="display:none">
-            <textarea id="ketpen1">_JUDUL_</textarea>
-            <textarea id="ketpen2">_YOUTUBE_</textarea>
-            <textarea id="ketpen3">
+    <div id="tempattextarea">....</div>
+    <div id="txtareapetunjuk" style="display:none">
+        <textarea id="ketpen1">_JUDUL_</textarea>
+        <textarea id="ketpen2">_YOUTUBE_</textarea>
+        <textarea id="ketpen3">
 _START-TABEL_ 
 NO <|HEADER|>	NAMA<|HEADER|>KELAS 
 1    <|>      ADZKA      <|> 3A 
 2    <|>      NUHAA      <|> 4A 
 _SELESAI-TABEL_ 	
 </textarea>
-            <textarea id="ketpen4">
+        <textarea id="ketpen4">
 _PG_1 isikan pertanyaan ....
 _OPSI-PG_1A isikan opsi jawaban A
 _OPSI-PG_1B isikan opsi jawaban B
 _OPSI-PG_1C isikan opsi jawaban C
 _OPSI-PG_1D isikan opsi jawaban D
 </textarea>
-            <textarea id="ketpen5">
+        <textarea id="ketpen5">
 _PG_1 Pertanyaan  
 _START-TABEL-OPSI_
 Opsi <|HEADER|>	teks    <|HEADER|>	teks Head
@@ -2676,28 +2656,28 @@ _OPSI-SEL_1C 	<|>	teks opsi C	<|>	teks  opsi C
 _OPSI-SEL_1D 	<|>	teks opsi D	<|>	teks  opsi D
 _SELESAI-TABEL-OPSI_
 </textarea>
-            <textarea id="ketpen6">_ESSAY-NO_1 Pertanyaan Essay</textarea>
-            <textarea id="ketpen7">_PECAHAN-BIASA_a/b</textarea>
-            <textarea id="ketpen8">_PECAHAN-CAMPURAN_a/b/c</textarea>
-            <textarea id="ketpen9">_AKAR-KUADRAT_a</textarea>
-            <textarea id="ketpen10">_AKAR-TIGA_a</textarea>
-            <textarea id="ketpen11">_PANGKAT_a/b</textarea>
-            <textarea id="ketpen12">_PANGKAT-HURUF_a/b</textarea>
-            <textarea id="ketpen13">_EQUATION-LAINNYA_kodeeditortanpaspasi</textarea>
-            <textarea id="ketpen14">&#247;</textarea>
-            <textarea id="ketpen15">&#176;</textarea>
-            <textarea id="ketpen16">&ang;</textarea>
-            <textarea id="ketpen17">&angrtvb;</textarea>
-            <textarea id="ketpen18">&PlusMinus;</textarea>
-            <textarea id="ketpen19">&checkmark;</textarea>
-            <textarea id="ketpen20">&#8508;</textarea>
-            <textarea id="ketpen21">&larr;</textarea>
-            <textarea id="ketpen22">&rarr;</textarea>
-            <textarea id="ketpen23">&DoubleLongRightArrow;</textarea>
-            <textarea id="ketpen24">&DoubleLongLeftArrow;</textarea>
-            <textarea id="ketpen25">_KUNCI-PG_</textarea>
-            <textarea id="ketpen26">_KUNCI-KD_</textarea>
-            <textarea id="ketpen27">
+        <textarea id="ketpen6">_ESSAY-NO_1 Pertanyaan Essay</textarea>
+        <textarea id="ketpen7">_PECAHAN-BIASA_a/b</textarea>
+        <textarea id="ketpen8">_PECAHAN-CAMPURAN_a/b/c</textarea>
+        <textarea id="ketpen9">_AKAR-KUADRAT_a</textarea>
+        <textarea id="ketpen10">_AKAR-TIGA_a</textarea>
+        <textarea id="ketpen11">_PANGKAT_a/b</textarea>
+        <textarea id="ketpen12">_PANGKAT-HURUF_a/b</textarea>
+        <textarea id="ketpen13">_EQUATION-LAINNYA_kodeeditortanpaspasi</textarea>
+        <textarea id="ketpen14">&#247;</textarea>
+        <textarea id="ketpen15">&#176;</textarea>
+        <textarea id="ketpen16">&ang;</textarea>
+        <textarea id="ketpen17">&angrtvb;</textarea>
+        <textarea id="ketpen18">&PlusMinus;</textarea>
+        <textarea id="ketpen19">&checkmark;</textarea>
+        <textarea id="ketpen20">&#8508;</textarea>
+        <textarea id="ketpen21">&larr;</textarea>
+        <textarea id="ketpen22">&rarr;</textarea>
+        <textarea id="ketpen23">&DoubleLongRightArrow;</textarea>
+        <textarea id="ketpen24">&DoubleLongLeftArrow;</textarea>
+        <textarea id="ketpen25">_KUNCI-PG_</textarea>
+        <textarea id="ketpen26">_KUNCI-KD_</textarea>
+        <textarea id="ketpen27">
 _PG_1 isikan pertanyaan ....
 _OPSI-PG-C_1A isikan opsi jawaban A
 _OPSI-PG-C_1B isikan opsi jawaban B
@@ -2705,69 +2685,69 @@ _OPSI-PG-C_1C isikan opsi jawaban C
         </textarea>
 
 
-        </div>
+    </div>
 
-        <div class="w3-modal w3-white" id="modaldaftarnilaikronologi">
-            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="width:98%">
-                <header class="w3-container w3-green">
-                    <span class="w3-button w3-hover-red w3-card-4 w3-xlarge w3-display-topright "
-                        onclick="modaldaftarnilaikronologi.style.display='none'">&times;</span>
-                    <h2>DAFTAR NILAI
-                        <span id="modalidmapelkronologi">IDMAPEL</span>
-                    </h2>
-                </header>
-                <div class="w3-bar w3-border-bottom">
-                    <button class="tablinkkronologi  w3-bar-item w3-button w3-border-right"
-                        onclick="bukaModalTabkronologi(event, 'tablinkKDkronologi')">Nilai KD</button>
-                    <button class="tablinkkronologi  w3-bar-item w3-button w3-border-right tabpgkronologi"
-                        onclick="bukaModalTabkronologi(event, 'tablinkPGkronologi')">PG</button>
-                    <button class="tablinkkronologi  w3-bar-item w3-button w3-border-right tabskorkronologi"
-                        onclick="bukaModalTabkronologi(event, 'tablinkSkorkronologi')">Skor</button>
+    <div class="w3-modal w3-white" id="modaldaftarnilaikronologi">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="width:98%">
+            <header class="w3-container w3-green">
+                <span class="w3-button w3-hover-red w3-card-4 w3-xlarge w3-display-topright "
+                    onclick="modaldaftarnilaikronologi.style.display='none'">&times;</span>
+                <h2>DAFTAR NILAI
+                    <span id="modalidmapelkronologi">IDMAPEL</span>
+                </h2>
+            </header>
+            <div class="w3-bar w3-border-bottom">
+                <button class="tablinkkronologi  w3-bar-item w3-button w3-border-right"
+                    onclick="bukaModalTabkronologi(event, 'tablinkKDkronologi')">Nilai KD</button>
+                <button class="tablinkkronologi  w3-bar-item w3-button w3-border-right tabpgkronologi"
+                    onclick="bukaModalTabkronologi(event, 'tablinkPGkronologi')">PG</button>
+                <button class="tablinkkronologi  w3-bar-item w3-button w3-border-right tabskorkronologi"
+                    onclick="bukaModalTabkronologi(event, 'tablinkSkorkronologi')">Skor</button>
 
-                </div>
-                <div id="idtabaktifkronologi" class="w3-hide">idtabaktif</div>
-                <div id="tablinkKDkronologi" class="w3-container citykronologi w3-padding">
-                    <h3>Rekap Nilai Per KD</h3>
-                    <hr>
-                    <div id="tablinkKDkronologitabel" style="overflow-x: auto;">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta, omnis maiores eligendi quam
-                        quis
-                        harum
-
-                    </div>
+            </div>
+            <div id="idtabaktifkronologi" class="w3-hide">idtabaktif</div>
+            <div id="tablinkKDkronologi" class="w3-container citykronologi w3-padding">
+                <h3>Rekap Nilai Per KD</h3>
+                <hr>
+                <div id="tablinkKDkronologitabel" style="overflow-x: auto;">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta, omnis maiores eligendi quam
+                    quis
+                    harum
 
                 </div>
-                <div id="tablinkPGkronologi" class="w3-container citykronologi w3-padding">
-                    <h3>Analisis Soal tipe Pilihan Ganda</h3>
-                    <hr>
-                    <div id="tablinkPGkronologitabel" style="overflow-x: auto;">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed ratione iste provident temporibus
-                        voluptatem. Temporibus asperiores placeat esse mollitia tempore. Quis debitis error ab et!
-                        Ducimus
-                        aliquam iusto voluptatem nisi!
-                    </div>
+
+            </div>
+            <div id="tablinkPGkronologi" class="w3-container citykronologi w3-padding">
+                <h3>Analisis Soal tipe Pilihan Ganda</h3>
+                <hr>
+                <div id="tablinkPGkronologitabel" style="overflow-x: auto;">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed ratione iste provident temporibus
+                    voluptatem. Temporibus asperiores placeat esse mollitia tempore. Quis debitis error ab et!
+                    Ducimus
+                    aliquam iusto voluptatem nisi!
                 </div>
-                <div id="tablinkSkorkronologi" class="w3-container citykronologi w3-padding">
-                    <h3>Analisis Soal tipe SKOR</h3>
-                    <hr>
-                    <div id="tablinkSkorkronologitabel" style="overflow-x: auto;">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat ex illo tempore cumque
-                        provident?
-                        Sapiente, veritatis. Aspernatur numquam, odit expedita voluptatibus repellat aliquam architecto,
-                        ex
-                        amet
-                        veniam earum corrupti alias!
-                    </div>
+            </div>
+            <div id="tablinkSkorkronologi" class="w3-container citykronologi w3-padding">
+                <h3>Analisis Soal tipe SKOR</h3>
+                <hr>
+                <div id="tablinkSkorkronologitabel" style="overflow-x: auto;">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat ex illo tempore cumque
+                    provident?
+                    Sapiente, veritatis. Aspernatur numquam, odit expedita voluptatibus repellat aliquam architecto,
+                    ex
+                    amet
+                    veniam earum corrupti alias!
                 </div>
+            </div>
 
 
-                <!-- <div class="w3-container tabdaftarnilai">
+            <!-- <div class="w3-container tabdaftarnilai">
                 DI SINI AKAN TAMPIL TABEL DAN TAB
             </div> -->
-            </div>
         </div>
+    </div>
 
-        <!-- <div id="loadingljk" class="w3-modal w3-white">
+    <!-- <div id="loadingljk" class="w3-modal w3-white">
         <div class="w3-modal-container">
             <div class="w3-modal-content w3-card-4 w3-padding-16" style="width: 98%;">
                    <span class="w3-btn w3-blue w3-right w3-badge" onclick="tutuploadingljk()">&times;</span>
@@ -2778,221 +2758,215 @@ _OPSI-PG-C_1C isikan opsi jawaban C
             </div>
         </div>
     </div> -->
-        <div id="loadingljk" class="w3-modal">
-            <div class="w3-modal-content w3-card-4 " style="width: 98%">
-                <header class="warnaeka w3-card-4  w3-border-bottom w3-border-black w3-container">
-                    <span class="w3-button w3-right w3-round-large w3-light-blue"
-                        onclick="tutuploadingljk()">&times;</span>
-                </header>
-                <div id="infoloadingljk" class="w3-margin">
-                    <!-- <i class=" fa fa-spin fa-spinner w3-jumbo w3-display-middle"></i> -->
-                    <p class="w3-center"><img src="/img/barloading.gif"></p>
-                </div>
-                <div style="height: 50px;clear:both"></div>
-                <footer class="warnaeka w3-card-4  w3-topbar w3-border-black w3-container"><br></footer>
+    <div id="loadingljk" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 " style="width: 98%">
+            <header class="warnaeka w3-card-4  w3-border-bottom w3-border-black w3-container">
+                <span class="w3-button w3-right w3-round-large w3-light-blue" onclick="tutuploadingljk()">&times;</span>
+            </header>
+            <div id="infoloadingljk" class="w3-margin">
+                <!-- <i class=" fa fa-spin fa-spinner w3-jumbo w3-display-middle"></i> -->
+                <p class="w3-center"><img src="/img/barloading.gif"></p>
             </div>
-
+            <div style="height: 50px;clear:both"></div>
+            <footer class="warnaeka w3-card-4  w3-topbar w3-border-black w3-container"><br></footer>
         </div>
-        <div id="previewpotoabsen" class="w3-modal"
-            onclick="this.style.display='none';pesanpreviewpotoabsen.innerHTML=''">
-            <div class="w3-modal-content w3-animate-zoom">
-                <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
-                <div class="w3-display-topmiddle w3-white w3-center" id="pesanpreviewpotoabsen"></div>
-                <img id="img01" style="width:100%">
-            </div>
 
+    </div>
+    <div id="previewpotoabsen" class="w3-modal" onclick="this.style.display='none';pesanpreviewpotoabsen.innerHTML=''">
+        <div class="w3-modal-content w3-animate-zoom">
+            <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+            <div class="w3-display-topmiddle w3-white w3-center" id="pesanpreviewpotoabsen"></div>
+            <img id="img01" style="width:100%">
         </div>
-        <div class="w3-modal w3-white w3-animate-zoom" id="koleksivideo">
-            <div class="w3-modal-container">
-                <div class="w3-modal-content w3-card-4 w3-padding" id="uploadkoleksivideomateri" style="width:80%">
-                    <button class="w3-button w3-red w3-right w3-card-4 w3-margin-bottom"
-                        onclick="tutupkamera();koleksivideo.style.display='none';tempattextarea.innerHTML = ''">&times;</button>
-                    <span onclick="bukaelemenwebcam()" class="w3-button w3-dark-grey w3-round-xlarge"> VIDEO
-                        WEBCAM</span>
-                    <span id="kontrolgaleri" onclick="bukaelemengaleri()" class="w3-button w3-dark-gray w3-round-xlarge"
-                        style="display:inline-block">
-                        UNGGAH GALERI </span>
-                    <span id="kontrolscreenrecorder" onclick="bukascreenrecorder()"
-                        class="w3-button w3-dark-gray w3-round-xlarge" style="display:inline-block">
-                        REKAM LAYAR </span>
 
-                    <br>
-                    <div id="elemenwebcam">
-                        <div class='containerbaru w3-center w3-show ' id="divvid1">
-                            <video class='responsive-iframebaru' poster="/img/192.png" id="vid1">
-                                Wew ... Browser Anda tidak mendukungnya
-                            </video>
-                            <div class="w3-blue w3-opacity w3-display-topmiddle w3-hide" id="statusrekaman">SEDANG
-                                MEREKAM
-                            </div>
-                        </div>
-                        <div class='containerbaru w3-center w3-hide' id="divvid2">
-                            <video class='responsive-iframebaru' poster="/img/192.png" id="vid2" controls>
-                                Wew ... Browser Anda tidak mendukungnya
-                            </video>
-                        </div>
-                        <div id="tomboltombolwebcam" class="w3-center">
-                            <button class="fa fa-video-camera w3-round-large w3-text-light-green" id="btnBack">
-                                Kamera</button>
-                            <button class="fa fa-play w3-round-large w3-green" id="btnStart"> Mulai Rekam</button>
-                            <button class="fa fa-stop w3-round-large w3-red" id="btnStop"> Stop Rekam</button><br />
-                            <span id="spanstatusrekaman"></span>
-                            <hr class="w3-border w3-border-bottom w3-border-blue" />
-                            <button class="w3-amber w3-button w3-round-xxlarge w3-padding"
-                                onclick="uplvideomateri()">Unggah
-                                Ke
-                                Server</button>
-                            <button class="w3-red w3-button w3-round-xxlarge w3-padding"
-                                onclick="uplvideomateriyt()">Unggah
-                                Ke Youtube <i class="fa fa-youtube"></i></button>
-                        </div>
-                        <div id="tomboltombolscreenrecorder" class="w3-center">
-                            <button class="fa fa-desktop w3-round-large w3-text-light-green" id="bukalayar">
-                                Pilih Layar</button>
-                            <button class="fa fa-play w3-round-large w3-green" id="start"> Mulai Rekam</button>
-                            <button class="fa fa-stop w3-round-large w3-red" id="stop"> Stop Rekam</button><br />
-                            <span id="spanstatusrekaman2"></span>
-                            <hr class="w3-border w3-border-bottom w3-border-blue" />
-                            <button class="w3-amber w3-button w3-round-xxlarge w3-padding"
-                                onclick="uplvideomateri()">Unggah
-                                Ke
-                                Server</button>
-                            <button class="w3-red w3-button w3-round-xxlarge w3-padding"
-                                onclick="uplvideomateriyt()">Unggah
-                                Ke Youtube <i class="fa fa-youtube"></i></button>
+    </div>
+    <div class="w3-modal w3-white w3-animate-zoom" id="koleksivideo">
+        <div class="w3-modal-container">
+            <div class="w3-modal-content w3-card-4 w3-padding" id="uploadkoleksivideomateri" style="width:80%">
+                <button class="w3-button w3-red w3-right w3-card-4 w3-margin-bottom"
+                    onclick="tutupkamera();koleksivideo.style.display='none';tempattextarea.innerHTML = ''">&times;</button>
+                <span onclick="bukaelemenwebcam()" class="w3-button w3-dark-grey w3-round-xlarge"> VIDEO
+                    WEBCAM</span>
+                <span id="kontrolgaleri" onclick="bukaelemengaleri()" class="w3-button w3-dark-gray w3-round-xlarge"
+                    style="display:inline-block">
+                    UNGGAH GALERI </span>
+                <span id="kontrolscreenrecorder" onclick="bukascreenrecorder()"
+                    class="w3-button w3-dark-gray w3-round-xlarge" style="display:inline-block">
+                    REKAM LAYAR </span>
+
+                <br>
+                <div id="elemenwebcam">
+                    <div class='containerbaru w3-center w3-show ' id="divvid1">
+                        <video class='responsive-iframebaru' poster="/img/192.png" id="vid1">
+                            Wew ... Browser Anda tidak mendukungnya
+                        </video>
+                        <div class="w3-blue w3-opacity w3-display-topmiddle w3-hide" id="statusrekaman">SEDANG
+                            MEREKAM
                         </div>
                     </div>
-                    <hr />
-                    <br />
-                    <div id="elemenvideogaleri" style="display: none;">
-                        <label for="tmbluploadvideomateri" class="w3-button w3-green w3-hover-blue w3-round-xlarge">
-                            <i class="fa fa-folder-open"></i> Upload dari Galeri
-                        </label>
-
+                    <div class='containerbaru w3-center w3-hide' id="divvid2">
+                        <video class='responsive-iframebaru' poster="/img/192.png" id="vid2" controls>
+                            Wew ... Browser Anda tidak mendukungnya
+                        </video>
                     </div>
-                    <input type="file" id="tmbluploadvideomateri" onchange="uploadvideomateri()" class="w3-hide" />
-
-                    <div id="resultuploadvideomateri">
-                        ...
+                    <div id="tomboltombolwebcam" class="w3-center">
+                        <button class="fa fa-video-camera w3-round-large w3-text-light-green" id="btnBack">
+                            Kamera</button>
+                        <button class="fa fa-play w3-round-large w3-green" id="btnStart"> Mulai Rekam</button>
+                        <button class="fa fa-stop w3-round-large w3-red" id="btnStop"> Stop Rekam</button><br />
+                        <span id="spanstatusrekaman"></span>
+                        <hr class="w3-border w3-border-bottom w3-border-blue" />
+                        <button class="w3-amber w3-button w3-round-xxlarge w3-padding" onclick="uplvideomateri()">Unggah
+                            Ke
+                            Server</button>
+                        <button class="w3-red w3-button w3-round-xxlarge w3-padding" onclick="uplvideomateriyt()">Unggah
+                            Ke Youtube <i class="fa fa-youtube"></i></button>
                     </div>
-                    <hr class="w3-border-bottom w3-border-brown">
-                    <div class="w3-padding w3-card-4" id="tabelkoleksivideomateri" style="overflow-x: auto;">
-                        <table class="w3-table-all">
-                            <tr class="w3-pale-red">
-                                <th>No.</th>
-                                <th>Preview</th>
-                                <th>Link Copy</th>
-                            </tr>
-                            <tr>
-                                <td>No.</td>
-                                <td>preview</td>
-                                <td>Link Copy</td>
-                            </tr>
-                        </table>
-                    </div>
-
-                </div>
-
-
-            </div>
-        </div>
-        <div id="modaltanggal" class="w3-modal w3-animate-zoom">
-            <div class="w3-modal-container">
-                <div class="w3-modal-content w3-card-4 w3-padding w3-green w3-center">
-                    <span id="tutupmodaltanggal" class="w3-button w3-right w3-red"
-                        onclick="modaltanggal.style.display='none';dataubahtanggal.innerHTML=''">&times;</span>
-                    <div id="dataubahtanggal">
-
+                    <div id="tomboltombolscreenrecorder" class="w3-center">
+                        <button class="fa fa-desktop w3-round-large w3-text-light-green" id="bukalayar">
+                            Pilih Layar</button>
+                        <button class="fa fa-play w3-round-large w3-green" id="start"> Mulai Rekam</button>
+                        <button class="fa fa-stop w3-round-large w3-red" id="stop"> Stop Rekam</button><br />
+                        <span id="spanstatusrekaman2"></span>
+                        <hr class="w3-border w3-border-bottom w3-border-blue" />
+                        <button class="w3-amber w3-button w3-round-xxlarge w3-padding" onclick="uplvideomateri()">Unggah
+                            Ke
+                            Server</button>
+                        <button class="w3-red w3-button w3-round-xxlarge w3-padding" onclick="uplvideomateriyt()">Unggah
+                            Ke Youtube <i class="fa fa-youtube"></i></button>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div id="modalagama" class="w3-modal w3-animate-zoom">
-            <div class="w3-modal-container">
-                <div class="w3-modal-content w3-card-4 w3-padding w3-green w3-center" style="height: 80%;">
-                    <span id="tutupmodalagama" class="w3-button w3-right w3-red"
-                        onclick="modalagama.style.display='none';">&times;</span>
-                    <div id="dataubahmodalagama">
-                        <label for="pd_agama_modal">Agama:</label><br />
-                        <select name="pd_agama_modal" id="pd_agama_modal" class="w3-select w3-khaki">
-                            <option value="" selected>Pilih Agama</option>
-                            <option value="ISLAM">Islam</option>
-                            <option value="KRISTEN">Kristen/Protestan</option>
-                            <option value="KATHOLIK">Katholik</option>
-                            <option value="HINDU">Hindu</option>
-                            <option value="BUDHA">Budha</option>
-                            <option value="KHONGHUCU">Khonghucu</option>
+                <hr />
+                <br />
+                <div id="elemenvideogaleri" style="display: none;">
+                    <label for="tmbluploadvideomateri" class="w3-button w3-green w3-hover-blue w3-round-xlarge">
+                        <i class="fa fa-folder-open"></i> Upload dari Galeri
+                    </label>
 
-                        </select> <br /> <br />
-                    </div>
+                </div>
+                <input type="file" id="tmbluploadvideomateri" onchange="uploadvideomateri()" class="w3-hide" />
+
+                <div id="resultuploadvideomateri">
+                    ...
+                </div>
+                <hr class="w3-border-bottom w3-border-brown">
+                <div class="w3-padding w3-card-4" id="tabelkoleksivideomateri" style="overflow-x: auto;">
+                    <table class="w3-table-all">
+                        <tr class="w3-pale-red">
+                            <th>No.</th>
+                            <th>Preview</th>
+                            <th>Link Copy</th>
+                        </tr>
+                        <tr>
+                            <td>No.</td>
+                            <td>preview</td>
+                            <td>Link Copy</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <div id="modaltanggal" class="w3-modal w3-animate-zoom">
+        <div class="w3-modal-container">
+            <div class="w3-modal-content w3-card-4 w3-padding w3-green w3-center">
+                <span id="tutupmodaltanggal" class="w3-button w3-right w3-red"
+                    onclick="modaltanggal.style.display='none';dataubahtanggal.innerHTML=''">&times;</span>
+                <div id="dataubahtanggal">
+
                 </div>
             </div>
         </div>
-        <div class="w3-modal w3-animate-zoom" id="add_tambahindikatorkomepentsi">
-            <div class="w3-modal-container w3-card-4">
-                <div class="w3-modal-content w3-padding">
-                    <h3 class="w3-teal w3-round-large w3-padding w3-center judul_addindikatorkompetensi">Judul</h3>
-                    <h3 class="w3-khaki w3-center w3-padding" id="simulasinama">Nama Siswa</h3>
+    </div>
+    <div id="modalagama" class="w3-modal w3-animate-zoom">
+        <div class="w3-modal-container">
+            <div class="w3-modal-content w3-card-4 w3-padding w3-green w3-center" style="height: 80%;">
+                <span id="tutupmodalagama" class="w3-button w3-right w3-red"
+                    onclick="modalagama.style.display='none';">&times;</span>
+                <div id="dataubahmodalagama">
+                    <label for="pd_agama_modal">Agama:</label><br />
+                    <select name="pd_agama_modal" id="pd_agama_modal" class="w3-select w3-khaki">
+                        <option value="" selected>Pilih Agama</option>
+                        <option value="ISLAM">Islam</option>
+                        <option value="KRISTEN">Kristen/Protestan</option>
+                        <option value="KATHOLIK">Katholik</option>
+                        <option value="HINDU">Hindu</option>
+                        <option value="BUDHA">Budha</option>
+                        <option value="KHONGHUCU">Khonghucu</option>
 
-                    Silakan pilih Indikator-indikator di tabel berikut untuk dijadikan deskripsi di Raport:
-                    <div class="tabel_indikatorindikatorraport" style="overflow-x: auto;"></div>
-                    <hr />
-                    Contoh Tampilan Deskripsi di Buku Raport:<br />
-                    <button id="simulasikanpredikat">Cek Deskripsi</button>
-                    <div class="result_indikatorindikatorraport w3-border w3-border-cyan w3-center w3-padding">
-                        <table class="versi-table simulasiraportkki w3-tiny w3-centered">
-                            <tr>
-                                <th>Predikat</th>
-                                <th>Deskripsi</th>
-                            </tr>
-                            <tr>
-                                <td>Predikat (Sangat Baik, Baik, Cukup, Pelu Bimbingan</td>
-                                <td>
-                                    <b class="w3-text-blue">Andanda</b> Nama Siswa
-                                    <b class="w3-text-blue">Selalu</b> kumpulan deskipsi Indikator Maksimal,
-                                    <b class="w3-text-blue">dan mulai bekembang dalam</b> kumpulan deskipsi Indikator
-                                    Minimal
-                                </td>
-                            </tr>
-                        </table>
-
-
-
-                    </div>
-                    <hr />
-                    <button class="wa" id="tombol_addindikatorkompetensi">Simpan dan Keluar</button>
-
+                    </select> <br /> <br />
                 </div>
-
-
             </div>
         </div>
+    </div>
+    <div class="w3-modal w3-animate-zoom" id="add_tambahindikatorkomepentsi">
+        <div class="w3-modal-container w3-card-4">
+            <div class="w3-modal-content w3-padding">
+                <h3 class="w3-teal w3-round-large w3-padding w3-center judul_addindikatorkompetensi">Judul</h3>
+                <h3 class="w3-khaki w3-center w3-padding" id="simulasinama">Nama Siswa</h3>
 
-        <div id="datasiswaprint" style="display:hide;overflow-x:auto"></div>
-        <input type="file" id="fileImportExcel" class="w3-hide" />
-        <input type="file" id="inputimportdatasiswa" class="w3-hide" />
+                Silakan pilih Indikator-indikator di tabel berikut untuk dijadikan deskripsi di Raport:
+                <div class="tabel_indikatorindikatorraport" style="overflow-x: auto;"></div>
+                <hr />
+                Contoh Tampilan Deskripsi di Buku Raport:<br />
+                <button id="simulasikanpredikat">Cek Deskripsi</button>
+                <div class="result_indikatorindikatorraport w3-border w3-border-cyan w3-center w3-padding">
+                    <table class="versi-table simulasiraportkki w3-tiny w3-centered">
+                        <tr>
+                            <th>Predikat</th>
+                            <th>Deskripsi</th>
+                        </tr>
+                        <tr>
+                            <td>Predikat (Sangat Baik, Baik, Cukup, Pelu Bimbingan</td>
+                            <td>
+                                <b class="w3-text-blue">Andanda</b> Nama Siswa
+                                <b class="w3-text-blue">Selalu</b> kumpulan deskipsi Indikator Maksimal,
+                                <b class="w3-text-blue">dan mulai bekembang dalam</b> kumpulan deskipsi Indikator
+                                Minimal
+                            </td>
+                        </tr>
+                    </table>
 
-        <iframe id="iframeprint" name="iframeprint" style="display:none"></iframe>
 
-        <script src="/gk/barcode.js"></script>
-        <script src="/guru/exceltabel.js" defer></script>
-        <script src="/guru/variabel.js" defer></script>
-        <script src="/gk/materiguru.js" defer></script>
-        <script src="/gk/uploadmateri.js" defer></script>
-        <script src="/gk/datasiswa.js"></script>
-        <script src="/gk/gurukelas.js"></script>
-        <script src="/guru/guruprofildankehadiran.js"></script>
-        <script src="/gk/absen.js"></script>
-        <script src="/guru/waktu.js"></script>
-        <script src="/guru/editor.js"></script>
-        <script src="/guru/nilai.js"></script>
-        <script src="/guru/videoelamaso.js"></script>
-        <script src="/guru/aafnbaruv7.js"></script>
-        <script src="/guru/kurikulum.js"></script>
-        <script src="/guru/zframe.js"></script>
-        <script src="/gk/raportsemester.js"></script>
-        <!-- <script src="/guru/app.js"></script> -->
-        <script src="/timekbm.js"></script>
+
+                </div>
+                <hr />
+                <button class="wa" id="tombol_addindikatorkompetensi">Simpan dan Keluar</button>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div id="datasiswaprint" style="display:hide;overflow-x:auto"></div>
+    <input type="file" id="fileImportExcel" class="w3-hide" />
+    <input type="file" id="inputimportdatasiswa" class="w3-hide" />
+
+    <iframe id="iframeprint" name="iframeprint" style="display:none"></iframe>
+
+    <script src="/gk/barcode.js"></script>
+    <script src="/guru/exceltabel.js" defer></script>
+    <script src="/guru/variabel.js" defer></script>
+    <script src="/gk/materiguru.js" defer></script>
+    <script src="/gk/uploadmateri.js" defer></script>
+    <script src="/gk/datasiswa.js"></script>
+    <script src="/gk/gurukelas.js"></script>
+    <script src="/guru/guruprofildankehadiran.js"></script>
+    <script src="/gk/absen.js"></script>
+    <script src="/guru/waktu.js"></script>
+    <script src="/guru/editor.js"></script>
+    <script src="/guru/nilai.js"></script>
+    <script src="/guru/videoelamaso.js"></script>
+    <script src="/guru/aafnbaruv7.js"></script>
+    <script src="/guru/kurikulum.js"></script>
+    <script src="/guru/zframe.js"></script>
+    <script src="/gk/raportsemester.js"></script>
+    <!-- <script src="/guru/app.js"></script> -->
+    <script src="/timekbm.js"></script>
 
 
 

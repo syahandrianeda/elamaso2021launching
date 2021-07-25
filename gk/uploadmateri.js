@@ -1,4 +1,3 @@
-
 const kopipaste = (id) => {
   var copyText = document.getElementById(id);
   copyText.select();
@@ -13,10 +12,10 @@ const pratinjaubuatmateri = () => {
   prevhp.style.display = "block";
   let idtextarea = document.formuploadmateri.idmateri;
 
-  var copyText = document.formuploadmateri.idmateri;//document.querySelector(id);//document.getElementById(id);
-  copyText.select();
-  copyText.setSelectionRange(0, 999999)
-  // document.execCommand("copy");
+  var copyText = document.formuploadmateri.idmateri; //document.querySelector(id);//document.getElementById(id);
+  // copyText.select();
+  // copyText.setSelectionRange(0, 999999)
+  // // document.execCommand("copy");
   // // alert("Copied the text: " + copyText.value);
   // alert("Berhasil Ngopi ... ^_^");
   // materiimport.innerHTML = brkline(unescape(decodeURIComponent(copyText.value))).teks
@@ -33,7 +32,7 @@ const pratinjaubuatmateri = () => {
     tteks += brkline(arrteks[i]).teks;
     // kuncipg += brkline(arrteks[i]).kunci; //window.atob(brkline(json).kunci).split(",").join("<br>");
     if (arrteks[i].indexOf("_KUNCI-PG_") > -1) {
-      kuncipg += brkline(arrteks[i]).kunci;//+"<br>";//.split(",").join("<br>");
+      kuncipg += brkline(arrteks[i]).kunci; //+"<br>";//.split(",").join("<br>");
       kuncienk += window.atob(brkline(arrteks[i]).kunci)
 
     }
@@ -83,7 +82,9 @@ const janganadatagihanbuat = () => {
   if (betulbetul) {
     document.formuploadmateri.jenistagihan.value = ""
 
-  } else { document.formuploadmateri.jenistagihan.value = "PH" }
+  } else {
+    document.formuploadmateri.jenistagihan.value = "PH"
+  }
 }
 
 
@@ -104,7 +105,7 @@ const awalbuatwaktu = () => {
 const objekKD = (asal) => {
   if (asal.indexOf("_KUNCI-KD_") > -1) {
     //REPLACE DULU = misal: _KUNCI-PG_1A, 2B, 3C<kalo adaspasi>
-    var tekskunci = asal.replace("_KUNCI-KD_", "").replace(/\s+/g, "").split("<||>");//.split(":");
+    var tekskunci = asal.replace("_KUNCI-KD_", "").replace(/\s+/g, "").split("<||>"); //.split(":");
     let ar = []
     let ob = {};
     for (i = 0; i < tekskunci.length; i++) {
@@ -185,7 +186,7 @@ const uploadgambarmateri = () => {
   resultuploadpotomateri.innerHTML = "";
 
 
-  var resize_width = 900;//without px
+  var resize_width = 900; //without px
 
   //get the image selected
   var item = "";
@@ -196,16 +197,16 @@ const uploadgambarmateri = () => {
 
   //image turned to base64-encoded Data URI.
   reader.readAsDataURL(item);
-  reader.name = item.name;//get the image's name
+  reader.name = item.name; //get the image's name
   reader.size = item.size; //get the image's size
   reader.onload = function (event) {
     let mmtpe = event.target.result.match(/^.*(?=;)/)[0];
-    var img = new Image();//create a image
-    img.src = event.target.result;//result is base64-encoded Data URI
-    img.name = event.target.name;//set name (optional)
-    img.size = event.target.size;//set size (optional)
+    var img = new Image(); //create a image
+    img.src = event.target.result; //result is base64-encoded Data URI
+    img.name = event.target.name; //set name (optional)
+    img.size = event.target.size; //set size (optional)
     img.onload = function (el) {
-      var elem = document.createElement('canvas');//create a canvas
+      var elem = document.createElement('canvas'); //create a canvas
 
       //scale the image to 600 (width) and keep aspect ratio
       var scaleFactor = resize_width / el.target.width;
@@ -233,14 +234,14 @@ const uploadgambarmateri = () => {
       inputfilename.setAttribute("name", "gmbrfilename");
       inputfilename.setAttribute("id", "gmbrfilename");
       inputfilename.setAttribute("style", "display:none");
-      inputfilename.value = new Date().getTime();;// + namebantukirim.value.toUpperCase().replace(/\s+/, "_");
+      inputfilename.value = new Date().getTime();; // + namebantukirim.value.toUpperCase().replace(/\s+/, "_");
 
       var inputmimetype = document.createElement("input");
       inputmimetype.setAttribute("name", "gmbrmimeType")
       inputmimetype.setAttribute("id", "gmbrmimeType")
       inputmimetype.setAttribute("style", "display:none")
 
-      inputmimetype.value = srcEncoded.match(/^.*(?=;)/)[0];;//"data:image/jpeg"; 
+      inputmimetype.value = srcEncoded.match(/^.*(?=;)/)[0];; //"data:image/jpeg"; 
 
 
       resultuploadpotomateri.appendChild(inputbase64);
@@ -248,7 +249,7 @@ const uploadgambarmateri = () => {
       resultuploadpotomateri.appendChild(inputmimetype);
       let teks1 = document.createTextNode("Data siap upload. Klik tombol ini ")
       resultuploadpotomateri.appendChild(teks1);
-      let tmbl = document.createElement("button",);
+      let tmbl = document.createElement("button", );
       tmbl.setAttribute("class", "w3-black w3-button w3-hover-blue  w3-tiny w3-round-xxlarge");
       tmbl.setAttribute("onclick", "uplgmbrmateri()");
       tmbl.innerHTML = "Upload ke Server"
@@ -278,9 +279,9 @@ const uplgmbrmateri = async () => {
   resultuploadpotomateri.innerHTML = `<i class="fa fa-spin fa-spinner"></i>`
 
   await fetch(linkmateri + "&action=uplgmbrmateri", {
-    method: 'post',
-    body: frmdata
-  })
+      method: 'post',
+      body: frmdata
+    })
     .then(m => m.json())
     .then(k => {
       //console.log(k);
@@ -300,7 +301,7 @@ const uplgmbrmateri = async () => {
       // document.getElementById("tabelkoleksigambarmateri").appendChild(tabelmateri)
       //document.getElementById("tabelkoleksigambarmateri").appendChild()
       //daftarGambar()
-      let tb = document.getElementById("tabeltabelkoleksiuploadgambar");//.appendChild(txtarea)
+      let tb = document.getElementById("tabeltabelkoleksiuploadgambar"); //.appendChild(txtarea)
       let tr = tb.insertRow(-1);
       let sel = tr.insertCell(-1);
       sel.innerHTML = "NEW";
@@ -1199,7 +1200,10 @@ const publikasikanmateribaru = () => {
     dom.reset();
     idpracetak.innerHTML = `<i class="fa fa-spin fa-spinner w3-xxxlarge"></i> On Proess kirim`
     let url = linkmateri + "&action=materibaru"
-    fetch(url, { method: 'post', body: data })
+    fetch(url, {
+        method: 'post',
+        body: data
+      })
       .then(m => m.json())
       .then(f => {
         idpracetak.innerHTML = f.result;
@@ -1257,8 +1261,7 @@ const daftarnilaikronologi = (id) => {
       // nilairesponkronologi = f.records;
       //console.log(nilairesponkronologi)
       forModalTabelkronologi(id)
-    }
-    )
+    })
 
 
 }
@@ -1409,7 +1412,7 @@ const forModalTabelkronologi = (id) => {
           //console.log(tekconsol)
 
           let sell = rowisi.insertCell(-1)
-          sell.innerHTML = nilaiKDSiswakronologi(koleksitokensiswa[z], banyakkd[j]).replace(".", ",");// banyakkd[j] + "nama = " + koleksinamasiswa[z];
+          sell.innerHTML = nilaiKDSiswakronologi(koleksitokensiswa[z], banyakkd[j]).replace(".", ","); // banyakkd[j] + "nama = " + koleksinamasiswa[z];
 
         }
       }
@@ -1654,7 +1657,8 @@ const nilaiKDSiswakronologi = (parNama, keyKD) => {
   let FilterRec = nilairesponkronologi.filter(k => k.tokensiswa == parNama);
 
 
-  let jmlh = FilterRec.length, nn;
+  let jmlh = FilterRec.length,
+    nn;
   if (jmlh > 0) {
     //JSON.parse(nilairespon.filter(k => k.namasiswa == "ABIN NUGRAHA")[0].nilaikd)
     let arry = FilterRec[jmlh - 1].nilaikd
@@ -1866,7 +1870,7 @@ const gurumengoreksi3 = (bid) => {
   $.getJSON(constpreviewljk + "?idmateri=" + html_jawaban + "&action=previewriwayat", function (json) {
 
     // infoloadingljk.innerHTML = brkline(json).teks + "<br><br><br>";
-    infoloadingljk.innerHTML = "";//brkline(json).teks + "<br><br><br>";
+    infoloadingljk.innerHTML = ""; //brkline(json).teks + "<br><br><br>";
     infoloadingljk.appendChild(divljk)
     divljkkoreksi.innerHTML = brkline(json).teks + "<br><br><br>";
     var elEssay = document.getElementsByClassName("koleksilj")
@@ -2081,7 +2085,7 @@ const gurumengoreksi = (bid) => {
   $.getJSON(constpreviewljk + "?idmateri=" + html_jawaban + "&action=previewriwayat", function (json) {
 
     // infoloadingljk.innerHTML = brkline(json).teks + "<br><br><br>";
-    infoloadingljk.innerHTML = "";//brkline(json).teks + "<br><br><br>";
+    infoloadingljk.innerHTML = ""; //brkline(json).teks + "<br><br><br>";
     infoloadingljk.appendChild(divljk)
     divljkkoreksi.innerHTML = brkline(json).teks + "<br><br><br>";
     var elEssay = document.getElementsByClassName("koleksilj")
@@ -2272,7 +2276,7 @@ const siapkirimnilai = () => {
   let hapusinput = document.querySelectorAll(".koreksisoal")
 
   for (let i = 0; i < hapusinput.length; i++) {
-    let id = hapusinput[i].getAttribute("id").replace("koreksisoal_", "");//i + 1;
+    let id = hapusinput[i].getAttribute("id").replace("koreksisoal_", ""); //i + 1;
     let inputedit = document.getElementById("koreksisoal_" + id);
     document.getElementById("nilaiessaykoreksi_" + id).innerHTML = inputedit.value;
 
@@ -2333,14 +2337,15 @@ const siapkirimnilai = () => {
   let namaform = document.querySelector("#formgurumengoreksi")
   let dataform = new FormData(namaform)
   fetch(constlinknilai + "?action=koreksianguru", {
-    method: "post", body: dataform
-  }).then(m => m.json())
+      method: "post",
+      body: dataform
+    }).then(m => m.json())
     .then(f => {
       //console.log(f);
       document.querySelector("#infoloadingljk").innerHTML = `<h3 class="w3-center">${f.result}</h3>`;
       if (iddarimana == "hariini") {
         getdaftarnilai(idakseskoreksi)
-      } else (
+      } else(
         daftarnilaikronologi(idakseskoreksi)
 
       )
@@ -2360,9 +2365,9 @@ const siapkirimnilai = () => {
 const bantusiswaisiljk = (param) => {
 
   let params = param.split("_");
-  let par = params[1];//indek materi kbm
+  let par = params[1]; //indek materi kbm
   parameterbantuisiljk = par;
-  let idsw = params[0];//indek id siswa
+  let idsw = params[0]; //indek id siswa
 
   //alert (par);
   let siswabantu = JSON.parse(localStorage.getItem("datasiswa_" + idNamaKelas))["datasiswa"][idsw];
@@ -2715,6 +2720,7 @@ const cekljk = () => {
     x.style.display = "none";
   }
 }
+
 function PGBenar(opsi, kuncijawaban) { // kebalik, hahahaha
   var benarsalah;
   let benar = opsi.filter(f => f == kuncijawaban);
@@ -2755,7 +2761,7 @@ function pgskor(opsik, kuncijawaban) { // kebalik, hahahaha
 const hasilakhirelamaso = (par) => {
   hasilakhirwaktu.innerHTML = tanggalfulllengkap(new Date());
   let koleksiceklis = []
-  let datakuncikd = JSON.parse(kronologijson[parameterbantuisiljk].kuncikd);//JSON.parse(localStorage.getItem("kuncikd"))
+  let datakuncikd = JSON.parse(kronologijson[parameterbantuisiljk].kuncikd); //JSON.parse(localStorage.getItem("kuncikd"))
   let keyarray = Object.keys(datakuncikd);
   let obj = {};
   for (l = 0; l < keyarray.length; l++) {
@@ -2820,13 +2826,16 @@ const hasilakhirelamaso = (par) => {
   let idakseskoreksi = (koreksidarimana.innerHTML).split("_")[0];
   let namaform = document.getElementById("ljkbantu")
   let dataform = new FormData(namaform);
-  fetch(constlinknilai + "?action=gurukirimnilai", { method: 'post', body: dataform })
+  fetch(constlinknilai + "?action=gurukirimnilai", {
+      method: 'post',
+      body: dataform
+    })
     .then(u => u.json())
     .then(q => {
       document.getElementById("infoloadingljk").innerHTML = q.result;
       if (iddarimana == "hariini") {
         getdaftarnilai(idakseskoreksi)
-      } else (
+      } else(
         daftarnilaikronologi(idakseskoreksi)
 
       )
@@ -2902,7 +2911,7 @@ const hasilakhirelamasopg = (par) => {
   //   }
   // }
 
-  let datakuncikd = JSON.parse(kronologijson[parameterbantuisiljk].kuncikd);//JSON.parse(localStorage.getItem("kuncikd"))
+  let datakuncikd = JSON.parse(kronologijson[parameterbantuisiljk].kuncikd); //JSON.parse(localStorage.getItem("kuncikd"))
   let keyarray = Object.keys(datakuncikd);
   let obj = {};
   for (l = 0; l < keyarray.length; l++) {
@@ -2967,13 +2976,16 @@ const hasilakhirelamasopg = (par) => {
   let namaform = document.getElementById("ljkbantu")
   let dataform = new FormData(namaform);
   document.getElementById("infoloadingljk").innerHTML = `<i class="fa fa-spin fa-refresh w3-xxlarge" style="margin:0 auto"></i> proses kirim ....`;
-  fetch(constlinknilai + "?action=gurukirimnilai", { method: 'post', body: dataform })
+  fetch(constlinknilai + "?action=gurukirimnilai", {
+      method: 'post',
+      body: dataform
+    })
     .then(u => u.json())
     .then(q => {
       document.getElementById("infoloadingljk").innerHTML = q.result;
       if (iddarimana == "hariini") {
         getdaftarnilai(idakseskoreksi)
-      } else (
+      } else(
         daftarnilaikronologi(idakseskoreksi)
 
       )
@@ -2998,9 +3010,9 @@ const hapusljk = (idbaris) => {
   dataform.append("idbaris", idbaris);
   dataform.append("idok", idok);
   fetch(constlinknilai + "?action=hapusljk", {
-    method: 'post',
-    body: dataform
-  }).then(m => m.json())
+      method: 'post',
+      body: dataform
+    }).then(m => m.json())
     .then(f => {
       alert(f.result);
       refreshdatakdkd();
@@ -3014,7 +3026,7 @@ const refreshdatakdkd = () => {
   let idakseskoreksi = (koreksidarimana.innerHTML).split("_")[0];
   if (iddarimana == "hariini") {
     getdaftarnilai(idakseskoreksi)
-  } else (
+  } else(
     daftarnilaikronologi(idakseskoreksi)
 
   )
@@ -3102,6 +3114,7 @@ const buathtmlljk = (adapg) => {
 
   return tekshtml
 }
+
 function tombolketikjawaban2(idpar) {
   let id = idpar.split("_")[0];
   //alert("Tombol ketik Jawbaan No " + id)
@@ -3149,7 +3162,7 @@ function tomboluploadjawaban2(idpar) {
   katajadi += "</div>";
   //-----------------------------
   katajadi += "<br/>Ganti dengan mengetik jawaban:";
-  katajadi += `<button onclick='tombolketikjawaban2("${idpar}")'>Ketik Jawaban No. ${id}</button>`;//"<button onclick='tombolketikjawaban(" + id + ")'>Ketik Jawaban No. " + id + "</button>";
+  katajadi += `<button onclick='tombolketikjawaban2("${idpar}")'>Ketik Jawaban No. ${id}</button>`; //"<button onclick='tombolketikjawaban(" + id + ")'>Ketik Jawaban No. " + id + "</button>";
 
   // katajadi += "<button onclick='tombolketikjawaban2(" + idpar + ")'>Ketik Jawaban No. " + id + "</button>";
   katajadi += "<sub> dengan memilih cara lain, jawaban yang sudah  diupload akan hilang dan diganti dengan jawaban berupa ketikan/tulisan</sub>"
@@ -3227,7 +3240,7 @@ const taruhcatatansementara = () => {
 }
 
 const editfilemateri = (id) => {
-  let file = kronologijson[id];//.idmateri;
+  let file = kronologijson[id]; //.idmateri;
   let idbaris = file.idbaris;
   let time = new Date(file.idtgl).getTime()
   let now = new Date().getTime()
@@ -3270,7 +3283,7 @@ const editfilemateri = (id) => {
 
 
   tombolpublikasikan.setAttribute("onclick", `editfilematerikeserver('${idbaris}')`)
-  tombolpublikasikan.removeAttribute("class");//.wa w3-deep-purple w3-hover-aqua);
+  tombolpublikasikan.removeAttribute("class"); //.wa w3-deep-purple w3-hover-aqua);
   tombolpublikasikan.setAttribute("class", "wa w3-red w3-hover-aqua");
   tombolpublikasikan.innerHTML = "EDIT KONTEN MATERI"
 
@@ -3313,7 +3326,10 @@ const editfilematerikeserver = (id) => {
     dom.idmateri.value = "";
     idpracetak.innerHTML = `<i class="fa fa-spin fa-spinner w3-xxxlarge"></i> On Proess kirim`
     let url = linkmateri + "&action=materiedit"
-    fetch(url, { method: 'post', body: data })
+    fetch(url, {
+        method: 'post',
+        body: data
+      })
       .then(m => m.json())
       .then(f => {
         idpracetak.innerHTML = f.result;
@@ -3332,7 +3348,7 @@ const editfilematerikeserver = (id) => {
   }
   localStorage.removeItem("draftmateri")
   tombolpublikasikan.setAttribute("onclick", "publikasikanmateribaru()")
-  tombolpublikasikan.removeAttribute("class");//.wa w3-deep-purple w3-hover-aqua);
+  tombolpublikasikan.removeAttribute("class"); //.wa w3-deep-purple w3-hover-aqua);
   tombolpublikasikan.setAttribute("class", "wa w3-deep-purple w3-hover-aqua");
   tombolpublikasikan.innerHTML = "PUBLIKASIKAN";
 }
@@ -3372,8 +3388,9 @@ function uploadpotoessay(idpar) {
     datafom.append("filename", filename);
     datafom.append("ekstensi", ekstensi);
     await fetch(constlinknilai + "?action=siswauploadmedia", {
-      method: 'post', body: datafom
-    }).then(m => m.json())
+        method: 'post',
+        body: datafom
+      }).then(m => m.json())
       .then(k => {
         tempat.innerHTML = k.result
 

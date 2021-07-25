@@ -111,10 +111,11 @@ const tampilinsublamansiswa = (fitur) => {
         document.getElementById("mySidebar").scrollIntoView();
     } else if (fitur == "aktifsudahabsen") {
         lamansiswa.style.display = "block";
-        document.querySelector(".sudahabsen").style.display = "inline-block"
+        document.querySelector(".sudahabsen").style.display = "none"
         document.querySelector(".belumabsen").style.display = "none"
         lamanlibur.style.display = "none";
-        lamanmateri.style.display = "none"
+        lamanmateri.style.display = "none";
+        panggilmateri()
 
 
         document.getElementById("mySidebar").scrollIntoView();
@@ -127,70 +128,12 @@ const tampilinsublamansiswa = (fitur) => {
         lamanmateri.style.display = "none"
 
     } else if (fitur == 3) { // ketika siswa udah mengeklik materi dan sudah ditampilkan materi;
-        let mtr = JSON.parse(localStorage.getItem("materi"))
-        ///-------------------------------------------------------
-
-        document.querySelector(".klikmateri").innerHTML = `<h4 class="w3-card-4 w3-margin-top"><button class="w3-button w3-pink w3-round w3-right w3-tiny" onclick="panggilmateri()"><i class="fa fa-refresh"></i> Materi</button>Materi Ananda Hari Ini:<h3> `
-            ;
-        // f.result.forEach(element => {
-        let tabel = document.createElement("table")
-        tabel.setAttribute("class", "versi-table w3-card-4 w3-margin-bottom tabelmaterihariini")
-        let row = tabel.insertRow(0);
-        let th = row.insertCell(-1);
-        th.innerHTML = "Pembelajaran";
-
-        th = row.insertCell(-1);
-        th.innerHTML = "Jenis Penilaian";
-
-        th = row.insertCell(-1);
-        th.innerHTML = "Status";
-
-        th = row.insertCell(-1);
-        th.innerHTML = "Waktu Mulai";
-
-        th = row.insertCell(-1);
-        th.innerHTML = "Waktu Akhir";
-
-        th = row.insertCell(-1);
-        th.innerHTML = "Durasi";
-
-        th = row.insertCell(-1);
-        th.innerHTML = "Aksi";
-
-
-
-
-
-        let element = mtr;
-        for (i = 0; i < element.length; i++) {
-            let row = tabel.insertRow(-1);
-            sel = row.insertCell(-1);
-            sel.innerHTML = element[i].idmapel;
-            sel = row.insertCell(-1);
-            sel.innerHTML = element[i].jenistagihan;
-            sel = row.insertCell(-1);
-            sel.innerHTML = `<button class="w3-button w3-green" onclick="cekkerjaan(${i})">Cek</button>`;
-            sel = row.insertCell(-1);
-            sel.innerHTML = "Pukul " + addZero(new Date(element[i].idtgl).getHours()) + ":" + addZero(new Date(element[i].idtgl).getMinutes()) + ":" + addZero(new Date(element[i].idtgl).getSeconds());
-            sel = row.insertCell(-1);
-            sel.innerHTML = "Pukul " + addZero(new Date(element[i].idtglend).getHours()) + ":" + addZero(new Date(element[i].idtglend).getMinutes()) + ":" + addZero(new Date(element[i].idtglend).getSeconds());
-            sel = row.insertCell(-1);
-            sel.innerHTML = element[i].iddurasi;
-            sel = row.insertCell(-1);
-            sel.innerHTML = `tekan tombol cek`;//<button class="w3-button w3-green" onclick="previewriwayat(${i})">Materi</button>`;
-
-
-
-
-        }
-        //}
-        // document.querySelector(".klikmateri").innerHTML += `</table>`
-        document.querySelector(".klikmateri").appendChild(tabel)
+        panggilmateri();
         document.querySelector(".sudahabsen").style.display = "none"
         ///-------------------------------------------------------
 
         document.getElementById("mySidebar").scrollIntoView();
-    } else if (fitur == 4) {// lamansudah aktif;
+    } else if (fitur == 4) { // lamansudah aktif;
         lamansiswa.style.display = "block";
         document.querySelector(".sudahabsen").style.display = "none"
         document.querySelector(".belumabsen").style.display = "none"
@@ -268,7 +211,7 @@ function uploadfilebantu2gagal() {
 
 
     //define the width to resize e.g 600px
-    var resize_width = 150;//without px
+    var resize_width = 150; //without px
 
     //get the image selected
     var item = document.querySelector('#lampirkanpotoabsen').files[0];
@@ -278,15 +221,15 @@ function uploadfilebantu2gagal() {
 
     //image turned to base64-encoded Data URI.
     reader.readAsDataURL(item);
-    reader.name = item.name;//get the image's name
+    reader.name = item.name; //get the image's name
     reader.size = item.size; //get the image's size
     reader.onload = function (event) {
-        var img = new Image();//create a image
-        img.src = event.target.result;//result is base64-encoded Data URI
-        img.name = event.target.name;//set name (optional)
-        img.size = event.target.size;//set size (optional)
+        var img = new Image(); //create a image
+        img.src = event.target.result; //result is base64-encoded Data URI
+        img.name = event.target.name; //set name (optional)
+        img.size = event.target.size; //set size (optional)
         img.onload = function (el) {
-            var elem = document.createElement('canvas');//create a canvas
+            var elem = document.createElement('canvas'); //create a canvas
 
             //scale the image to 600 (width) and keep aspect ratio
             var scaleFactor = resize_width / el.target.width;
@@ -360,22 +303,22 @@ function uploadfilebantu2gagal() {
 
 function uploadfilebantu() {
     //define the width to resize e.g 600px
-    var resize_width = 150;//without px
+    var resize_width = 150; //without px
     //get the image selected
     var item = document.querySelector('#lampirkanpotoabsen').files[0];
     //create a FileReader
     var reader = new FileReader();
     //image turned to base64-encoded Data URI.
     reader.readAsDataURL(item);
-    reader.name = item.name;//get the image's name
+    reader.name = item.name; //get the image's name
     reader.size = item.size; //get the image's size
     reader.onload = function (event) {
-        var img = new Image();//create a image
-        img.src = event.target.result;//result is base64-encoded Data URI
+        var img = new Image(); //create a image
+        img.src = event.target.result; //result is base64-encoded Data URI
 
-        img.size = event.target.size;//set size (optional)
+        img.size = event.target.size; //set size (optional)
         img.onload = function (el) {
-            var elem = document.createElement('canvas');//create a canvas
+            var elem = document.createElement('canvas'); //create a canvas
             //scale the image to 600 (width) and keep aspect ratio
             var scaleFactor = resize_width / el.target.width;
             elem.width = resize_width;
@@ -419,9 +362,9 @@ function uploadfilebantu() {
             data.append("mimeType", d_mtp);
             var url = url_absensiswa + "?action=uploaddulu";
             fetch(url, {
-                method: 'post',
-                body: data
-            }).then(m => m.json())
+                    method: 'post',
+                    body: data
+                }).then(m => m.json())
                 .then(k => {
                     console.log(k)
                     var inputbase64 = document.createElement("input");
@@ -515,11 +458,11 @@ function tombolbantukirim() {
 
     var url = url_absensiswa + "?action=siswaabsensiswa";
     fetch(url, {
-        method: 'post',
-        body: en
-    }).then(m => m.json())
+            method: 'post',
+            body: en
+        }).then(m => m.json())
         .then(k => {
-            document.getElementById("bantusiapa").innerHTML = "";//+ "  Data telah berhasil dibantu, Terima kasih";
+            document.getElementById("bantusiapa").innerHTML = ""; //+ "  Data telah berhasil dibantu, Terima kasih";
             document.getElementById("thankyou_messagekirim").style.display = "block";
             document.getElementById("thankyou_messagekirim").innerHTML = k.ket;
             //document.getElementById("tombolbantusimpan").style.display="block"; //????
@@ -540,6 +483,7 @@ function tombolbantukirim() {
             setCookie("kethadir", kethadir);
             setCookie("ketpukul", ketpukul);
             tampilinsublamansiswa("aktifsudahabsen")
+
         })
         .catch(err => {
             document.getElementById("thankyou_messagekirim").innerHTML = err;
@@ -548,6 +492,27 @@ function tombolbantukirim() {
 
         })
 }
+let stoploadingtopbar;
+const loadingtopbarin = (el) => {
+        var elem = document.querySelector("." + el);
+        elem.className = elem.className.replace("w3-hide", "");
+        elem.style.width = "1px";
+        var width = 1;
+        stoploadingtopbar = setInterval(frame2, 10);
+
+        function frame2() {
+            if (width >= 1000000) {
+                clearInterval(stoploadingtopbar);
+                // elem.style.width = 0;
+                // elem.style.width = 90 + '%';
+                // elem.innerHTML = `100%`;
+            } else {
+                width += 100;
+                elem.style.width = width / 1000 + '%';
+                //elem.innerHTML = (width / 105).toFixed(0) + "% ";
+            }
+        }
+    }
 
 (async function () {
     namasekolah.innerHTML = identitassekolah;
@@ -578,7 +543,9 @@ function tombolbantukirim() {
                 window.location.replace("/index.html")
             }
 
-        }).catch(err => { console.log(err) })
+        }).catch(err => {
+            console.log(err)
+        })
     await fetch(url_absenkaldik).then(m => m.json()).then(k => {
         //console.table(k.records)
         arrayStringTglLibur = k.stringTgl.map(m => Object.keys(m)).reduce((a, b) => a.concat(b));
@@ -602,7 +569,7 @@ function tombolbantukirim() {
             // console.log(indekhari)
             let indek = arrayStringTglLibur.indexOf(StringTanggal(day));
 
-            if (indekhari == 0 || indekhari == 0 || indek > -1) {
+            if (indekhari == 0 || indekhari == 6 || indek > -1) {
                 //console.log("Libur atau Sabtu Minggu")
                 belajaraktif = false;
                 // tampilkan laman libur:
@@ -653,8 +620,7 @@ function tombolbantukirim() {
         namaku.innerHTML = namasiswa;
         dashboardnamasiswa.innerHTML = namasiswa + " ( Kelas " + namakelas + " )";
 
-    }
-    else {
+    } else {
         await fetch(url_absenkaldik).then(m => m.json()).then(k => {
             //console.table(k.records)
             arrayStringTglLibur = k.stringTgl.map(m => Object.keys(m)).reduce((a, b) => a.concat(b));
@@ -674,7 +640,7 @@ function tombolbantukirim() {
             // console.log(indekhari)
             let indek = arrayStringTglLibur.indexOf(StringTanggal(day));
 
-            if (indekhari == 0 || indekhari == 0 || indek > -1) {
+            if (indekhari == 0 || indekhari == 6 || indek > -1) {
                 //console.log("Libur atau Sabtu Minggu")
                 belajaraktif = false;
                 // tampilkan laman libur:
@@ -772,7 +738,7 @@ const absennya = (bol) => {
                 setTimeout(function () {
                     location.reload()
                 }, 2000)
-            });;//.catch(err => {console.log(err);location.replace("siswa.html")}) 
+            });; //.catch(err => {console.log(err);location.replace("siswa.html")}) 
     }
 }
 
@@ -784,7 +750,7 @@ const lihatraportpts = () => {
     fetch(urlnilai + "?action=cekpublikasiraportpts&kelas=" + namakelas)
         .then(m => m.json())
         .then(r => {
-            let namaanakini = r.data.filter(k => k.namasiswa == namasiswa);//"ABIN NUGRAHA");
+            let namaanakini = r.data.filter(k => k.namasiswa == namasiswa); //"ABIN NUGRAHA");
             if (namaanakini.length > 0) {
                 if (namaanakini[0].ptspublikasi == "show") {
                     modalraport(namaanakini[0].raportpts)
@@ -858,7 +824,7 @@ const pengumumankelulusan = async () => {
 
     } else {
         let tab = "skkelulusan";
-        let param = "&kelas=" + namakelas + "&prefiktab=" + tab;//+ "&datahead=" + stinghead;//+ "&dataisi=" + stingisi;
+        let param = "&kelas=" + namakelas + "&prefiktab=" + tab; //+ "&datahead=" + stinghead;//+ "&dataisi=" + stingisi;
         tekshtmlfokus = "Silakan Pilih Pengumuman untuk Anda periksa pada tabel di bawah ini!";
         await fetch(urlnilai + "?action=getdatafromtab" + param)
             .then(m => m.json())
@@ -1023,7 +989,8 @@ const profilsayasiswa = () => {
     let ss = jlo.ss_datauser;
     let ur = jlo.url_datauser;
     let ling = ur + "?idss=" + ss;
-    let datahtml = "", fil;
+    let datahtml = "",
+        fil;
     loadingljk.style.display = "block";
     let img = document.querySelector(".avatarsiswa");
     let srcimg = img.getAttribute("src");
@@ -1620,13 +1587,13 @@ const htmldataprofil = () => {
 };
 
 function umur(tgllahir) {
-    var curday = new Date().getDate();;//document.cir.len11.value;
-    var curmon = new Date().getMonth();//.cir.len12.value;
-    var curyear = new Date().getFullYear();//.cir.len13.value;
+    var curday = new Date().getDate();; //document.cir.len11.value;
+    var curmon = new Date().getMonth(); //.cir.len12.value;
+    var curyear = new Date().getFullYear(); //.cir.len13.value;
 
-    var calday = new Date(tgllahir).getDate();//document.cir.len21.value;
-    var calmon = new Date(tgllahir).getMonth();//document.cir.len22.value;
-    var calyear = new Date(tgllahir).getFullYear();//document.cir.len23.value;
+    var calday = new Date(tgllahir).getDate(); //document.cir.len21.value;
+    var calmon = new Date(tgllahir).getMonth(); //document.cir.len22.value;
+    var calyear = new Date(tgllahir).getFullYear(); //document.cir.len23.value;
 
     var curd = new Date(curyear, curmon, curday);
     var cald = new Date(calyear, calmon, calday);
@@ -1641,8 +1608,12 @@ function umur(tgllahir) {
 }
 
 function datediff(date1, date2) {
-    var y1 = date1.getFullYear(), m1 = date1.getMonth(), d1 = date1.getDate(),
-        y2 = date2.getFullYear(), m2 = date2.getMonth(), d2 = date2.getDate();
+    var y1 = date1.getFullYear(),
+        m1 = date1.getMonth(),
+        d1 = date1.getDate(),
+        y2 = date2.getFullYear(),
+        m2 = date2.getMonth(),
+        d2 = date2.getDate();
 
     if (d1 < d2) {
         m1--;
@@ -1656,7 +1627,7 @@ function datediff(date1, date2) {
 }
 
 function DaysInMonth2(Y, M) {
-    with (new Date(Y, M, 1, 12)) {
+    with(new Date(Y, M, 1, 12)) {
         setDate(0);
         return getDate();
     }
@@ -2361,11 +2332,11 @@ const fn_upload_file = (id_input, param, tipe) => {
     data.append("mimeType", tipe);
     data.append("filename", namafile);
     data.append("kelas", namakelas);
-    var url = url_absensiswa;// + "?action=uploaddulu";
+    var url = url_absensiswa; // + "?action=uploaddulu";
     fetch(url, {
-        method: 'post',
-        body: data
-    }).then(m => m.json())
+            method: 'post',
+            body: data
+        }).then(m => m.json())
         .then(r => {
             if (r.sukses == "Gagal") {
                 setTimeout(() => {
@@ -2400,6 +2371,7 @@ function getLocation(el) {
         hfd_dapo_bujur.value = "Duh, HP Anda tidak support. Coba dengan HP Lain";
     }
 }
+
 function showPosition(position) {
     hfd_dapo_lintang.value = position.coords.latitude;
     hfd_dapo_bujur.value = position.coords.longitude;
@@ -2422,11 +2394,16 @@ function distance(lat1, lon1, unit) {
     dist = Math.acos(dist)
     dist = dist * 180 / Math.PI
     dist = dist * 60 * 1.1515
-    if (unit == "K") { dist = dist * 1.609344 }
+    if (unit == "K") {
+        dist = dist * 1.609344
+    }
     // if (unit == "K") { dist = dist * 0.01609344 }
-    if (unit == "N") { dist = dist * 0.8684 }
+    if (unit == "N") {
+        dist = dist * 0.8684
+    }
     return dist
 }
+
 function komponenform(form) { // fungsi untuk membuat Array Object beserta value-nya dalam bentuk JSON
     var koleksielement = form.elements;
     var buatkolomheader = Object.keys(koleksielement).filter(function (k) {
@@ -2470,10 +2447,10 @@ function komponenform(form) { // fungsi untuk membuat Array Object beserta value
     }
 }
 const validasiajuandata = () => {
-    let namaform = document.getElementById("formajuandatasiswa");//.elements;
+    let namaform = document.getElementById("formajuandatasiswa"); //.elements;
     let dataoke = [];
     let datagaada = [];
-    let cekhead = arrayheadsumber.filter(s => s !== "time_stamp");//array
+    let cekhead = arrayheadsumber.filter(s => s !== "time_stamp"); //array
 
     let avoid_head = ["aktif", "dieditoleh", "action", "usulanperubahandata"];
     let elemenform = komponenform(namaform); /// object
@@ -2490,7 +2467,7 @@ const validasiajuandata = () => {
         if (dataelemen[cekhead[i]] == undefined) {
             datagaada.push(cekhead[i]);
             if (angkadistring.indexOf(cekhead[i]) > -1) {
-                let n = "'";//+ dataelemen[cekhead[i]]
+                let n = "'"; //+ dataelemen[cekhead[i]]
                 valurut.push(n);
             } else {
                 valurut.push("")
@@ -2527,9 +2504,9 @@ const validasiajuandata = () => {
 
     infoloadingljk.innerHTML = `<p class="w3-center"><img src="/img/barloading.gif"/></p>`
     fetch(url_absensiswa + "?action=daftarulangdankonfirmasinya", {
-        method: "post",
-        body: datakirim
-    })
+            method: "post",
+            body: datakirim
+        })
         .then(m => m.json())
         .then(r => {
             infoloadingljk.innerHTML = r.result;
@@ -2545,7 +2522,8 @@ const biolengkap = () => {
     let ss = jlo.ss_datauser;
     let ur = jlo.url_datauser;
     let ling = ur + "?idss=" + ss;
-    let datahtml = "", fil;
+    let datahtml = "",
+        fil;
     loadingljk.style.display = "block";
     $('#infoloadingljk').nextAll('button').remove();
 
@@ -2581,8 +2559,7 @@ const biolengkap = () => {
                 let keys = keyss.filter(s => s !== "time_stamp");
                 for (i = 0; i < keys.length; i++) {
                     let el = document.querySelector(".hdp_" + keys[i]);
-                    if (el == undefined || el == null) {
-                    } else {
+                    if (el == undefined || el == null) {} else {
                         if (keys[i].indexOf("dok_") > -1) {
                             let iddoc = (cariid[keys[i]] == "") ? `<b class="w3-text-red">Tidak Melampirkan</b>` : `<div class="containerbaru"><iframe class="responsive-iframebaru" src="https://drive.google.com/file/d/${(cariid[keys[i]] == "") ? "18Zvo5idM92xYEIzqKDDFnc0iqI6JvUnS" : cariid[keys[i]]}/preview" title="dokumen"></iframe></div>`;
                             el.innerHTML = iddoc;
@@ -2611,7 +2588,8 @@ const ajuanperubahandata = async () => {
     let ss = jlo.ss_datauser;
     let ur = jlo.url_datauser;
     let ling = ur + "?idss=" + ss;
-    let datahtml = "", cariid;
+    let datahtml = "",
+        cariid;
     loadingljk.style.display = "block";
     $('#infoloadingljk').nextAll('button').remove();
     // let img = document.querySelector(".avatarsiswa");
@@ -2664,21 +2642,19 @@ const ajuanperubahandata = async () => {
                 for (d = 0; d < key.length; d++) {
                     if (elementform[x].name == key[d]) {
                         if (elementform[x].type == "date") {
-                            elementform[x].value = StringTanggalnol(new Date(nilai[d]))//;
+                            elementform[x].value = StringTanggalnol(new Date(nilai[d])) //;
                         } else if (elementform[x].type == "radio") {
                             if (elementform[x].value == nilai[d]) {
                                 elementform[x].checked = true;
                             }
-                        }
-                        else if (elementform[x].type == "select-one") {
+                        } else if (elementform[x].type == "select-one") {
                             // if (elementform[x].options[elementform[x].selectedIndex].value == nilai[d]) {
                             //     elementform[x].options[elementform[x].selectedIndex].selected = true;
                             //     //     elementform[x].selected = true;
                             // }
                             elementform[x].value = nilai[d];
                             // console.log(elementform[x].name + "|" + elementform[x].type)
-                        }
-                        else {
+                        } else {
                             if (angkadistring.indexOf(key[d]) > -1) {
                                 elementform[x].value = nilai[d].replace("'", "")
                             } else {
@@ -2741,7 +2717,7 @@ const lihatraportsemester = () => {
     fetch(urlnilai + "?action=cekpublikasiraportsemester&kelas=" + namakelas)
         .then(m => m.json())
         .then(r => {
-            let namaanakini = r.data.filter(k => k.namasiswa == namasiswa);//"ABIN NUGRAHA");
+            let namaanakini = r.data.filter(k => k.namasiswa == namasiswa); //"ABIN NUGRAHA");
             if (namaanakini.length > 0) {
                 if (namaanakini[0].semesterpublikasi == "show") {
                     modalraport(namaanakini[0].raportsemester)
@@ -2770,6 +2746,63 @@ const klikpotosiswa = (el) => {
 
 
 const panggilmateri = async () => {
+    // loadingAPI.style.display = "block";
+    // infoloadingAPI.innerHTML = `<i class="fa fa-spin fa-spinner w3-jumbo w3-display-middle"></i>`;
+    // //panggil dataApinya dulu;
+    let a = new Date();
+    let b = a.getDate();
+    let c = a.getMonth() + 1;
+    let d = a.getFullYear()
+    let idokmateri = addZero(b) + "" + addZero(c) + "" + d;
+    let parameterlain = "&crtToken=" + idokmateri + "&idtoken=" + jenjang;
+    let html = "";
+    let apikontenmateri
+    await fetch(linkmateri + "&action=materihariini" + parameterlain)
+        .then(m => m.json())
+        .then(f => {
+            console.log(f.result)
+            localStorage.setItem("materi", JSON.stringify(f.result));
+            let kontenmateri = f.result;
+            apikontenmateri = f.result;
+            if (kontenmateri.length == 0) {
+                html = "Hari ini tidak ada materi."
+            } else {
+                html += `Materi Ananda hari ini ada ${kontenmateri.length}:`
+                for (i = 0; i < kontenmateri.length; i++) {
+                    html += `<div class="w3-card-4 mhi mhi_ke${i} w3-container w3-margin-bottom w3-margin-top">
+                    <div class="w3-badge w3-left w3-black">${i+1}</div>
+                    <div class="w3-badge w3-right warnaeka w3-text-black">${kontenmateri[i].jenistagihan}</div>
+                    <div class="w3-clear"></div>
+                    <h5 class="mhi_pembelajaran w3-bottombar">${kontenmateri[i].idmapel}</h5>
+                    <div class="mhi_waktu w3-tiny w3-center w3-border-bottom">${waktufulllengkap(kontenmateri[i].idtgl)} - ${waktufulllengkap(kontenmateri[i].idtglend)}</div>
+                    <div class="mhi_status_${i} w3-small w3-center">Sedang Memeriksa ... <i class="fa fa-refresh fa-spin"></i></div>
+                    </div>`;
+                }
+
+            }
+            document.querySelector(".klikmateri").innerHTML = html;
+
+        })
+        .catch(er => {
+            console.log(er);
+            infoloadingAPI.innerHTML = "Maaf, terjadi kegagalan koneksi. <hr>Pesan error :" + er
+            document.querySelector(".klikmateri").innerHTML = "Mohon Maaf, terjadi kesalahan. Ulangi beberapa saat lagi. <br>Kode" + er
+
+        })
+
+
+    let j = 0;
+    do {
+        await cekkerjaan(j, apikontenmateri[j])
+        j++
+    }
+    while (j < apikontenmateri.length);
+
+    loadingAPI.style.display = "none";
+
+}
+
+const panggilmateridd = async () => {
     // console.log (namasiswa);
     // console.log (namakelas);
     // console.log (jenjang);
@@ -2794,8 +2827,13 @@ const panggilmateri = async () => {
             loadingAPI.style.display = "none"
             //console.log(f)
             localStorage.setItem("materi", JSON.stringify(f.result));
-            document.querySelector(".klikmateri").innerHTML = `<h4 class="w3-card-4 w3-padding w3-margin"><button class="w3-button w3-pink w3-round w3-right w3-tiny" onclick="panggilmateri()"><i class="fa fa-refresh"></i> Materi</button>Materi Ananda Hari Ini:<h3> `
-                ;
+            let html = `
+            <h4 class="w3-card-4 w3-padding w3-margin">
+                <button class="w3-button w3-pink w3-round w3-right w3-tiny" onclick="panggilmateri()">
+                    <i class="fa fa-refresh"></i> Refresh Materi
+                </button>Materi Ananda Hari Ini:<h3>`;
+
+            document.querySelector(".klikmateri").innerHTML = `<h4 class="w3-card-4 w3-padding w3-margin"><button class="w3-button w3-pink w3-round w3-right w3-tiny" onclick="panggilmateri()"><i class="fa fa-refresh"></i> Materi</button>Materi Ananda Hari Ini:<h3> `;
             // f.result.forEach(element => {
             let tabel = document.createElement("table")
             tabel.setAttribute("class", "versi-table w3-card-4 w3-margin-bottom tabelmaterihariini")
@@ -2843,10 +2881,10 @@ const panggilmateri = async () => {
                 sel = row.insertCell(-1);
                 sel.innerHTML = element[i].iddurasi;
                 sel = row.insertCell(-1);
-                sel.innerHTML = `tekan tombol cek`;//<button class="w3-button w3-green" onclick="previewriwayat(${i})">Materi</button>`;
+                sel.innerHTML = `tekan tombol cek`; //<button class="w3-button w3-green" onclick="previewriwayat(${i})">Materi</button>`;
             }
             //}
-            // document.querySelector(".klikmateri").innerHTML += `</table>`
+
             document.querySelector(".klikmateri").appendChild(tabel)
             document.querySelector(".sudahabsen").style.display = "none";
             setCookie("lamankode", 3)
@@ -2871,7 +2909,7 @@ const modalfnkalender = () => {
     let y = document.getElementById("siswapilihbulan").options;
     //alert("Index: " + y[x].index + " is " + y[x].text + " dan value = " + y[x].value);
     let namabulan = y[x].text.replace(" 2021", "").replace(/\s+/g, "");
-    modalnamabulan.innerHTML = '<img src="/img/barloading.gif"/>';//y[x].text.toUpperCase();
+    modalnamabulan.innerHTML = '<img src="/img/barloading.gif"/>'; //y[x].text.toUpperCase();
 
     let notgl = new Date(y[x].value);
 
@@ -3035,7 +3073,7 @@ const menudatapembelajaran = () => {
             spanlabelmateri.innerHTML = "Jumlah Materi ada " + j.result.length + " Silakan pilih : <br><sub class='w3-text-blue'>Materi terbaru ada di urutan terakhir</sub>";
 
             jsonmenudatapembelajaran = j.result;
-            siswapilihmateri.innerHTML = ""
+            siswapilihmateri.innerHTML = "<option value=''>Silakan Pilih Materinya</option>"
             for (let i = 0; i < j.result.length; i++) {
                 let op = document.createElement("option");
                 op.setAttribute("value", i)
@@ -3137,8 +3175,7 @@ const modalfnmateri = () => {
                 if (integerWaktusekarang < awalwaktu && integerWaktusekarang < bataswaktu) {
                     ddtabelhasilbelajar.innerHTML = "Maaf, Pembelajaran belum bisa diakses";
                     tdtombolsoaloffline.innerHTML = "Maaf, Pembelajaran belum bisa diakses";
-                }
-                else if (integerWaktusekarang > awalwaktu && integerWaktusekarang > bataswaktu) {
+                } else if (integerWaktusekarang > awalwaktu && integerWaktusekarang > bataswaktu) {
 
                     ddtabelhasilbelajar.innerHTML = "Ananda melewatkan KBM Ini";
                     tdtombolsoaloffline.innerHTML = `<button class='w3-button w3-blue' onclick='soaloffline("${idmateri}");modalmateri.style.display = "none"'>Latihan lagi</button>`;
@@ -3185,8 +3222,7 @@ const modalfnmateri = () => {
             }
 
 
-        }
-        )
+        })
 
 
 };
@@ -3223,8 +3259,9 @@ function uploadpotoessayt(id) {
         datafom.append("filename", filename);
         datafom.append("ekstensi", ekstensi);
         await fetch(urlnilai + "?action=siswauploadmedia", {
-            method: 'post', body: datafom
-        }).then(m => m.json())
+                method: 'post',
+                body: datafom
+            }).then(m => m.json())
             .then(k => {
                 tampilan.innerHTML = k.result
 
@@ -3253,8 +3290,9 @@ const siswauploadmediajawaban = () => {
     dataform.append("kelas", mediakelas.value);
 
     fetch(urlnilai + "?siswauploadmedia", {
-        method: 'post', body: dataform
-    }).then(m => m.json())
+            method: 'post',
+            body: dataform
+        }).then(m => m.json())
         .then(k => {
             return k.result
         })
@@ -3285,7 +3323,7 @@ let inbtngal = document.getElementById("inputtmblgaleri");
 let resultpotogaleri = document.getElementById("elemintmblpotogaleri");
 let tampilan = document.getElementById("resultuploadvideomateri");
 
-let localStream = "";// vidvid2.style.display = "none";
+let localStream = ""; // vidvid2.style.display = "none";
 let spanstatus = document.querySelector("#spanstatusrekaman");
 let spanstatus2 = document.querySelector("#spanstatusrekaman2");
 let videostatus = document.querySelector("#statusrekaman");
@@ -3315,7 +3353,9 @@ const mulaivideo = (depblak, id) => {
         btnBack.innerHTML = " Depan";
         acuankamera = "depan";
     } else {
-        indikatorkamer = { exact: "user" };
+        indikatorkamer = {
+            exact: "user"
+        };
         btnBack.innerHTML = " Belakang";
         acuankamera = "belakang";
     }
@@ -3393,8 +3433,8 @@ const mulaivideo = (depblak, id) => {
                 // divP.style.display = "block";
                 // divV.style.display = "none";
                 spanstatus.innerHTML = "Sedang merekam <i class='fa fa-spin fa-refresh'></i>";
-                videostatus.removeAttribute("class");//.replace("w3-blue w3-opacity w3-display-topmiddle w3-hide", "w3-blue w3-opacity w3-display-topmiddle w3-show");
-                videostatus.setAttribute("class", "w3-blue w3-opacity w3-display-middle w3-show");//.replace("w3-blue w3-opacity w3-display-topmiddle w3-hide", "w3-blue w3-opacity w3-display-topmiddle w3-show");
+                videostatus.removeAttribute("class"); //.replace("w3-blue w3-opacity w3-display-topmiddle w3-hide", "w3-blue w3-opacity w3-display-topmiddle w3-show");
+                videostatus.setAttribute("class", "w3-blue w3-opacity w3-display-middle w3-show"); //.replace("w3-blue w3-opacity w3-display-topmiddle w3-hide", "w3-blue w3-opacity w3-display-topmiddle w3-show");
                 elvid1.removeAttribute("class");
                 elvid1.setAttribute("class", "w3-center w3-show");
                 elvid2.removeAttribute("class");
@@ -3417,7 +3457,7 @@ const mulaivideo = (depblak, id) => {
                     return
                 }
                 videostatus.removeAttribute("class");
-                videostatus.setAttribute("class", "w3-blue w3-opacity w3-display-topmiddle w3-show");//.replace("w3-blue w3-opacity w3-display-topmiddle w3-show", "w3-blue w3-opacity w3-display-topmiddle w3-hide");
+                videostatus.setAttribute("class", "w3-blue w3-opacity w3-display-topmiddle w3-show"); //.replace("w3-blue w3-opacity w3-display-topmiddle w3-show", "w3-blue w3-opacity w3-display-topmiddle w3-hide");
                 elvid1.removeAttribute("class");
                 elvid1.setAttribute("class", "containerbaru w3-center w3-hide");
                 elvid2.removeAttribute("class");
@@ -3437,7 +3477,9 @@ const mulaivideo = (depblak, id) => {
             mediaRecorder.onstop = (ev) => {
                 // divP.style.display = "none";
                 // divV.style.display = "block";
-                let blob = new Blob(chunks, { 'type': 'video/mp4;' });
+                let blob = new Blob(chunks, {
+                    'type': 'video/mp4;'
+                });
                 let videoURL = window.URL.createObjectURL(blob);
                 vidSave.src = videoURL;
                 //console.log(formatBytes(blob.size, 2));
@@ -3460,14 +3502,14 @@ const mulaivideo = (depblak, id) => {
                     inputfilename.setAttribute("name", "videofilename");
                     inputfilename.setAttribute("id", "videofilename");
                     inputfilename.setAttribute("style", "display:none");
-                    inputfilename.value = "Kelas_" + jenjang + "_" + StringTanggal(new Date()) + "_id_" + new Date().getTime();;// + namebantukirim.value.toUpperCase().replace(/\s+/, "_");
+                    inputfilename.value = "Kelas_" + jenjang + "_" + StringTanggal(new Date()) + "_id_" + new Date().getTime();; // + namebantukirim.value.toUpperCase().replace(/\s+/, "_");
 
                     var inputmimetype = document.createElement("input");
                     inputmimetype.setAttribute("name", "videomimeType")
                     inputmimetype.setAttribute("id", "videomimeType")
                     inputmimetype.setAttribute("style", "display:none")
 
-                    inputmimetype.value = "video/mp4";//srcEncoded.match(/^.*(?=;)/)[0];;//"data:image/jpeg";;// 
+                    inputmimetype.value = "video/mp4"; //srcEncoded.match(/^.*(?=;)/)[0];;//"data:image/jpeg";;// 
 
 
                     resultuploadvideomateri.innerHTML = "";
@@ -3490,7 +3532,7 @@ const mulaivideo = (depblak, id) => {
                 mulaivideo(acuankamera, id);
                 vidSave.src = "";
                 videostatus.removeAttribute("class");
-                videostatus.setAttribute("class", "w3-blue w3-opacity w3-display-middle w3-hide");//.replace("w3-blue w3-opacity w3-display-topmiddle w3-show", "w3-blue w3-opacity w3-display-topmiddle w3-hide");
+                videostatus.setAttribute("class", "w3-blue w3-opacity w3-display-middle w3-hide"); //.replace("w3-blue w3-opacity w3-display-topmiddle w3-show", "w3-blue w3-opacity w3-display-topmiddle w3-hide");
                 elvid1.removeAttribute("class");
                 elvid1.setAttribute("class", "w3-center w3-show");
                 elvid2.removeAttribute("class");
@@ -3520,9 +3562,9 @@ const mulaivideo = (depblak, id) => {
     elvid1.setAttribute("class", "w3-center w3-show");
     elvid2.removeAttribute("class");
     elvid2.setAttribute("class", "w3-center w3-hide");
-    spanstatus.innerHTML = "Kamera siap untuk merekam.";// <i class='fa fa-spin fa-refresh'></i>";
-    videostatus.removeAttribute("class");//.replace("w3-blue w3-opacity w3-display-topmiddle w3-hide", "w3-blue w3-opacity w3-display-topmiddle w3-show");
-    videostatus.setAttribute("class", "w3-blue w3-opacity w3-display-middle w3-hide");//.replace("w3-blue w3-opacity w3-display-topmiddle w3-hide", "w3-blue w3-opacity w3-display-topmiddle w3-show");
+    spanstatus.innerHTML = "Kamera siap untuk merekam."; // <i class='fa fa-spin fa-refresh'></i>";
+    videostatus.removeAttribute("class"); //.replace("w3-blue w3-opacity w3-display-topmiddle w3-hide", "w3-blue w3-opacity w3-display-topmiddle w3-show");
+    videostatus.setAttribute("class", "w3-blue w3-opacity w3-display-middle w3-hide"); //.replace("w3-blue w3-opacity w3-display-topmiddle w3-hide", "w3-blue w3-opacity w3-display-topmiddle w3-show");
 
 
 }
@@ -3637,11 +3679,11 @@ const ambilpotodarikamera = (id) => {
             return
         }
         let img = new Image();
-        img.src = e.target.result;//result is base64-encoded Data URI
+        img.src = e.target.result; //result is base64-encoded Data URI
         //img.name = event.target.name;//set name (optional)
-        img.size = e.target.size;//set size (optional)
+        img.size = e.target.size; //set size (optional)
         img.onload = function (el) {
-            var elem = document.createElement('canvas');//create a canvas
+            var elem = document.createElement('canvas'); //create a canvas
 
             //scale the image to 600 (width) and keep aspect ratio
             var scaleFactor = sz / el.target.width;
@@ -3772,8 +3814,9 @@ const uploadvideorekaman = async (id) => {
     datafom.append("ekstensi", "mp4");
     resultpotogaleri.innerHTML = "";
     await fetch(urlnilai + "?action=siswauploadmedia", {
-        method: 'post', body: datafom
-    }).then(m => m.json())
+            method: 'post',
+            body: datafom
+        }).then(m => m.json())
         .then(k => {
             tmblkirim.innerHTML = `Berhasil diunggah`;
 
@@ -3814,8 +3857,9 @@ const uploadpotokamera = async (id) => {
     datafom.append("ekstensi", ekstensi);
     resultpotogaleri.innerHTML = "";
     await fetch(urlnilai + "?action=siswauploadmedia", {
-        method: 'post', body: datafom
-    }).then(m => m.json())
+            method: 'post',
+            body: datafom
+        }).then(m => m.json())
         .then(k => {
             tmblkirim.innerHTML = `Poto berhasil diunggah`;
             document.getElementById("silangmodal").click();
@@ -3850,8 +3894,9 @@ const uploadmediagaleri = async (id) => {
     datafom.append("ekstensi", ekstensi);
     resultpotogaleri.innerHTML = "";
     await fetch(urlnilai + "?action=siswauploadmedia", {
-        method: 'post', body: datafom
-    }).then(m => m.json())
+            method: 'post',
+            body: datafom
+        }).then(m => m.json())
         .then(k => {
             tmblkirim.innerHTML = `Media berhasil diunggah`;
             document.getElementById("silangmodal").click();

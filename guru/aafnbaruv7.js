@@ -1712,9 +1712,6 @@ function fn_mbs_selectmapel(el) {
     divopsikd.innerHTML = html;
 
 
-    console.log(br)
-    console.log(attr)
-    console.log(baris)
 };
 
 function fn_mbs_selectkd(el) {
@@ -1742,7 +1739,12 @@ function fn_mbs_simpansebarankd() {
         ar.push(elinput);
     }
     arr += ar.join("<||>")
-    teksarea.value = teksarea.value.replace(cari, arr);
+    if (awal == -1) {
+        teksarea.value += "\n\n" + arr;
+    } else {
+        teksarea.value = teksarea.value.replace(cari, arr);
+    }
+
 }
 
 function fn_mbs_hapusbaris() {
@@ -1755,6 +1757,23 @@ function fn_mbs_hapusbaris() {
     let row = tabel.rows;
 
     tabel.deleteRow(-1);
+
+};
+
+function tanpasebarankd() {
+    let teksarea = document.getElementById("idmateri");
+    let arr = "_KUNCI-KD_NONKD_5.1:1";
+    let val = teksarea.value;
+    let n = val.length;
+    let awal = val.indexOf("_KUNCI-KD_");
+    let batasawal = val.substring(awal, n)
+    let cari = batasawal.split("\n")[0];
+
+    if (awal == -1) {
+        teksarea.value += "\n\n" + arr;
+    } else {
+        teksarea.value = teksarea.value.replace(cari, arr);
+    }
 
 }
 const checked_buatkunci = (el) => {
@@ -1792,7 +1811,7 @@ const checked_buatkunci = (el) => {
     // console.log(teksnya);
     // textarea.value = textarea.value.substring(0, awal) + teksnya + textarea.value.substring(end, len);
     let teksganti = str_pg_kunci;
-    console.log(awal)
+    // console.log(awal)
     if (awal == -1) {
         textarea.value = textarea.value + "\n\n" + teksnya; //+ textarea.value.substring(end, len);
     } else {

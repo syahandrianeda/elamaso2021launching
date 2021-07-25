@@ -1,150 +1,170 @@
 let jsonlocalstorage, jsonlocalstoragetypeuser, linkdatauser;
 let linkDataUserWithIdss, linkAbsenKaldik // digunakan untuk link yang mengakses SS DataUSer (guru/siswa)
 let namauser, ruangankelas, gmpkelas
-let idguru = "", idgurubaru = "";
-let jsondatasiswa = [], arrayStringTglLibur = [];
+let idguru = "",
+    idgurubaru = "";
+let jsondatasiswa = [],
+    arrayStringTglLibur = [];
 let idNamaSekolah, idNamaKelas, idGuruKelas, idNipGuruKelas,
     idKepsek, idNipKepsek, idSemester,
     idJenisGuru, idNoWa, idTeksTapel,
     idNamaKepsek, idJenjang;
-let REKAPAbsen = {}, OBJEKHariEfektif;
+let REKAPAbsen = {},
+    OBJEKHariEfektif;
 let obDataRekapKehadiran;
 jsonlocalstorage = JSON.parse(localStorage.getItem("inst_id"));
 let jsonabsenkelasperbulan = [];
 let idinterval;
+
+let buateditorkdaktif = [];
 let stoploadingtopbar;
 const loadingtopbarin = (el) => {
-    var elem = document.querySelector("." + el);
-    elem.className = elem.className.replace("w3-hide", "");
-    elem.style.width = "1px";
-    var width = 1;
-    stoploadingtopbar = setInterval(frame2, 10);
-    function frame2() {
-        if (width >= 1000000) {
-            clearInterval(stoploadingtopbar);
-            // elem.style.width = 0;
-            // elem.style.width = 90 + '%';
-            // elem.innerHTML = `100%`;
-        } else {
-            width += 100;
-            elem.style.width = width / 1000 + '%';
-            //elem.innerHTML = (width / 105).toFixed(0) + "% ";
+        var elem = document.querySelector("." + el);
+        elem.className = elem.className.replace("w3-hide", "");
+        elem.style.width = "1px";
+        var width = 1;
+        stoploadingtopbar = setInterval(frame2, 10);
+
+        function frame2() {
+            if (width >= 1000000) {
+                clearInterval(stoploadingtopbar);
+                // elem.style.width = 0;
+                // elem.style.width = 90 + '%';
+                // elem.innerHTML = `100%`;
+            } else {
+                width += 100;
+                elem.style.width = width / 1000 + '%';
+                //elem.innerHTML = (width / 105).toFixed(0) + "% ";
+            }
         }
     }
-}
-(async function () {
-    var elem = document.querySelector(".loadingtopbar");
-    elem.style.width = "1px";
-    let divlod;
-    loadingtopbarin("loadingtopbar");
-    OBJEKHariEfektif = {
-        "Januari": 0, "Februari": 0, "Maret": 0,
-        "April": 0, "Mei": 0, "Juni": 0, "Juli": 0, "Agustus": 0,
-        "September": 0, "Oktober": 0, "November": 0, "Desember": 0
-    };
-    obDataRekapKehadiran = { "Hadir": 0, "Ijin": 0, "Sakit": 0, "Alpa": 0 };
-    let tgl = new Date();
-    let m = tgl.getMonth();
-    let sm = tgl.getMonth() + 1;
-    let d = tgl.getDate();
-    let day = tgl.getDay()
-    let y = tgl.getFullYear();
-    let string = y + "-" + sm + "-" + d;
-    let arraynamaHari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-    let teksbulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"];
-    htmlhariini.innerHTML = "Kehadiran Hari Ini " + arraynamaHari[day] + ", " + d + " " + teksbulan[m] + " " + y;// + tanggalfull(string)
-    jsonlocalstoragetypeuser = JSON.parse(localStorage.getItem("typeuser"));
-    namauser = jsonlocalstoragetypeuser.user;
-    gmpkelas = jsonlocalstoragetypeuser.akses;
-    idguru = jsonlocalstoragetypeuser.idrow;
-    idimage = jsonlocalstoragetypeuser.idimg;//
-    idgurumapelmapel = jsonlocalstoragetypeuser.room;
-    idGuruKelas = jsonlocalstoragetypeuser.user;
-    idNipGuruKelas = jsonlocalstoragetypeuser.nip_guru;
-    idNamaKepsek = jsonlocalstoragetypeuser.nama_kepsek;
-    idNipKepsek = jsonlocalstoragetypeuser.nip_kepsek;
-    idJenisGuru = jsonlocalstoragetypeuser.akses;
-    idNoWa = jsonlocalstoragetypeuser.no_wa;
-    idSemester = jsonlocalstoragetypeuser.idsemester;
-    idTeksTapel = jsonlocalstoragetypeuser.tekstapel;
-    jsonlocalstorage = JSON.parse(localStorage.getItem("inst_id"));
-    linkDataUserWithIdss = jsonlocalstorage.url_datauser + "?idss=" + jsonlocalstorage.ss_datauser;
-    linkAbsenKaldik = jsonlocalstorage.url_dataabsen + "?idss=" + jsonlocalstorage.ss_dataabsen;
-    url_absenkaldik = jsonlocalstorage.url_dataabsen + "?action=datakaldik&idss=" + jsonlocalstorage.ss_dataabsen
-    let idInstansi = JSON.parse(localStorage.getItem("inst_id"));
-    idNamaSekolah = idInstansi.namainstansi;
-    // loadingAPI.style.display = "block";
-    // infoloadingAPI.innerHTML = "Sedang memproses Kalender Pendidikan ..."
-    //
-    await fetch(url_absenkaldik).then(m => m.json()).then(k => {
-        localStorage.setItem('Kaldik', JSON.stringify(k.records));
-        localStorage.setItem('TglLibur', JSON.stringify(k.stringTgl))
+    (async function () {
+        var elem = document.querySelector(".loadingtopbar");
+        elem.style.width = "1px";
+        let divlod;
+        loadingtopbarin("loadingtopbar");
+        OBJEKHariEfektif = {
+            "Januari": 0,
+            "Februari": 0,
+            "Maret": 0,
+            "April": 0,
+            "Mei": 0,
+            "Juni": 0,
+            "Juli": 0,
+            "Agustus": 0,
+            "September": 0,
+            "Oktober": 0,
+            "November": 0,
+            "Desember": 0
+        };
+        obDataRekapKehadiran = {
+            "Hadir": 0,
+            "Ijin": 0,
+            "Sakit": 0,
+            "Alpa": 0
+        };
+        let tgl = new Date();
+        let m = tgl.getMonth();
+        let sm = tgl.getMonth() + 1;
+        let d = tgl.getDate();
+        let day = tgl.getDay()
+        let y = tgl.getFullYear();
+        let string = y + "-" + sm + "-" + d;
+        let arraynamaHari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+        let teksbulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"];
+        htmlhariini.innerHTML = "Kehadiran Hari Ini " + arraynamaHari[day] + ", " + d + " " + teksbulan[m] + " " + y; // + tanggalfull(string)
+        jsonlocalstoragetypeuser = JSON.parse(localStorage.getItem("typeuser"));
+        namauser = jsonlocalstoragetypeuser.user;
+        gmpkelas = jsonlocalstoragetypeuser.akses;
+        idguru = jsonlocalstoragetypeuser.idrow;
+        idimage = jsonlocalstoragetypeuser.idimg; //
+        idgurumapelmapel = jsonlocalstoragetypeuser.room;
+        idGuruKelas = jsonlocalstoragetypeuser.user;
+        idNipGuruKelas = jsonlocalstoragetypeuser.nip_guru;
+        idNamaKepsek = jsonlocalstoragetypeuser.nama_kepsek;
+        idNipKepsek = jsonlocalstoragetypeuser.nip_kepsek;
+        idJenisGuru = jsonlocalstoragetypeuser.akses;
+        idNoWa = jsonlocalstoragetypeuser.no_wa;
+        idSemester = jsonlocalstoragetypeuser.idsemester;
+        idTeksTapel = jsonlocalstoragetypeuser.tekstapel;
+        jsonlocalstorage = JSON.parse(localStorage.getItem("inst_id"));
+        linkDataUserWithIdss = jsonlocalstorage.url_datauser + "?idss=" + jsonlocalstorage.ss_datauser;
+        linkAbsenKaldik = jsonlocalstorage.url_dataabsen + "?idss=" + jsonlocalstorage.ss_dataabsen;
+        url_absenkaldik = jsonlocalstorage.url_dataabsen + "?action=datakaldik&idss=" + jsonlocalstorage.ss_dataabsen
+        let idInstansi = JSON.parse(localStorage.getItem("inst_id"));
+        idNamaSekolah = idInstansi.namainstansi;
+        // loadingAPI.style.display = "block";
+        // infoloadingAPI.innerHTML = "Sedang memproses Kalender Pendidikan ..."
+        //
+        await fetch(url_absenkaldik).then(m => m.json()).then(k => {
+            localStorage.setItem('Kaldik', JSON.stringify(k.records));
+            localStorage.setItem('TglLibur', JSON.stringify(k.stringTgl))
 
-        arrayStringTglLibur = k.stringTgl.map(m => Object.keys(m)).reduce((a, b) => a.concat(b));
-        arrayKetLibur = k.stringTgl.map(m => Object.keys(m).map(n => m[n])).reduce((a, b) => a.concat(b));
-        // loadingAPI.style.display = "none";
-        // infoloadingAPI.innerHTML = "";
-
-    }).catch(er => {
-        console.log("muat ulang: " + er);
-        //infoloadingAPI.innerHTML = "Ups, maaf. Terjadi Kesalahan... Coba lagi ya ...."
-    });
-
-    namasekolah.innerHTML = namauser;
-    namakota.innerHTML = gmpkelas + " " + idgurumapelmapel;
-    var logo = document.getElementById("logosekolahmenu");
-    logo.setAttribute("src", "https://drive.google.com/uc?export=view&id=" + idimage);
-    logo.setAttribute("alt", "Poto Guru");
-    logo.setAttribute("style", "width:90px; height:90px");
-
-    if (navigator.storage && navigator.storage.estimate) {
-        const quota = await navigator.storage.estimate();
-        const percentageUsed = (quota.usage / quota.quota) * 100;
-        console.log(`You've used ${percentageUsed}% of the available storage.`);
-        const remaining = quota.quota - quota.usage;
-        console.log(`You can write up to ${remaining} more bytes.`);
-    }
-    dashboardgurukelas.innerHTML = idJenisGuru + " " + idgurumapelmapel + " ( " + namauser + " )";
-    let gmpbuatselectrombeol = document.createElement("option");
-    gmpbuatselectrombeol.setAttribute("id", "awal");
-    gmpbuatselectrombeol.setAttribute("value", "none")
-    let teks = document.createTextNode("PILIH KELAS")
-    gmpbuatselectrombeol.appendChild(teks)
-    gmppilihrombel.innerHTML = "";
-    gmppilihrombel.appendChild(gmpbuatselectrombeol);
-    // loadingAPI.style.display = "block";
-    // infoloadingAPI.innerHTML = "Sedang memproses Identitas Guru"
-
-    await fetch(linkDataUserWithIdss + "&action=profilguru&id=" + idguru)
-        .then(m => m.json())
-        .then(k => {
-            let gmpdataguru = k.profil[0].kelasampu.replace(/\s+/g, "").split(",")
-            for (let a = 0; a < gmpdataguru.length; a++) {
-                gmpbuatselectrombeol = document.createElement("option");
-                gmpbuatselectrombeol.setAttribute("id", gmpdataguru[a]);
-                gmpbuatselectrombeol.setAttribute("value", gmpdataguru[a])
-                let teks = document.createTextNode("KELAS " + gmpdataguru[a])
-                gmpbuatselectrombeol.appendChild(teks)
-                gmppilihrombel.appendChild(gmpbuatselectrombeol);
-            }
-            // loadingAPI.style.display = "";
+            arrayStringTglLibur = k.stringTgl.map(m => Object.keys(m)).reduce((a, b) => a.concat(b));
+            arrayKetLibur = k.stringTgl.map(m => Object.keys(m).map(n => m[n])).reduce((a, b) => a.concat(b));
+            // loadingAPI.style.display = "none";
             // infoloadingAPI.innerHTML = "";
 
-        })
-        .catch(er => {
-            console.log(er)
-            // loadingAPI.style.display = "block";
-            // infoloadingAPI.innerHTML = "Ups, Terjadi Kesalahan. Silakan coba lagi nanti. <br>Kode Eror: " + er
+        }).catch(er => {
+            console.log("muat ulang: " + er);
+            //infoloadingAPI.innerHTML = "Ups, maaf. Terjadi Kesalahan... Coba lagi ya ...."
         });
-    clearInterval(stoploadingtopbar);
-    divlod = document.querySelector(".loadingtopbar");
-    divlod.style.width = "100%";
-    setTimeout(() => {
-        divlod.style.width = "1px"
-        divlod.className += " w3-hide";
 
-    }, 3000);
-})();
+        namasekolah.innerHTML = namauser;
+        namakota.innerHTML = gmpkelas + " " + idgurumapelmapel;
+        var logo = document.getElementById("logosekolahmenu");
+        logo.setAttribute("src", "https://drive.google.com/uc?export=view&id=" + idimage);
+        logo.setAttribute("alt", "Poto Guru");
+        logo.setAttribute("style", "width:90px; height:90px");
+
+        if (navigator.storage && navigator.storage.estimate) {
+            const quota = await navigator.storage.estimate();
+            const percentageUsed = (quota.usage / quota.quota) * 100;
+            console.log(`You've used ${percentageUsed}% of the available storage.`);
+            const remaining = quota.quota - quota.usage;
+            console.log(`You can write up to ${remaining} more bytes.`);
+        }
+        dashboardgurukelas.innerHTML = idJenisGuru + " " + idgurumapelmapel + " ( " + namauser + " )";
+        let gmpbuatselectrombeol = document.createElement("option");
+        gmpbuatselectrombeol.setAttribute("id", "awal");
+        gmpbuatselectrombeol.setAttribute("value", "none")
+        let teks = document.createTextNode("PILIH KELAS")
+        gmpbuatselectrombeol.appendChild(teks)
+        gmppilihrombel.innerHTML = "";
+        gmppilihrombel.appendChild(gmpbuatselectrombeol);
+        // loadingAPI.style.display = "block";
+        // infoloadingAPI.innerHTML = "Sedang memproses Identitas Guru"
+
+        await fetch(linkDataUserWithIdss + "&action=profilguru&id=" + idguru)
+            .then(m => m.json())
+            .then(k => {
+                let gmpdataguru = k.profil[0].kelasampu.replace(/\s+/g, "").split(",")
+                for (let a = 0; a < gmpdataguru.length; a++) {
+                    gmpbuatselectrombeol = document.createElement("option");
+                    gmpbuatselectrombeol.setAttribute("id", gmpdataguru[a]);
+                    gmpbuatselectrombeol.setAttribute("value", gmpdataguru[a])
+                    let teks = document.createTextNode("KELAS " + gmpdataguru[a])
+                    gmpbuatselectrombeol.appendChild(teks)
+                    gmppilihrombel.appendChild(gmpbuatselectrombeol);
+                }
+                // loadingAPI.style.display = "";
+                // infoloadingAPI.innerHTML = "";
+
+            })
+            .catch(er => {
+                console.log(er)
+                // loadingAPI.style.display = "block";
+                // infoloadingAPI.innerHTML = "Ups, Terjadi Kesalahan. Silakan coba lagi nanti. <br>Kode Eror: " + er
+            });
+        clearInterval(stoploadingtopbar);
+        divlod = document.querySelector(".loadingtopbar");
+        divlod.style.width = "100%";
+        setTimeout(() => {
+            divlod.style.width = "1px"
+            divlod.className += " w3-hide";
+
+        }, 3000);
+    })();
 
 const fngmppilihrombel = async () => {
     loadingtopbarin("loadingtopbar");
@@ -152,28 +172,28 @@ const fngmppilihrombel = async () => {
     let y = document.getElementById("gmppilihrombel").options;
     ruangankelas = y[x].value
     idNamaKelas = y[x].value;
-    idJenjang = y[x].value.slice(0, 1);//y[x].value.match(/(\d+)/)[0];
+    idJenjang = y[x].value.slice(0, 1); //y[x].value.match(/(\d+)/)[0];
     let ddurl = "url_nilaikelas" + idJenjang;
     constlinknilai = jlo[ddurl];
     constpreviewljk = jlo[ddurl];
-    if (localStorage.hasOwnProperty("datasiswa_" + ruangankelas)) {
-        jsondatasiswa = JSON.parse(localStorage.getItem("datasiswa_" + ruangankelas)).datasiswa;
-        tabeldatakelassaya();
-    } else {
-        // loadingAPI.style.display = "block";
-        // infoloadingAPI.innerHTML = "Sedang memproses Data Siswa Kelas " + ruangankelas + ", Mohon tunggu....";
-        await fetch(linkDataUserWithIdss + "&action=datasiswaaktif&kelas=" + ruangankelas)
-            .then(m => m.json())
-            .then(k => {
+    // if (localStorage.hasOwnProperty("datasiswa_" + ruangankelas)) {
+    //     jsondatasiswa = JSON.parse(localStorage.getItem("datasiswa_" + ruangankelas)).datasiswa;
+    //     tabeldatakelassaya();
+    // } else {
+    // loadingAPI.style.display = "block";
+    // infoloadingAPI.innerHTML = "Sedang memproses Data Siswa Kelas " + ruangankelas + ", Mohon tunggu....";
+    await fetch(linkDataUserWithIdss + "&action=datasiswaaktif&kelas=" + ruangankelas)
+        .then(m => m.json())
+        .then(k => {
 
-                jsondatasiswa = k.datasiswa;
-                localStorage.setItem("datasiswa_" + ruangankelas, JSON.stringify(k));
-                tabeldatakelassaya();
-            }).catch(er => {
-                console.log("muat ulang lagi: " + er);
-                // infoloadingAPI.innerHTML = "Maaf, Terjadi Kesalahan. Coba lagi nanti. <br>Kode error : " + er + " <br>row: 231"
-            });;
-    };
+            jsondatasiswa = k.datasiswa;
+            localStorage.setItem("datasiswa_" + ruangankelas, JSON.stringify(k));
+            tabeldatakelassaya();
+        }).catch(er => {
+            console.log("muat ulang lagi: " + er);
+            // infoloadingAPI.innerHTML = "Maaf, Terjadi Kesalahan. Coba lagi nanti. <br>Kode error : " + er + " <br>row: 231"
+        });;
+    // };
 
 
     await buattabelrekapsemester();
@@ -216,7 +236,7 @@ function updatetabeldatakelassaya() { // Versi ngambil data dari TAB SPREADSHEET
     td2.innerHTML = "No. Urut";
     tr.appendChild(td2);
     var td1 = document.createElement("th");
-    td1.innerHTML = "Edit";
+    td1.innerHTML = "Token siswa";
     tr.appendChild(td1);
     var td4 = document.createElement("th");
     td4.innerHTML = "No Induk Sekolah";
@@ -283,14 +303,15 @@ function updatetabeldatakelassaya() { // Versi ngambil data dari TAB SPREADSHEET
         var tabcell = tr.insertCell(-1)
         tabcell.innerHTML = (i * 1) + 1; // nourut (1)
         var tabcell = tr.insertCell(-1)
-        var btnn = document.createElement("button");
-        btnn.setAttribute("onclick", "alert('Maaf, hanya bisa diakses guru kelas')");
-        btnn.innerHTML = "Edit";
-        var btnnn = document.createElement("button");
-        btnnn.setAttribute("onclick", "alert('Maaf, hanya bisa diakses Guru Kelas')");
-        btnnn.innerHTML = "Hapus";
-        tabcell.appendChild(btnn);
-        tabcell.appendChild(btnnn); // ------------> isi sel tombol(2)
+        tabcell.innerHTML = jsondatasiswa[i].id;
+        // var btnn = document.createElement("button");
+        // btnn.setAttribute("onclick", "alert('Maaf, hanya bisa diakses guru kelas')");
+        // btnn.innerHTML = "Edit";
+        // var btnnn = document.createElement("button");
+        // btnnn.setAttribute("onclick", "alert('Maaf, hanya bisa diakses Guru Kelas')");
+        // btnnn.innerHTML = "Hapus";
+        // tabcell.appendChild(btnn);
+        // tabcell.appendChild(btnnn); // ------------> isi sel tombol(2)
         var tabcell = tr.insertCell(-1)
         tabcell.innerHTML = jsondatasiswa[i].nis; // 
         var tabcell = tr.insertCell(-1)
@@ -464,7 +485,7 @@ function tabeldatakelassaya() { // Versi ngambil data dari TAB SPREADSHEET .... 
     td2.innerHTML = "No. Urut";
     tr.appendChild(td2);
     var td1 = document.createElement("th");
-    td1.innerHTML = "Edit";
+    td1.innerHTML = "Token";
     tr.appendChild(td1);
     var td4 = document.createElement("th");
     td4.innerHTML = "No Induk Sekolah";
@@ -532,14 +553,15 @@ function tabeldatakelassaya() { // Versi ngambil data dari TAB SPREADSHEET .... 
         var tabcell = tr.insertCell(-1)
         tabcell.innerHTML = (i * 1) + 1; // nourut (1)
         var tabcell = tr.insertCell(-1)
-        var btnn = document.createElement("button");
-        btnn.setAttribute("onclick", "alert('Maaf, hanya bisa diakses guru kelas')");
-        btnn.innerHTML = "Edit";
-        var btnnn = document.createElement("button");
-        btnnn.setAttribute("onclick", "alert('Maaf, hanya bisa diakses Guru Kelas')");
-        btnnn.innerHTML = "Hapus";
-        tabcell.appendChild(btnn);
-        tabcell.appendChild(btnnn); // ------------> isi sel tombol(2)
+        tabcell.innerHTML = jsondatasiswa[i].id;
+        // var btnn = document.createElement("button");
+        // btnn.setAttribute("onclick", "alert('Maaf, hanya bisa diakses guru kelas')");
+        // btnn.innerHTML = "Edit";
+        // var btnnn = document.createElement("button");
+        // btnnn.setAttribute("onclick", "alert('Maaf, hanya bisa diakses Guru Kelas')");
+        // btnnn.innerHTML = "Hapus";
+        // tabcell.appendChild(btnn);
+        // tabcell.appendChild(btnnn); // ------------> isi sel tombol(2)
         var tabcell = tr.insertCell(-1)
         tabcell.innerHTML = jsondatasiswa[i].nis; // 
         var tabcell = tr.insertCell(-1)
@@ -723,6 +745,8 @@ function tampilinsublamangurukelas(fitur) {
         datanilaimapel.style.display = "none";
         datakehadiranguru.style.display = "none";
         dataframekreatif.style.display = "none";
+        upload_materi.style.display = "none";
+
         document.getElementById("batasaksesguru").scrollIntoView();
     } else if (fitur == "kurikulum") {
         datakelassaya.style.display = "none";
@@ -775,7 +799,7 @@ function tampilinsublamangurukelas(fitur) {
 const profilguru = async () => {
     modaledituser.style.display = "block";
     formedituser.style.display = "block";
-    prosesloadingdaftaredit.innerHTML = "";//<i class='fa fa-spin fa-spinner w3-xxxlarge'><i> sedang mencari data Anda..";
+    prosesloadingdaftaredit.innerHTML = ""; //<i class='fa fa-spin fa-spinner w3-xxxlarge'><i> sedang mencari data Anda..";
     registrasikanedit.style.display = "block";
     judulpetunjukedit.innerHTML = "<i class='fa fa-spin fa-spinner w3-xxxlarge'><i>"
     w3_close();
@@ -793,7 +817,7 @@ const profilguru = async () => {
                     for (d = 0; d < key.length; d++) {
                         if (elementform[x].name == key[d]) {
                             if (elementform[x].name == "password") {
-                                elementform[x].value = nilai[d]//;
+                                elementform[x].value = nilai[d] //;
                             } else {
                                 elementform[x].value = nilai[d]
                             };
@@ -818,26 +842,39 @@ function logout() {
     window.location.replace("/index.html")
 }
 
-function pembelajaran() {
+async function pembelajaran() {
+    loadingtopbarin("loadingtopbar");
     let valuekelas = document.getElementById("gmppilihrombel").value;
     if (valuekelas == "none") {
         alert("Anda belum memilih kelas. Silakan pilih Kelas terlebih dulu")
         return
 
     }
+    await kurikulumdiamdiam();
     tampilinsublamangurukelas("pembelajaran");
     timelinekbm.style.display = "block";
-    loadingAPI.style.display = "block";
-    infoloadingAPI.innerHTML = "Sedang memproses Data Pembelajaran KBM ..."
+
     fetch(linkmateri + "&action=kronolog&idtoken=" + idJenjang)
         .then(m => m.json())
         .then(j => {
-            loadingAPI.style.display = "none";
-            infoloadingAPI.innerHTML = "";
+
             let kk = j.result.filter(k => k.kuncikd.indexOf(idgurumapelmapel + "_") > -1)
             templatekronologi(kk);
             kronologijson = kk;
-        }).catch(er => infoloadingAPI.innerHTML = "Maaf, terjadi kesalahan. Coba lagi nanti. <br>row : 991<br>kode : " + er)
+            clearInterval(stoploadingtopbar);
+            let divlod = document.querySelector(".loadingtopbar");
+            divlod.style.width = "100%";
+            setTimeout(() => {
+                divlod.style.width = "1px"
+                divlod.className += " w3-hide";
+
+            }, 3000);
+
+        }).catch(er => {
+            loadingAPI.style.display = "block";
+
+            infoloadingAPI.innerHTML = "Maaf, terjadi kesalahan. Coba lagi nanti. <br>row : 991<br>kode : " + er
+        })
 }
 
 function templatekronologi(jsonmateri) {
@@ -1180,6 +1217,7 @@ const animasimove = (el) => {
     var elem = document.querySelector("." + el);
     var width = 1;
     idinterval = setInterval(frame, 10);
+
     function frame() {
         if (width >= 8000) {
             clearInterval(idinterval);

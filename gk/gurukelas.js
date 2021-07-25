@@ -15,7 +15,7 @@ let REKAPAbsen = {},
 let obDataRekapKehadiran;
 let idinterval
 let informasiusulandata = {};
-
+let buateditorkdaktif = [];
 jsonlocalstorage = JSON.parse(localStorage.getItem("inst_id"));
 let stoploadingtopbar;
 const loadingtopbarin = (el) => {
@@ -967,7 +967,7 @@ function logout() {
     window.localStorage.clear();
     window.location.replace("/index.html")
 }
-let buateditorkdaktif = [];
+
 async function pembelajaran() {
     loadingtopbarin("loadingtopbar");
     timelinekbm.style.display = "block";
@@ -1391,6 +1391,7 @@ function tampilinsublamangurukelas(fitur) {
         datakehadiranguru.style.display = "none";
         dataraport.style.display = "none";
         dataframekreatif.style.display = "none";
+        upload_materi.style.display = "none";
         document.getElementById("batasaksesguru").scrollIntoView();
     } else if (fitur == "kurikulum") {
         datakelassaya.style.display = "none";

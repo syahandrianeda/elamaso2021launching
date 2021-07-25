@@ -185,8 +185,8 @@ $(document).ready(function () {
 
 const previewriwayat = (par) => {
     //alert (par);
-    let domTabel = document.querySelector(".tabelmaterihariini");
-    domTabel.rows[(par + 1)].cells[6].innerHTML = `<i class="fa fa-refresh fa-spin"></i>`
+    // let domTabel = document.querySelector(".tabelmaterihariini");
+    // domTabel.rows[(par + 1)].cells[6].innerHTML = `<i class="fa fa-refresh fa-spin"></i>`
 
     indekmaterionline.innerHTML = par;
     tescekelement.innerHTML = "";
@@ -195,7 +195,7 @@ const previewriwayat = (par) => {
 
     loadingmodal.style.display = "block";
     var idm = encodeURIComponent(datamateri[par].idmateri);
-    let tes = document.querySelector(".kontenmateri");//document.getElementById("lamanmateri");   
+    let tes = document.querySelector(".kontenmateri"); //document.getElementById("lamanmateri");   
     infoloadingljk.innerHTML = "";
     tes.innerHTML = "<i class='fa fa-spin fa-spinner w3-xxxlarge'  ></i>";
     document.querySelector(".kontenmateri").style.display = "block";
@@ -684,7 +684,7 @@ function brkline(teks) { //coba
                 }
             }
             //katajadi = Q_PG + "<hr style='border-top:1px solid olive'/>";
-            katajadi = Q_PG;//+ "<hr style='border-top:1px solid olive'/>";
+            katajadi = Q_PG; //+ "<hr style='border-top:1px solid olive'/>";
 
         } else if (asal.indexOf("_OPSI-PG_") > -1) {
             var opsipg = "";
@@ -693,7 +693,7 @@ function brkline(teks) { //coba
             var idopsi = arpg[0]; // hasilnya: 1A
             //var abjad = idopsi.slice(1, 2); // hasilnya A
             //var nosoal = idopsi.slice(0, 1); // hasilnya 1
-            var nosoal = idopsi.match(/(\d+)/)[0];//parseInt(idopsi);
+            var nosoal = idopsi.match(/(\d+)/)[0]; //parseInt(idopsi);
             var abjad = idopsi.replace(nosoal, "");
 
             if (abjad === "A") {
@@ -719,15 +719,14 @@ function brkline(teks) { //coba
 
             katajadi += opsipg;
 
-        }
-        else if (asal.indexOf("_OPSI-PG-C_") > -1) {
+        } else if (asal.indexOf("_OPSI-PG-C_") > -1) {
             var opsipg = "";
             var arpgg = asal.replace("_OPSI-PG-C_", ""); // hasilnya: 1A teks pertanyaan bla bla bla
             var arpg = arpgg.split(" "); //hasilnya: 0=1A 1=teks 2=pertanyaan ... dst.
             var idopsi = arpg[0]; // hasilnya: 1A
             //var abjad = idopsi.slice(1, 2); // hasilnya A
             //var nosoal = idopsi.slice(0, 1); // hasilnya 1
-            var nosoal = idopsi.match(/(\d+)/)[0];//parseInt(idopsi);
+            var nosoal = idopsi.match(/(\d+)/)[0]; //parseInt(idopsi);
             var abjad = idopsi.replace(nosoal, "");
 
             if (abjad === "A") {
@@ -797,7 +796,7 @@ function brkline(teks) { //coba
 
         } else if (asal.indexOf("_KUNCI-KD_") > -1) {
             //REPLACE DULU = misal: _KUNCI-PG_1A, 2B, 3C<kalo adaspasi>
-            var tekskunci = asal.replace("_KUNCI-KD_", "").replace(/\s+/g, "").split("<||>");//.split(":");
+            var tekskunci = asal.replace("_KUNCI-KD_", "").replace(/\s+/g, "").split("<||>"); //.split(":");
             let ar = []
             let ob = {};
             for (i = 0; i < tekskunci.length; i++) {
@@ -806,7 +805,7 @@ function brkline(teks) { //coba
                 ob[tekskunci[i].split(":")[0]] = tekskunci[i].split(":")[1].replace("[", "").replace("]", "").split(",");
                 ar.push(ob)
             }
-            localStorage.setItem("kuncikd", JSON.stringify(ob));// ---> sudah objek array
+            localStorage.setItem("kuncikd", JSON.stringify(ob)); // ---> sudah objek array
 
 
 
@@ -898,7 +897,7 @@ function katajadireplace(asal) {
             var id = splitteks[0].replace(/\s+/g, ""); //4A
 
             var abjad = (id.length == 2) ? id.slice(1, 2) : id.slice(2, 3); //B
-            var nosoal = id.match(/(\d+)/)[0];// id.slice(0, 1); //nosoal 4
+            var nosoal = id.match(/(\d+)/)[0]; // id.slice(0, 1); //nosoal 4
             var innteks = "<input class='calc' type='radio' style='display:none' name='soal" + nosoal + "' id='" + id + "'/><label class='opsi' for='" + id + "'>" + abjad + "</label>"
 
             katajadi += innteks;
@@ -910,8 +909,7 @@ function katajadireplace(asal) {
         } else if (splitTeks[i].indexOf('tombolkirimnilaielamaso()') > -1) {
             katajadi += splitTeks[i].replace("tombolkirimnilaielamaso()", "alert('Maaf, tombol dinonaktirkan')");
 
-        }
-        else {
+        } else {
             katajadi += splitTeks[i] + " ";
 
         }
@@ -1008,11 +1006,12 @@ function tombolkirimnilaielamaso() {
             resumenilai.innerHTML = "";
             resumenilaiskhir.innerHTML = "";
 
-            tescekelement.innerHTML = "Server berhasil merespon dengan pesan: " + JSON.parse(xhr.responseText).result;//"Terima Kasih, Ananda telah menyelesaikan pembelajaran ini dengan hasil:<br/>Skor PG = " + nilaiPGku.innerHTML; //+ xhr.responseText ;
+            tescekelement.innerHTML = "Server berhasil merespon dengan pesan: " + JSON.parse(xhr.responseText).result; //"Terima Kasih, Ananda telah menyelesaikan pembelajaran ini dengan hasil:<br/>Skor PG = " + nilaiPGku.innerHTML; //+ xhr.responseText ;
             setTimeout(function () {
                 tescekelement.innerHTML = "";
                 let id = parseInt(indekmaterionline.innerHTML);
-                cekkerjaan(id);
+                //cekkerjaan(id);
+                panggilmateri()
             }, 2000)
         } else {
             tescekelement.innerHTML = "Gagal merespon.."
@@ -1117,6 +1116,7 @@ function tombolketikjawaban(id) {
 
 
 }
+
 function tombolketikjawaban2(id) {
     //alert("Tombol ketik Jawbaan No " + id)
     var tempatnya = document.getElementById("tomboljawaban" + id)
@@ -1159,11 +1159,11 @@ function tomboluploadjawaban(id) {
     katajadi += "</div>";
 
     //katajadi += `<input type='file' id='iduploadpotoessay${id}' onchange='uploadpotoessay("${id}")' style='display:none'/>`;//"<input type='file' id='iduploadpotoessay" + id + "' onchange='uploadpotoessay(" + id + ")' style='display:none'/>"; //<div  id='filejawaban"+indexpotojawaban+"' class='jawabanfile' style='display:none' ></div>"
-    katajadi += `<input id='iduploadpotoessay${id}' onclick='uploadpotoessay("${id}")' style='display:none'/>`;//"<input type='file' id='iduploadpotoessay" + id + "' onchange='uploadpotoessay(" + id + ")' style='display:none'/>"; //<div  id='filejawaban"+indexpotojawaban+"' class='jawabanfile' style='display:none' ></div>"
+    katajadi += `<input id='iduploadpotoessay${id}' onclick='uploadpotoessay("${id}")' style='display:none'/>`; //"<input type='file' id='iduploadpotoessay" + id + "' onchange='uploadpotoessay(" + id + ")' style='display:none'/>"; //<div  id='filejawaban"+indexpotojawaban+"' class='jawabanfile' style='display:none' ></div>"
     katajadi += "</div>";
     //-----------------------------
     katajadi += "<br/>Ganti dengan mengetik jawaban:";
-    katajadi += `<button onclick='tombolketikjawaban("${id}")'>Ketik Jawaban No. ${id}</button>`;//"<button onclick='tombolketikjawaban(" + id + ")'>Ketik Jawaban No. " + id + "</button>";
+    katajadi += `<button onclick='tombolketikjawaban("${id}")'>Ketik Jawaban No. ${id}</button>`; //"<button onclick='tombolketikjawaban(" + id + ")'>Ketik Jawaban No. " + id + "</button>";
     katajadi += "<sub> dengan memilih cara lain, jawaban yang sudah  diupload akan hilang dan diganti dengan jawaban berupa ketikan/tulisan</sub>"
     //-----------------------------
     tempatnya.innerHTML = katajadi;
@@ -1369,9 +1369,9 @@ function hasilakhirelamaso(id) { // untuk tipe berkali-kali (bukan type token ak
                 var td = tr.insertCell(-1);
                 td.innerHTML = idopsi;
                 var td = tr.insertCell(-1);
-                td.innerHTML = "###";//kuncijawaban[parseInt(idopsi) - 1];
+                td.innerHTML = "###"; //kuncijawaban[parseInt(idopsi) - 1];
                 var td = tr.insertCell(-1);
-                td.innerHTML = "###";//PGBenar(kuncijawaban, idopsi)
+                td.innerHTML = "###"; //PGBenar(kuncijawaban, idopsi)
 
             }
             indexkunci += 1;
@@ -1444,7 +1444,7 @@ function hasilakhirelamaso(id) { // untuk tipe berkali-kali (bukan type token ak
 
         teksarea.textContent = window.btoa(unescape(encodeURIComponent(isiteks.innerHTML)));
         //resumenilai.style.display = "none";
-        document.getElementById("resumenilai").removeAttribute("style");//removeAttribute
+        document.getElementById("resumenilai").removeAttribute("style"); //removeAttribute
         document.getElementById("resumenilai").setAttribute("style", "display:none")
         //----------------------------------------------------
         //var belumadatombol = document.getElementById("idtombolkirimnilaielamaso")
@@ -1560,7 +1560,89 @@ function ceknilai(dlo) {
 
 }
 
-async function cekkerjaan(d) {
+async function cekkerjaan(j, d) {
+    //.style.display = "none";
+    document.querySelector(".kontenmateri").innerHTML = "";
+    hasilakhir.style.display = "none";
+
+    tescekelement.innerHTML = "";
+    // loadingAPI.style.display = "block";
+    // infoloadingAPI.innerHTML = `<i class="fa fa-spin fa-spinner w3-jumbo w3-display-middle"></i>`
+
+    let datanya = d
+    let nm = tokensiswa;
+    let crTo = datanya.crtToken;
+    let idmap = datanya.jenistagihan;
+    let idmapel = datanya.idmapel;
+    let soalmateri = datanya.idmateri;
+    let bataswaktu = new Date(datanya.idtglend).getTime();
+    let awalwaktu = new Date(datanya.idtgl).getTime()
+
+    let integerWaktusekarang = new Date().getTime();
+    let kadalmateri = (bataswaktu > integerWaktusekarang) ? false : true;
+    //console.log(kadalmateri)
+    let trueEssay = (datanya.jumlahessay == 0) ? false : true;
+
+    let param = "&namasiswa=" + encodeURIComponent(nm);
+    param += "&crtToken=" + encodeURIComponent(crTo);
+    param += "&jenistagihan=" + encodeURIComponent(idmap)
+    param += "&idmapel=" + encodeURIComponent(idmapel)
+
+    // let domTabel = document.querySelector(".tabelmaterihariini");
+    // domTabel.rows[(d + 1)].cells[6].innerHTML = `<i class="fa fa-refresh fa-spin"></i>`;
+    let div = document.querySelector(".mhi_status_" + j);
+    let url = urlnilai + "?action=datasiswasudahmengerjakan";
+    await fetch(url + param)
+        .then(m => m.json())
+        .then(k => {
+            // console.log(k)
+            if (k.records.length == 0) {
+                if (integerWaktusekarang < awalwaktu && integerWaktusekarang < bataswaktu) {
+                    div.innerHTML = "Maaf, Pembelajaran belum bisa diakses"
+                } else if (integerWaktusekarang > awalwaktu && integerWaktusekarang > bataswaktu) {
+                    div.innerHTML = "Maaf, Pembelajaran sudah Ananda lewatkan"
+
+                } else {
+                    div.innerHTML = `<button class="w3-button w3-green" onclick="previewriwayat(${j})">Yuk Mulai Belajar</button>`
+                }
+
+                // if(kadalmateri){
+                //     domTabel.rows[(d+1)].cells[6].innerHTML = "Maaf, materi sudah ditutup"
+                // }else{
+                //     domTabel.rows[(d+1)].cells[6].innerHTML = `<button class="w3-button w3-green" onclick="previewriwayat(${d})">Mulai Belajar</button>`
+                // }
+            } else {
+                let last = k.records.length - 1;
+                let obnilaikd = k.records[last].nilaikd;
+                let idhtml = k.records[last].html_jawaban;
+                let cekessay = (k.records[last].nilaiEssay == "" && trueEssay) ? `<button class='w3-button w3-red' onclick='lihatljksaya("${idhtml}")'>LJK (?)</button>` : `<button class='w3-button w3-green' onclick='lihatljksaya("${idhtml}")'>LJK <i class="fa fa-check-circle"></i></button>`;
+
+                let objek = JSON.parse(obnilaikd);
+                let keyobjek = Object.keys(objek)
+                let teks = (k.records[last].nilaiPG == "") ? "" : "Nilai PG = " + k.records[last].nilaiPG + "<br/>";
+                teks += (k.records[last].nilaiEssay == "" && trueEssay) ? "" : "Nilai Esay = " + k.records[last].nilaiEssay;
+
+
+                div.innerHTML = `Selamat Ananda sudah mengerjakan materi ini.<br class="w3-border-bottom"/> ${teks}<br class="w3-border-bottom"/>${cekessay}<button class='w3-button w3-blue' onclick='soaloffline("${soalmateri}")'>Latihan lagi</button><br/>`;
+
+            }
+
+            //domTabel.after(teksnode)
+            // loadingAPI.style.display = "none";
+            // infoloadingAPI.innerHTML = `<i class="fa fa-spin fa-spinner w3-jumbo w3-display-middle"></i>`
+            // //     hasilakhir.style.display = "none";
+            // //  resumenilai.style.display = "none";
+            //  cmd.style.display = "none";
+            //  bypassme.style.display = "none";
+            //hasilbelajarsekali.style.display = "none";
+
+        }).catch(er => {
+            loadingAPI.style.display = "block";
+            infoloadingAPI.innerHTML = `Terjadi Kegagalan koneksi. Coba lagi nanti. <hr>Pesan error: ${er}`
+
+        })
+}
+async function cekkerjaanjadul(d) {
     //.style.display = "none";
     document.querySelector(".kontenmateri").innerHTML = "";
     hasilakhir.style.display = "none";
@@ -1605,8 +1687,7 @@ async function cekkerjaan(d) {
             if (k.records.length == 0) {
                 if (integerWaktusekarang < awalwaktu && integerWaktusekarang < bataswaktu) {
                     domTabel.rows[(d + 1)].cells[6].innerHTML = "Maaf, Pembelajaran belum bisa diakses"
-                }
-                else if (integerWaktusekarang > awalwaktu && integerWaktusekarang > bataswaktu) {
+                } else if (integerWaktusekarang > awalwaktu && integerWaktusekarang > bataswaktu) {
                     domTabel.rows[(d + 1)].cells[6].innerHTML = "Maaf, Pembelajaran sudah Ananda lewatkan"
 
                 } else {
@@ -1618,8 +1699,7 @@ async function cekkerjaan(d) {
                 // }else{
                 //     domTabel.rows[(d+1)].cells[6].innerHTML = `<button class="w3-button w3-green" onclick="previewriwayat(${d})">Mulai Belajar</button>`
                 // }
-            }
-            else {
+            } else {
                 let last = k.records.length - 1;
                 let obnilaikd = k.records[last].nilaikd;
                 let idhtml = k.records[last].html_jawaban;
@@ -1870,6 +1950,17 @@ function tanggalfulllengkap(tgl) {
     var menit = d.getMinutes();
     var bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
     return tgl + " " + bulan[bln] + " " + thn + " Pukul " + addZero(jam) + ":" + addZero(menit);
+}
+
+function waktufulllengkap(tgl) {
+    var d = new Date(tgl);
+    var tgl = d.getDate();
+    var bln = d.getMonth();
+    var thn = d.getFullYear();
+    var jam = d.getHours();
+    var menit = d.getMinutes();
+    var bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+    return " Pukul " + addZero(jam) + ":" + addZero(menit);
 }
 
 function addZero(i) {

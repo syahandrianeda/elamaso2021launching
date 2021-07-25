@@ -55,10 +55,11 @@
         let tokensiswa;
         let namakelas;
         let jenjang;
-        let arrayStringTglLibur = [], arrayKetLibur = [];
+        let arrayStringTglLibur = [],
+            arrayKetLibur = [];
 
         let belajaraktif = true;
-        let sudahhadir;//= 0;
+        let sudahhadir; //= 0;
         let absenheader = "";
         let url_absensiswa = "";
         let url_kaldikaja = "";
@@ -94,7 +95,7 @@
 
                 url_kaldikaja = jlo.url_dataabsen;
                 url_absenkaldik = jlo.url_dataabsen + "?action=datakaldik";
-                url_absensiswa = jlo[absenheader];//+ "?action=absensiswahariini";
+                url_absensiswa = jlo[absenheader]; //+ "?action=absensiswahariini";
                 if (m.hasOwnProperty("ote")) {
                     window.location.replace("/user/orangtua.html");
                 }
@@ -106,8 +107,6 @@
         } else {
             window.location.replace("/index.html")
         }
-
-
     </script>
 
     <link crossorigin='' href='//fonts.googleapis.com' rel='dns-prefetch' />
@@ -139,6 +138,12 @@
                 src="/img/L_vT86_100px.png" alt="Avatar" style="height:30px;cursor: pointer;"> <span
                 class="w3-hide-small">e-Lamaso Siswa</span> </div>
     </div>
+    <div class="w3-bar w3-top w3-tiny">
+        <div class="w3-teal loadingtopbar w3-hide" style="width:1px;margin-top:45px;height: 5px;transition: width 2s">
+            &nbsp;
+        </div>
+    </div>
+
 
 
     <!-- Sidebar/menu -->
@@ -268,7 +273,7 @@
                         onclick="panggilmateri()">Mulai Belajar</button>
 
                 </div>
-                <div class="w3-main klikmateri w3-padding" style="overflow-x: auto; margin:0 auto">
+                <div class="klikmateri w3-container" style="overflow-x: auto; margin:0 auto">
                 </div>
             </div>
             <div class="pesankhususkepsek w3-card w3-white w3-margin-top w3-container w3-round-large">
@@ -290,7 +295,7 @@
             </div>
             <div class="pesankhususgurukelas  w3-card w3-white w3-margin-top w3-container w3-round-large">
                 <p class="w3-center">
-                    Mohon maaf, beberapa fitur Sedang Proses Upgrade Data.
+
                 </p>
             </div>
             <br />
