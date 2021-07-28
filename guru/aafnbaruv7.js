@@ -1236,7 +1236,7 @@ btnfn7video.addEventListener("click", function () {
 });
 
 function barufindkuncipgkd(teks) {
-    let findPG = teks.match(/^_PG_\d{1,2}\s|^_OPSI-PG_\d{1,2}[A-D]\s|^_OPSI-PG-C_\d{1,2}[A-D](\s)|^_OPSI-SEL_\d{1,2}[A-D]\s|^_ESSAY-NO_\d{1,2}\s/gm);
+    let findPG = teks.match(/^_PG_\d{1,2}\s|^_OPSI-PG_\d{1,2}[A-D]\s|^_OPSI-PG-C_\d+[A-D]\s|^_OPSI-SEL_\d{1,2}[A-D]\s|^_ESSAY-NO_\d{1,2}\s/gm);
     let textarea = document.getElementById("idmateri");
     // <div id="divbantu_kuncijawaban"></div>
     // <div id="divbantu_sebarankd"></div>
@@ -1249,7 +1249,7 @@ function barufindkuncipgkd(teks) {
     divradiopg.innerHTML = "";
 
     if (findPG !== null) {
-        let cekcariopsi = teks.match(/^_OPSI-PG_\d{1,2}[A-D]\s|^_OPSI-PG-C_\d{1,2}[A-D](\s)|^_OPSI-SEL_\d{1,2}[A-D]\s/gm);
+        let cekcariopsi = teks.match(/^_OPSI-PG_\d{1,2}[A-D]\s|^_OPSI-PG-C_\d+[A-D]\s|^_OPSI-SEL_\d{1,2}[A-D]\s/gm);
 
 
         let tanpaspasi = findPG.map(s => s.replace(/\s|\t/g, ""));

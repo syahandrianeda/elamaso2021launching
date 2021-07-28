@@ -517,6 +517,7 @@ const loadingtopbarin = (el) => {
 (async function () {
     namasekolah.innerHTML = identitassekolah;
     namakota.innerHTML = identitaskotasekolah;
+    
     //---------------------------------------------------------
     //loadingmodal.style.display = "block";
     var elem = document.querySelector(".loadingtopbar");
@@ -745,9 +746,10 @@ const absennya = (bol) => {
                 //}
             }).catch(er => {
                 //alert("Ups, maaf terjadi kesalahan ... 2 detik lagi akan kembali ("+er+")");
-                console.log(er)
+                console.log(er); //
+                alert("Terjadi kesalahan, silakan hubungi pihak sekolah.")
                 setTimeout(function () {
-                    location.reload()
+                    //location.reload()
                 }, 2000)
             });; //.catch(err => {console.log(err);location.replace("siswa.html")}) 
     }

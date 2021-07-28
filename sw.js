@@ -5,11 +5,13 @@ const assets = [
     "/",
     "/css/css_siswa.css",
     "/css/css_timeline.css",
+    "/css/firststyle.css",
     "/css/csssiswa.css",
     "/css/stylegurukelas.css",
     "/css/stylegurukelasgurumapel.css",
     "/css/w3-theme-blue-grey.css",
     "/css/w3.css",
+
     "/img/lamaso.webp",
     "/img/eabsensi.webp",
     "/img/L_vT86_100px.png",
@@ -19,34 +21,36 @@ const assets = [
     "/img/akarkubik.PNG",
 
     "/guru/aafnbaruv7.js",
-    "/gk/absen.js",
-    "/gmp/absengurumapel.js",
-    "/gk/barcode.js",
-    "/gk/datasiswa.js",
-    "/gmp/datasiswagurumapel.js",
     "/guru/editor.js",
-    "/guru/exceltabel.js",
-    "/gk/gurukelas.js",
-    "/gmp/gurumapel.js",
     "/guru/guruprofildankehadiran.js",
+    "/guru/exceltabel.js",
     "/guru/kurikulum.js",
-    "/script/materi.js",
-    "/gk/materiguru.js",
-    "/gmp/materigurumapel.js",
     "/guru/nilai.js",
-    "/script/ortujs.js",
     "/guru/raportsemester.js",
-    "/script/renderpdf.js",
-    "/script/siswa.js",
-    "/gk/uploadmateri.js",
-    "/gmp/uploadmaterigurumapel.js",
-    "/script/uploadmedia.js",
     "/guru/variabel.js",
     "/guru/videoelamaso.js",
     "/guru/waktu.js",
     "/guru/zframe.js",
 
-    "/css/firststyle.css",
+    "/gk/absen.js",
+    "/gk/barcode.js",
+    "/gk/datasiswa.js",
+    "/gk/gurukelas.js",
+    "/gk/materiguru.js",
+    "/gk/uploadmateri.js",
+
+    "/gmp/absengurumapel.js",
+    "/gmp/uploadmaterigurumapel.js",
+    "/gmp/datasiswagurumapel.js",
+    "/gmp/gurumapel.js",
+    "/gmp/materigurumapel.js",
+
+    "/script/ortujs.js",
+    "/script/renderpdf.js",
+    "/script/siswa.js",
+    "/script/materi.js",
+    "/script/uploadmedia.js",
+
 
     "/kepsek/exceltabel.js",
     "/kepsek/skrip.js",
@@ -60,7 +64,7 @@ const assets = [
     "/staff/exceltabel.js",
     "/staff/umum.js",
     "/staff/unfaedah.js",
-    "/stff/videolamaso.js"
+    "/staff/videolamaso.js"
 
 
 
@@ -113,7 +117,7 @@ self.addEventListener('fetch', evt => {
                     return caches.open(dynamicChace).then(cache => {
                         cache.put(evt.request.url, fetchRes.clone());
                         // check cached items size
-                        limitCacheSize(dynamicChace, 35);
+                        limitCacheSize(dynamicChace, 5);
                         return fetchRes;
                     })
                 });
